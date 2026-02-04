@@ -1,5 +1,5 @@
 ---
-title: Styling charts for accessibility
+title: 접근성을 위한 차트 스타일링
 format:
   html:
     code-fold: true
@@ -11,11 +11,11 @@ execute:
 editor: source
 ---
 
-## Principles of styling charts
+## 차트 스타일링 원칙
 
-The two charts below show the same data using the same type of chart -- guinea pig tooth growth data visualised on a horizontal bar chart. However, the clarity of the two charts is distinctly different. The choice of colours, addition of text annotations, change of font size, and more informative labels make the chart on the right-hand side much easier to interpret.[^1] In this section, we'll explore each of these elements in detail, and discuss how to style different elements of charts to improve accessibility and interpretability of your data visualisations.
+아래 두 차트는 동일한 데이터를 동일한 유형의 차트(수평 막대 차트로 시각화된 기니피그 치아 성장 데이터)를 사용하여 보여줍니다. 그러나 두 차트의 명확성은 확연히 다릅니다. 색상 선택, 텍스트 주석 추가, 글꼴 크기 변경, 더 유익한 레이블 등은 오른쪽 차트를 해석하기 훨씬 쉽게 만듭니다.[^1] 이 섹션에서는 이러한 각 요소를 자세히 살펴보고, 데이터 시각화의 접근성과 해석 가능성을 높이기 위해 차트의 다양한 요소를 스타일링하는 방법에 대해 설명합니다.
 
-[^1]: For an alternative presentation of the same tooth growth data, see [this discussion (with code)](https://github.com/royal-statistical-society/datavisguide/discussions/31) in our GitHub repository.
+[^1]: 동일한 치아 성장 데이터에 대한 다른 프레젠테이션은 GitHub 리포지토리의 [이 토론(코드 포함)](https://github.com/royal-statistical-society/datavisguide/discussions/31)을 참조하십시오.
 
 ```{r}
 library(ggplot2)
@@ -45,7 +45,7 @@ ggplot(
   ) +
   scale_x_continuous(
     limits = c(0, 30),
-    name = "Tooth length"
+    name = "치아 길이"
   ) +
   geom_text(
     mapping = aes(label = round(len, 0)),
@@ -57,12 +57,12 @@ ggplot(
   ) +
   scale_fill_manual(values = c("#9B1D20", "#3D5A80")) +
   labs(
-    title = "Tooth Growth",
-    subtitle = "Each of 60 guinea pigs received one of three dose levels of
-       vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods:
-       <span style='color: #9B1D20'>**orange juice**</span> or 
-    <span style='color: #3D5A80'>**ascorbic acid**</span>.",
-    y = "Dosage (mg/day)"
+    title = "치아 성장",
+    subtitle = "60마리의 기니피그가 비타민 C 3가지 용량 수준(0.5, 1, 2 mg/일) 중 하나를
+       두 가지 전달 방법 중 하나로 투여받았습니다:
+       <span style='color: #9B1D20'>**오렌지 주스**</span> 또는 
+    <span style='color: #3D5A80'>**아스코르브산**</span>.",
+    y = "복용량 (mg/일)"
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -79,13 +79,13 @@ ggplot(
   )
 ```
 
-[![Before and after bar charts visualising tooth growth of guinea pigs.](images/styling-intro.png){fig-alt="Before and after bar charts visualising tooth growth of guinea pigs. Left is unstyled with default colour scheme. Right is styled with labelled bars, a text legend, and easier to read fonts."}](images/styling-intro.png)
+[![기니피그 치아 성장을 시각화한 전후 막대 차트.](images/styling-intro.png){fig-alt="기니피그 치아 성장을 시각화한 전후 막대 차트. 왼쪽은 기본 색 구성표로 스타일이 지정되지 않았습니다. 오른쪽은 레이블이 지정된 막대, 텍스트 범례, 읽기 쉬운 글꼴로 스타일이 지정되었습니다."}](images/styling-intro.png)
 
-## Colours
+## 색상
 
-Colour choices can strongly impact the accessibility of your data visualisation. The correct use of colour can also help to emphasise the story you are trying to tell.
+색상 선택은 데이터 시각화의 접근성에 큰 영향을 미칠 수 있습니다. 색상을 올바르게 사용하면 전달하려는 이야기를 강조하는 데에도 도움이 될 수 있습니다.
 
-Before you get into choosing colours, ask yourself the question: do I really need to use colour here? @Beecham2021 showed that the use of colour is one of the least effective methods for visually communicating differences between variables.
+색상을 선택하기 전에 스스로에게 질문해 보십시오. 여기서 정말 색상을 사용해야 하나? @Beecham2021은 변수 간의 차이를 시각적으로 전달하는 데 있어 색상 사용이 가장 효과적이지 않은 방법 중 하나임을 보여주었습니다.
 
 ```{r}
 library(dplyr)
@@ -104,7 +104,7 @@ ggplot(
 ) +
   geom_col() +
   labs(
-    x = "Variable 1",
+    x = "변수 1",
     y = ""
   ) +
   coord_cartesian(expand = FALSE) +
@@ -132,7 +132,7 @@ ggplot(
   geom_col() +
   scale_fill_manual(values = c("#AFE1AF", "#7a9d7a")) +
   labs(
-    x = "Variable 1",
+    x = "변수 1",
     y = ""
   ) +
   coord_cartesian(expand = FALSE) +
@@ -149,11 +149,11 @@ ggplot(
   )
 ```
 
-[![Before and after bar charts visualising car data showing colouring vs highlighting.](images/styling-highlight.png){fig-alt="Before and after bar charts visualising car data. Left has a different colour for each bar. Right uses colour to highlight a specific bar."}](images/styling-highlight.png)
+[![색칠 대 강조 표시를 보여주는 자동차 데이터 시각화 막대 차트 전후.](images/styling-highlight.png){fig-alt="자동차 데이터를 시각화한 막대 차트 전후. 왼쪽은 각 막대마다 다른 색상을 사용합니다. 오른쪽은 색상을 사용하여 특정 막대를 강조 표시합니다."}](images/styling-highlight.png)
 
-In the bar chart example above, rather than duplicating the information on the y-axis and colouring each bar a different colour, a better approach is to use colour to highlight a specific element of the data, e.g., a specific car, which focuses the reader's attention straight to the point you are trying to make.
+위의 막대 차트 예시에서 y축의 정보를 복제하여 각 막대에 다른 색상을 칠하는 대신, 더 나은 접근 방식은 색상을 사용하여 데이터의 특정 요소(예: 특정 자동차)를 강조 표시하여 독자의 주의를 주장하려는 요점에 바로 집중시키는 것입니다.
 
-It's useful not to rely on colour as the only factor which distinguishes data points in different groups. For example, in scatter plots, as well as colouring points in two groups either green or orange, the points could be encoded as circles and triangles.
+서로 다른 그룹의 데이터 포인트를 구별하는 유일한 요소로 색상에 의존하지 않는 것이 좋습니다. 예를 들어 산점도에서 두 그룹의 포인트를 녹색 또는 주황색으로 칠하는 것 외에도 포인트를 원과 삼각형으로 인코딩할 수 있습니다.
 
 ```{r}
 library(readr)
@@ -183,9 +183,9 @@ ggplot(
   scale_colour_brewer(palette = "Dark2") +
   coord_cartesian(expand = FALSE) +
   labs(
-    title = "Ferris wheels",
-    x = "Diameter (ft)",
-    y = "Height (ft)"
+    title = "대관람차",
+    x = "지름 (ft)",
+    y = "높이 (ft)"
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -215,9 +215,9 @@ ggplot(
   scale_colour_brewer(palette = "Dark2") +
   coord_cartesian(expand = FALSE) +
   labs(
-    title = "Ferris wheels",
-    x = "Diameter (ft)",
-    y = "Height (ft)"
+    title = "대관람차",
+    x = "지름 (ft)",
+    y = "높이 (ft)"
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -232,17 +232,17 @@ ggplot(
   )
 ```
 
-[![Before and after scatterplots visualising Ferris wheel data showing only dots, vs, dots and triangles to differentiate groups.](images/styling-shapes.png){fig-alt="Before and after scatterplots visualising Ferris wheel data. Left uses only colour to differentiate country. Right also uses different shapes."}](images/styling-shapes.png)
+[![점만 보여주는 것과 그룹을 구별하기 위해 점과 삼각형을 보여주는 대관람차 데이터 시각화 산점도 전후.](images/styling-shapes.png){fig-alt="대관람차 데이터를 시각화한 산점도 전후. 왼쪽은 국가를 구별하기 위해 색상만 사용합니다. 오른쪽은 다른 모양도 사용합니다."}](images/styling-shapes.png)
 
-Despite the difficulties that can arise from ineffective use, colour remains one of the most common methods for either distinguishing between categories, or showing changes in a value. If you decide to use colours, you then need to decide which colours to use.
+비효율적인 사용으로 인해 발생할 수 있는 어려움에도 불구하고 색상은 범주를 구별하거나 값의 변화를 보여주는 가장 일반적인 방법 중 하나입니다. 색상을 사용하기로 결정했다면 어떤 색상을 사용할지 결정해야 합니다.
 
-### Types of colour palette
+### 색상 팔레트 유형
 
-Colour palettes generally fall into one of three categories, and the type of colour palette you choose should reflect the type of data you are visualising.
+색상 팔레트는 일반적으로 세 가지 범주 중 하나에 속하며, 선택하는 색상 팔레트 유형은 시각화하려는 데이터 유형을 반영해야 합니다.
 
--   **Sequential**: used to visualise data that is ordered from low to high (or vice versa), e.g., temperature.
--   **Diverging**: used to visualise data that is ordered and diverges from an important midpoint, e.g., days of above- or below-average temperature, in two directions.
--   **Qualitative**: used to visualise categorical data, where the magnitude of difference between, and ordering of, categories is not meaningful, e.g., distinct railway lines.
+-   **순차적(Sequential)**: 낮은 것에서 높은 것(또는 그 반대)으로 순서가 있는 데이터를 시각화하는 데 사용됩니다(예: 온도).
+-   **발산적(Diverging)**: 중요한 중간점에서 멀어지며 순서가 있는 데이터를 시각화하는 데 사용됩니다(예: 양방향으로 평균 온도보다 높거나 낮은 일수).
+-   **정성적(Qualitative)**: 범주 간의 차이 크기와 순서가 의미가 없는 범주형 데이터를 시각화하는 데 사용됩니다(예: 서로 다른 철도 노선).
 
 ```{r}
 library(ggplot2)
@@ -254,7 +254,7 @@ ggplot(
   mapping = aes(x = x, y = y, fill = x)
 ) +
   geom_tile() +
-  labs(title = "Sequential") +
+  labs(title = "순차적(Sequential)") +
   scale_fill_pretty_c("Teals") +
   theme_void() +
   theme(
@@ -269,7 +269,7 @@ ggplot(
   mapping = aes(x = x, y = y, fill = x - mean(x))
 ) +
   geom_tile() +
-  labs(title = "Diverging") +
+  labs(title = "발산적(Diverging)") +
   scale_fill_gradient2(low = "#f1a340", high = "#998ec3") +
   theme_void() +
   theme(
@@ -284,7 +284,7 @@ ggplot(
   mapping = aes(x = x, y = y, fill = factor(x))
 ) +
   geom_tile() +
-  labs(title = "Qualitative") +
+  labs(title = "정성적(Qualitative)") +
   scale_fill_brewer(palette = "Dark2") +
   theme_void() +
   theme(
@@ -294,13 +294,13 @@ ggplot(
   )
 ```
 
-[![Different types of colour palettes.](images/styling-palettes.png){fig-alt="Three colour palette plots showing sequential blue colours, diverging orange to purple colours, and bold qualitative colours."}](images/styling-palettes.png)
+[![다양한 유형의 색상 팔레트.](images/styling-palettes.png){fig-alt="순차적인 파란색, 발산적인 주황색에서 보라색, 굵은 정성적 색상을 보여주는 세 가지 색상 팔레트 플롯."}](images/styling-palettes.png)
 
-### Accessible colour palettes
+### 접근 가능한 색상 팔레트
 
-When choosing a particular colour palette, there are several important factors to consider.
+특정 색상 팔레트를 선택할 때 고려해야 할 몇 가지 중요한 요소가 있습니다.
 
-Colours should be distinct from each other, for all readers. There are several different forms of colour blindness which can cause some colours to appear indistinguishable. The use of a [colour blind checker](https://www.color-blindness.com/coblis-color-blindness-simulator/) [@Colblindor] can show you what your plots may look like under different types of colour blindness. This is particularly important for diverging and qualitative palettes where the distinction between hues is used to tell apart different values. In contrast, sequential palettes often use luminosity to show how values change. @Hoellt2023 note that single hue palettes are a safer choice as they are typically more likely to be colourblind friendly. @Hoellt2023 also note that the larger the variability across luminosity and chroma (purity of colour), the likelier it is that the colours are more distinguishable by those with colour blindness. [Paul Tol](https://personal.sron.nl/~pault/) [-@Tol2021] has some very useful resources on choices of colours, and several suggested palettes.
+색상은 모든 독자에게 서로 구별되어야 합니다. 일부 색상을 구별할 수 없게 만드는 여러 가지 형태의 색맹이 있습니다. [색맹 검사기](https://www.color-blindness.com/coblis-color-blindness-simulator/) [@Colblindor]를 사용하면 다양한 유형의 색맹 하에서 플롯이 어떻게 보일지 확인할 수 있습니다. 이는 색조의 차이를 사용하여 서로 다른 값을 구별하는 발산적 및 정성적 팔레트에서 특히 중요합니다. 반면 순차적 팔레트는 값이 어떻게 변하는지 보여주기 위해 광도(luminosity)를 사용하는 경우가 많습니다. @Hoellt2023은 단일 색조 팔레트가 일반적으로 색맹 친화적일 가능성이 더 높기 때문에 더 안전한 선택이라고 지적합니다. 또한 @Hoellt2023은 광도와 채도(색상의 순도)의 변동성이 클수록 색맹이 있는 사람들이 색상을 구별할 가능성이 더 높다고 지적합니다. [Paul Tol](https://personal.sron.nl/~pault/) [-@Tol2021]은 색상 선택에 대한 유용한 리소스와 몇 가지 추천 팔레트를 제공합니다.
 
 ```{r}
 library(ggplot2)
@@ -323,7 +323,7 @@ g <- ggplot(
   ) +
   scale_x_continuous(
     limits = c(0, 30),
-    name = "Tooth length"
+    name = "치아 길이"
   ) +
   geom_text(
     mapping = aes(label = round(len, 0)),
@@ -335,12 +335,12 @@ g <- ggplot(
   ) +
   scale_fill_manual(values = c("#9B1D20", "#3D5A80")) +
   labs(
-    title = "Tooth Growth",
-    subtitle = "Each of 60 guinea pigs received one of three dose levels of
-       vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods:
-       <span style='color: #9B1D20'>**orange juice**</span> or 
-    <span style='color: #3D5A80'>**ascorbic acid**</span>.",
-    y = "Dosage (mg/day)"
+    title = "치아 성장",
+    subtitle = "60마리의 기니피그가 비타민 C 3가지 용량 수준(0.5, 1, 2 mg/일) 중 하나를
+       두 가지 전달 방법 중 하나로 투여받았습니다:
+       <span style='color: #9B1D20'>**오렌지 주스**</span> 또는 
+    <span style='color: #3D5A80'>**아스코르브산**</span>.",
+    y = "복용량 (mg/일)"
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -359,25 +359,25 @@ g <- ggplot(
 cvd_grid(g)
 ```
 
-[![The simulated appearance of the same bar chart with different types of colour blindness.](images/styling-colours.png){fig-alt="A 2x2 grid showing a bar chart under three types of colour blindness, and in monochrome. The monochrome is especially hard to differentiate colours."}](images/styling-colours.png)
+[![다양한 유형의 색맹에서 동일한 막대 차트의 시뮬레이션된 모양.](images/styling-colours.png){fig-alt="세 가지 유형의 색맹과 흑백 모드에서의 막대 차트를 보여주는 2x2 그리드. 흑백 모드는 특히 색상을 구별하기 어렵습니다."}](images/styling-colours.png)
 
-Colours should appear distinct from each other when printed in black and white. Readers, or indeed academic journals, may choose to print your visualisations in monochrome. Colours that seem visually distinct that have similar luminosity (a measure of how light or dark a hue is) may appear indistinguishable when printed in black and white.
+흑백으로 인쇄했을 때 색상은 서로 구별되어야 합니다. 독자 또는 학술지는 시각화를 단색으로 인쇄하도록 선택할 수 있습니다. 시각적으로 뚜렷해 보이는 색상이라도 광도(색조가 얼마나 밝거나 어두운지를 나타내는 척도)가 비슷하면 흑백으로 인쇄했을 때 구별할 수 없게 보일 수 있습니다.
 
-Colours should appropriately match your data. It's important not to play into stereotypes, e.g., choosing pink and blue for data relating to women and men. Don't confuse your readers by flipping common colour associations around, e.g., red for good and green for bad. @Muth2018 discusses the use of colour to display gender data, and many of the points can be extended to other types of data.
+색상은 데이터와 적절하게 일치해야 합니다. 예를 들어 여성과 남성 관련 데이터에 분홍색과 파란색을 선택하는 것과 같은 고정관념에 빠지지 않는 것이 중요합니다. 일반적인 색상 연관성을 뒤집어서(예: 좋음은 빨간색, 나쁨은 녹색) 독자를 혼란스럽게 하지 마십시오. @Muth2018은 성별 데이터를 표시하기 위한 색상 사용에 대해 논의하며, 많은 요점은 다른 유형의 데이터로 확장될 수 있습니다.
 
-### Checklist
+### 체크리스트
 
--   Minimise the number of different colours used.
--   Check that your colours are colour blind friendly, and have sufficient contrast when viewed in monochrome.
--   Check that the type of colour palette matches the type of data visualised.
--   Use non-colour elements to distinguish between different groups where possible.
--   Avoid stereotypes and confusing associations with different colours.
+-   사용되는 다른 색상의 수를 최소화하십시오.
+-   색상이 색맹 친화적인지, 흑백으로 볼 때 충분한 대비가 있는지 확인하십시오.
+-   색상 팔레트 유형이 시각화된 데이터 유형과 일치하는지 확인하십시오.
+-   가능한 경우 색상이 아닌 요소를 사용하여 다른 그룹을 구별하십시오.
+-   고정관념과 색상에 대한 혼란스러운 연관성을 피하십시오.
 
-## Annotations
+## 주석
 
-When talking about adding annotations to data visualisations, we simply mean adding text that adds a comment or clarification in order to help the reader understand the point made in the graphic. Annotations can be used to add details or explanation, highlight an interesting data point, or clarify how the chart should be interpreted. Although additional text can be extremely useful to a reader, it's important not to overload a data visualisation with text as it can be distracting and make it more difficult to focus the point.
+데이터 시각화에 주석을 추가한다는 것은 독자가 그래픽의 요점을 이해하는 데 도움이 되도록 설명이나 해명을 추가하는 텍스트를 넣는 것을 의미합니다. 주석은 세부 정보나 설명을 추가하거나, 흥미로운 데이터 포인트를 강조하거나, 차트를 어떻게 해석해야 하는지 명확히 하는 데 사용할 수 있습니다. 추가 텍스트는 독자에게 매우 유용할 수 있지만, 텍스트가 너무 많으면 주의를 산만하게 하고 요점에 집중하기 어렵게 만들 수 있으므로 데이터 시각화에 텍스트를 과부하하지 않는 것이 중요합니다.
 
-A common use of annotation that enhances clarity of data visualisations is directly labelling data points on line graphs or bar charts. In line graphs, it's common to label the value at the end of the line as it's often far away from the y-axis labels (on the left by default). In bar charts, adding the values for each bar at, or near, the end of each bar also means readers don't have to look up the values themselves. This can reduce the amount of eye movement required for readers to find the exact values and allows them to make better, more accurate comparisons. This isn't always required if, for example, these values are additionally provided in a table.
+데이터 시각화의 명확성을 높이는 주석의 일반적인 사용법은 꺾은선 그래프나 막대 차트의 데이터 포인트에 직접 레이블을 지정하는 것입니다. 꺾은선 그래프에서는 선 끝의 값이 y축 레이블(기본적으로 왼쪽)에서 멀리 떨어져 있는 경우가 많으므로 선 끝에 값을 표시하는 것이 일반적입니다. 막대 차트에서는 각 막대 끝이나 근처에 각 막대의 값을 추가하면 독자가 직접 값을 찾아볼 필요가 없습니다. 이렇게 하면 독자가 정확한 값을 찾기 위해 눈을 움직여야 하는 양을 줄이고 더 좋고 정확한 비교를 할 수 있습니다. 예를 들어 이러한 값이 표에 추가로 제공되는 경우에는 항상 필요한 것은 아닙니다.
 
 ```{r}
 library(ggplot2)
@@ -403,15 +403,15 @@ ggplot(
   ) +
   scale_x_continuous(
     limits = c(0, 30),
-    name = "Tooth length"
+    name = "치아 길이"
   ) +
   scale_fill_manual(
-    name = "Supplement: ",
+    name = "보조제: ",
     values = c("#9B1D20", "#3D5A80")
   ) +
   labs(
-    title = "Tooth Growth",
-    y = "Dose"
+    title = "치아 성장",
+    y = "복용량"
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -436,7 +436,7 @@ ggplot(
   ) +
   scale_x_continuous(
     limits = c(0, 30),
-    name = "Tooth length"
+    name = "치아 길이"
   ) +
   geom_text(
     mapping = aes(label = round(len, 0)),
@@ -447,12 +447,12 @@ ggplot(
     colour = "white"
   ) +
   scale_fill_manual(
-    name = "Supplement: ",
+    name = "보조제: ",
     values = c("#9B1D20", "#3D5A80")
   ) +
   labs(
-    title = "Tooth Growth",
-    y = "Dose"
+    title = "치아 성장",
+    y = "복용량"
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -463,59 +463,59 @@ ggplot(
   )
 ```
 
-[![Before and after adding annotations to label a bar chart.](images/styling-annotate-bars.png){fig-alt="A before and after showing the same bar chart of tooth growth data without annotations on the left, and with labels showing bar values on the right."}](images/styling-annotate-bars.png)
+[![막대 차트에 레이블을 지정하기 위해 주석을 추가하기 전과 후.](images/styling-annotate-bars.png){fig-alt="왼쪽에는 주석이 없는 동일한 치아 성장 데이터 막대 차트가 있고, 오른쪽에는 막대 값을 표시하는 레이블이 있는 전후 비교."}](images/styling-annotate-bars.png)
 
-The placement of annotations is also key:
+주석의 배치도 중요합니다:
 
--   In a scatter plot, directly labelling every data point isn't usually an option as there are too many points to label without clutter. Instead, you may choose to highlight only one or two interesting points, such as outliers.
--   When adding more extensive text to explain an outlier or point of interest, place the text in a relevant position. For example, if you're annotating a line chart to explain a decrease in value in 2008, position the text near to 2008.
--   Don't fill every white space with text. @ONSstyle recommends [a maximum of 3 or 4 annotations per chart](https://style.ons.gov.uk/data-visualisation/titles-and-text/annotation-and-footnotes/) to avoid overwhelming readers. This also means keeping annotations brief and to the point. This is especially true for data visualisations that accompany journal publications or magazine articles where further textual explanation is likely included already.
+-   산점도에서는 모든 데이터 포인트에 직접 레이블을 지정하는 것은 일반적으로 선택 사항이 아닙니다. 왜냐하면 포인트가 너무 많아서 혼란스러울 수 있기 때문입니다. 대신 이상치와 같이 흥미로운 포인트 한두 개만 강조 표시하도록 선택할 수 있습니다.
+-   이상치나 관심 지점을 설명하기 위해 더 광범위한 텍스트를 추가할 때는 관련 위치에 텍스트를 배치하십시오. 예를 들어 2008년의 가치 감소를 설명하기 위해 꺾은선 차트에 주석을 달 경우 2008년 근처에 텍스트를 배치하십시오.
+-   모든 공백을 텍스트로 채우지 마십시오. @ONSstyle은 독자를 압도하지 않도록 [차트당 최대 3~4개의 주석](https://style.ons.gov.uk/data-visualisation/titles-and-text/annotation-and-footnotes/)을 권장합니다. 이는 또한 주석을 간결하고 요점에 맞게 유지해야 함을 의미합니다. 추가적인 텍스트 설명이 이미 포함되어 있을 가능성이 높은 저널 간행물이나 잡지 기사에 수반되는 데이터 시각화의 경우 특히 그렇습니다.
 
-### Checklist
+### 체크리스트
 
--   Check if there are outliers that need further explanation, or values that could be directly labelled.
--   Labels are positioned sensibly, and the data visualisation does not feel crowded with text.
--   Make sure there is sufficient contrast between the text and the background.
+-   추가 설명이 필요한 이상치나 직접 레이블을 지정할 수 있는 값이 있는지 확인하십시오.
+-   레이블은 합리적으로 배치되어 있으며 데이터 시각화가 텍스트로 붐비지 않도록 하십시오.
+-   텍스트와 배경 사이에 충분한 대비가 있는지 확인하십시오.
 
-## Fonts
+## 글꼴
 
-Font choice is a key component of making your data visualisations easy to understand. Some fonts are easier to read than others, and this is particularly true for those with visual impairments, or a learning disability such as dyslexia. A poor choice of font may make your visualisation inaccessible to a significant number of people in your audience.
+글꼴 선택은 데이터 시각화를 이해하기 쉽게 만드는 핵심 구성 요소입니다. 어떤 글꼴은 다른 글꼴보다 읽기 쉬우며, 시각 장애가 있거나 난독증과 같은 학습 장애가 있는 사람들에게 특히 그렇습니다. 글꼴을 잘못 선택하면 상당수의 청중이 시각화에 접근하지 못할 수 있습니다.
 
-Try to minimise the number of different types of font you use: use a fixed set of sizes, a maximum of two different font families, and minimise the use of mixing font faces. This all helps to reduce unnecessary work from a reader when they look at your visualisation. Previous advice relating to choice of colour is also relevant here - it's particularly important to check there is sufficient contrast between the background colour and the text colour.
+사용하는 글꼴 유형의 수를 최소화하십시오. 고정된 크기 집합을 사용하고, 최대 두 가지 글꼴 패밀리를 사용하며, 글꼴 서체 혼합 사용을 최소화하십시오. 이 모든 것이 독자가 시각화를 볼 때 불필요한 작업을 줄이는 데 도움이 됩니다. 색상 선택과 관련된 이전 조언은 여기에도 관련이 있습니다. 배경색과 텍스트 색상 사이에 충분한 대비가 있는지 확인하는 것이 특히 중요합니다.
 
-### Font size
+### 글꼴 크기
 
-Larger fonts are easier to read. It's generally recommended that font size is at least 12pt for printed materials or websites. If you're creating a presentation, fonts should be at least 36pt to make sure they're visible to people nearer the back of the room.
+큰 글꼴이 읽기 쉽습니다. 인쇄물이나 웹사이트의 경우 글꼴 크기가 최소 12pt 이상일 것을 일반적으로 권장합니다. 프레젠테이션을 만드는 경우 글꼴은 최소 36pt 이상이어야 방 뒤쪽에 있는 사람들도 볼 수 있습니다.
 
-### Font family
+### 글꼴 패밀리
 
-So what makes a good choice of font family? There are three main types of font:
+그렇다면 좋은 글꼴 패밀리 선택은 무엇일까요? 글꼴에는 세 가지 주요 유형이 있습니다:
 
--   **Serif**: serifs are the small strokes on the ends of some longer strokes that occur in some fonts. Fonts that have these serifs are called serif fonts.
--   **Sans serif**: Fonts without serifs are called sans serif fonts.
--   **Monospace**: monospace fonts are those whose characters each take up an equal width.
+-   **세리프(Serif)**: 세리프는 일부 글꼴에서 발생하는 긴 획 끝의 작은 획입니다. 이러한 세리프가 있는 글꼴을 세리프 글꼴이라고 합니다. (바탕체 계열)
+-   **산세리프(Sans serif)**: 세리프가 없는 글꼴을 산세리프 글꼴이라고 합니다. (고딕체 계열)
+-   **모노스페이스(Monospace)**: 모노스페이스 글꼴은 각 문자가 동일한 너비를 차지하는 글꼴입니다.
 
-There is no consensus as to which type of font (serif, sans serif, or monospace) is more accessible. The simpler characters of sans serif fonts may increase readability for visually impaired readers, while those with dyslexia may find the characters more difficult to tell apart. Serif fonts (such as Times New Roman) can be more difficult to read as the decorative lines distract from the shape of the letter. This is especially true in digital publications where on-screen pixelation can further distort the letters. We'd recommend avoiding serif fonts for any text in images that will appear online. Common sans serif fonts such as Arial, Calibri, and Verdana are often considered to be accessible.
+어떤 유형의 글꼴(세리프, 산세리프 또는 모노스페이스)이 더 접근하기 쉬운지에 대한 합의는 없습니다. 산세리프 글꼴의 단순한 문자는 시각 장애가 있는 독자의 가독성을 높일 수 있는 반면, 난독증이 있는 독자는 문자를 구별하기 더 어렵다고 느낄 수 있습니다. 세리프 글꼴(예: Times New Roman)은 장식선이 문자의 모양을 산만하게 하므로 읽기가 더 어려울 수 있습니다. 화면의 픽셀화가 문자를 더욱 왜곡할 수 있는 디지털 간행물에서는 특히 그렇습니다. 온라인에 표시되는 이미지의 텍스트에는 세리프 글꼴을 사용하지 않는 것이 좋습니다. Arial, Calibri, Verdana와 같은 일반적인 산세리프 글꼴은 종종 접근하기 쉬운 것으로 간주됩니다.
 
-[Dyslexie](https://www.dyslexiefont.com/) and [OpenDyslexic](https://opendyslexic.org/) are fonts specifically designed to aid readability for those with dyslexia, as they increase font weight at the bottom of the letters which reduces how much the letters appear to move around. Atkinson Hyperlegible is a font developed by the Braille Institute of America, which is designed to maximise distinction between different characters for low vision readers. It's freely available, and can be downloaded from the [Braille Institute](https://brailleinstitute.org/freefont) or used through [Google Fonts](https://fonts.google.com/specimen/Atkinson+Hyperlegible). There is conflicting evidence about whether or not specially designed fonts are actually more accessible [@Rello2016, @Wery2017]. Therefore, sticking with a sans serif font is likely a safer choice.
+[Dyslexie](https://www.dyslexiefont.com/) 및 [OpenDyslexic](https://opendyslexic.org/)은 문자의 아래쪽 글꼴 두께를 늘려 문자가 움직이는 것처럼 보이는 현상을 줄임으로써 난독증이 있는 사람들의 가독성을 돕기 위해 특별히 설계된 글꼴입니다. Atkinson Hyperlegible은 Braille Institute of America에서 개발한 글꼴로, 저시력 독자를 위해 문자 간의 구별을 극대화하도록 설계되었습니다. 무료로 사용할 수 있으며 [Braille Institute](https://brailleinstitute.org/freefont)에서 다운로드하거나 [Google Fonts](https://fonts.google.com/specimen/Atkinson+Hyperlegible)를 통해 사용할 수 있습니다. 특별히 설계된 글꼴이 실제로 더 접근하기 쉬운지에 대해서는 상충되는 증거가 있습니다[@Rello2016, @Wery2017]. 따라서 산세리프 글꼴을 고수하는 것이 더 안전한 선택일 가능성이 높습니다.
 
-Some fonts, particularly sans serif fonts, have characters which appear very similar to other characters. For example, a capital I, lowercase l, and number 1, can sometimes be indistinguishable. Choose a font face with a distinguishable feature for each letter and number. Source Sans Pro and Verdana both meet this condition.
+일부 글꼴, 특히 산세리프 글꼴은 다른 문자와 매우 유사하게 보이는 문자가 있습니다. 예를 들어 대문자 I, 소문자 l, 숫자 1은 때때로 구별할 수 없습니다. 각 문자와 숫자에 대해 구별되는 특징이 있는 글꼴 서체를 선택하십시오. Source Sans Pro와 Verdana는 모두 이 조건을 충족합니다.
 
-### Font face
+### 글꼴 서체
 
-Font faces, e.g., bold or italic effects, can be used to emphasise particular parts of text. For example, a plot annotation may highlight a specific value placed in amongst some explanatory text. Italicised text is generally considered more difficult to read [@Rello2016], as is capitalised text when used for the purpose of emphasis. Instead, use bold text to highlight (sparingly!).
+굵게 또는 이탤릭 효과와 같은 글꼴 서체는 텍스트의 특정 부분을 강조하는 데 사용할 수 있습니다. 예를 들어 플롯 주석은 설명 텍스트 사이에 배치된 특정 값을 강조 표시할 수 있습니다. 이탤릭체 텍스트는 강조 목적으로 사용될 때 대문자 텍스트와 마찬가지로 일반적으로 읽기 더 어려운 것으로 간주됩니다[@Rello2016]. 대신 강조하기 위해 굵은 텍스트를 사용하십시오(드물게!).
 
-### Checklist
+### 체크리스트
 
-As you can see, there is no single font recommendation that will ensure your visualisation is accessible to all. However, there are some things you can do to improve accessibility.
+보시다시피 모든 사람이 시각화에 접근할 수 있도록 보장하는 단일 글꼴 권장 사항은 없습니다. 그러나 접근성을 개선하기 위해 할 수 있는 몇 가지 작업이 있습니다.
 
--   Ensure the font size is at least 12 pt.
--   Ensure that a capital I, lowercase l, and number 1 are distinguishable.
--   Minimise the number of different fonts used (no more than two).
--   Minimise the use of italics and uppercase text, and instead use (sparingly) bold text for emphasis.
+-   글꼴 크기가 최소 12pt 이상인지 확인하십시오.
+-   대문자 I, 소문자 l, 숫자 1이 구별되는지 확인하십시오.
+-   사용되는 다른 글꼴의 수를 최소화하십시오(2개 이하).
+-   이탤릭체와 대문자 텍스트의 사용을 최소화하고 대신 강조를 위해(드물게) 굵은 텍스트를 사용하십시오.
 
-## Alt Text
+## 대체 텍스트
 
-Alt text (short for alternative text) is text that describes the visual aspects and purpose of an image -- including charts. Though alt text has various uses, its primary purpose is to aid visually impaired users in interpreting images when the alt text is read aloud by screen readers.
+대체 텍스트(Alternative text의 줄임말)는 차트를 포함한 이미지의 시각적 측면과 목적을 설명하는 텍스트입니다. 대체 텍스트는 다양한 용도로 사용되지만 주된 목적은 스크린 리더가 대체 텍스트를 소리 내어 읽을 때 시각 장애가 있는 사용자가 이미지를 해석하도록 돕는 것입니다.
 
-In @Green2023, Mine Dogucu discusses the importance of adding alt text to your data visualisations, to ensure those who are blind or visually impaired don't miss out on the content in your charts. @Cesal2020 provides a simple structure to aid you in writing alt text for data visualisations.
+@Green2023에서 Mine Dogucu는 시각 장애가 있는 사람들이 차트의 콘텐츠를 놓치지 않도록 데이터 시각화에 대체 텍스트를 추가하는 것의 중요성에 대해 논의합니다. @Cesal2020은 데이터 시각화를 위한 대체 텍스트 작성을 돕는 간단한 구조를 제공합니다.

@@ -1,5 +1,5 @@
 ---
-title: Styling charts for RSS publications
+title: RSS 간행물을 위한 차트 스타일링
 format:
   html:
     code-fold: false
@@ -11,29 +11,29 @@ execute:
 editor: source
 ---
 
-## Styling charts with different tools
+## 다양한 도구를 사용한 차트 스타일링
 
-In this section, we discuss the technical details of how to change the style of charts built with some of the most common types of software used to create data visualisations.
+이 섹션에서는 데이터 시각화를 만드는 데 사용되는 가장 일반적인 소프트웨어 유형으로 구축된 차트의 스타일을 변경하는 방법에 대한 기술적 세부 정보를 설명합니다.
 
 ### R
 
-R [@RTeam2021] is a programming language which is popular for statistical computing and graphics. There are many packages with R that can be used to create data visualisations, and we don't aim to cover them all here. Instead, we address the most common methods: built-in base R graphics, and the {ggplot2} package [@Wickham2016a].
+R[@RTeam2021]은 통계 컴퓨팅 및 그래픽에 널리 사용되는 프로그래밍 언어입니다. R에는 데이터 시각화를 만드는 데 사용할 수 있는 패키지가 많으며 여기서는 모두 다루지 않습니다. 대신 가장 일반적인 방법인 내장 base R 그래픽과 {ggplot2} 패키지[@Wickham2016a]를 다룹니다.
 
-To help authors with styling their charts to fit in with the guidance in this document, we have developed an R package, [{RSSthemes}](https://github.com/nrennie/RSSthemes). We include some examples of using the package here, but encourage readers to check the GitHub repository for any updates.
+저자가 이 문서의 지침에 맞게 차트 스타일을 지정하는 데 도움을 주기 위해 R 패키지 [{RSSthemes}](https://github.com/nrennie/RSSthemes)를 개발했습니다. 여기에 패키지 사용 예제를 포함하지만 독자들은 업데이트 사항에 대해 GitHub 리포지토리를 확인하는 것이 좋습니다.
 
-You can install the {RSSthemes} package from CRAN using:
+다음 명령어를 사용하여 CRAN에서 {RSSthemes} 패키지를 설치할 수 있습니다:
 
 ```{r}
 install.packages("RSSthemes")
 ```
 
-You can install the development version from GitHub (although we can't promise it will be as stable as the CRAN version):
+GitHub에서 개발 버전을 설치할 수 있습니다(CRAN 버전만큼 안정적일 것이라고 약속할 수는 없지만):
 
 ```{r}
 remotes::install_github("nrennie/RSSthemes")
 ```
 
-You can then load the package using:
+그런 다음 다음을 사용하여 패키지를 로드할 수 있습니다:
 
 ```{r}
 library(RSSthemes)
@@ -41,48 +41,48 @@ library(RSSthemes)
 
 #### Base R
 
-R has built-in graphics capabilities that allow users to make a wide range of data visualisations without installing any additional packages. This [blog post from Jumping Rivers](https://www.jumpingrivers.com/blog/styling-base-r-graphics/) [@JR2018] provides instructions on how to style graphics created in base R.
+R에는 사용자가 추가 패키지를 설치하지 않고도 광범위한 데이터 시각화를 만들 수 있는 내장 그래픽 기능이 있습니다. [Jumping Rivers의 이 블로그 게시물](https://www.jumpingrivers.com/blog/styling-base-r-graphics/) [@JR2018]은 base R에서 만든 그래픽 스타일을 지정하는 방법에 대한 지침을 제공합니다.
 
-**Example**: changing bar chart colours in base R.
+**예**: base R에서 막대 차트 색상 변경.
 
-If all of the bars, lines, points, etc. should have the same colour, you can set the `col` argument to have one of the RSS colours. The options are: `signif_red`, `signif_blue`, `signif_green`, `signif_orange`, or `signif_yellow`.
+모든 막대, 선, 점 등이 같은 색상을 가져야 하는 경우 `col` 인수를 RSS 색상 중 하나로 설정할 수 있습니다. 옵션은 `signif_red`, `signif_blue`, `signif_green`, `signif_orange`, 또는 `signif_yellow`입니다.
 
 ```{r}
 barplot(table(mtcars$gear), col = signif_blue)
 ```
 
-![Bar chart with bars coloured in *Significance* blue.](images/tools-blue-base.png){fig-alt="Bar charts visualising plant growth of average height for different treatments with user specified colours red, blue, and dark green."}
+![*Significance* 파란색으로 칠해진 막대가 있는 막대 차트.](images/tools-blue-base.png){fig-alt="사용자가 지정한 빨간색, 파란색, 진한 녹색 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."}
 
-If the colours in your plot are based on values in your data, you can set the default colours using the `palette()` function. Within {RSSthemes}, the `set_rss_palette()` function changes the default colours used. There are currently three palettes available in {RSSthemes}, although we hope to add more in the future. The options are `signif_qual`, `signif_div`, or `signif_seq`.
+플롯의 색상이 데이터의 값을 기반으로 하는 경우 `palette()` 함수를 사용하여 기본 색상을 설정할 수 있습니다. {RSSthemes} 내에서 `set_rss_palette()` 함수는 사용되는 기본 색상을 변경합니다. 현재 {RSSthemes}에는 세 가지 팔레트를 사용할 수 있지만 앞으로 더 추가할 예정입니다. 옵션은 `signif_qual`, `signif_div`, 또는 `signif_seq`입니다.
 
 ```{r}
 set_rss_palette("signif_qual")
 plot(1:4, 1:4, col=1:4, pch=19, cex=3, xlab="", ylab="")
 ```
 
-![Scatter plot showing the colours from the `signif_qual` palette.](images/tools-qual-base.png){fig-alt="Scatter plot showing the colours from signif_qual"}
+![`signif_qual` 팔레트의 색상을 보여주는 산점도.](images/tools-qual-base.png){fig-alt="signif_qual의 색상을 보여주는 산점도"}
 
-Run `palette("default")` to reset to original base R colours.
+`palette("default")`를 실행하여 원래 base R 색상으로 재설정합니다.
 
-**Example**: changing the styling of base R plots.
+**예**: base R 플롯의 스타일링 변경.
 
-Within the `plot()` function (and related base R plotting functions such as `barplot()`, and `hist()`) , there are arguments to control how the non-data elements of the plot look. For example, the `family` argument changes which font family is used. You can also set many of these arguments globally by calling the `par()` function. Within {RSSthemes}, there is a function `set_signif_par()` which sets some default options, including the text alignment and font for all base R plots. We also recommend adding reference lines using the `abline()` function.
+`plot()` 함수(및 `barplot()`, `hist()`와 같은 관련 base R 플로팅 함수) 내에는 플롯의 비 데이터 요소가 어떻게 보일지 제어하는 인수가 있습니다. 예를 들어 `family` 인수는 사용되는 글꼴 패밀리를 변경합니다. `par()` 함수를 호출하여 이러한 인수 중 상당수를 전역적으로 설정할 수도 있습니다. {RSSthemes} 내에는 모든 base R 플롯에 대한 텍스트 정렬 및 글꼴을 포함하여 몇 가지 기본 옵션을 설정하는 `set_signif_par()` 함수가 있습니다. `abline()` 함수를 사용하여 참조선을 추가하는 것도 좋습니다.
 
 ```{r}
 set_signif_par()
 plot(1:4, 1:4, col=1:4, pch=19, cex=3, xlab="", ylab="",
-     main = "My Significance Plot",
-     sub = "Source: data source")
+     main = "나의 Significance 플롯",
+     sub = "출처: 데이터 소스")
 abline(h=1:4, v=1:4, col = "lightgrey")
 ```
 
-![Scatter plot showing the base R styling implemented by `set_signif_par()`.](images/tools-theme-base.png){fig-alt="Scatter plot showing the base R styling implemented by the Significance par function."}
+![`set_signif_par()`에 의해 구현된 base R 스타일링을 보여주는 산점도.](images/tools-theme-base.png){fig-alt="Significance par 함수에 의해 구현된 base R 스타일링을 보여주는 산점도."}
 
 #### {ggplot2}
 
-{ggplot2} is an R package within the {tidyverse} framework specifically for creating data visualisations. The [package documentation](https://ggplot2.tidyverse.org/) provides guidance on how to create different types of charts. Advice on [changing the colours](https://ggplot2-book.org/scale-colour.html) and [styles](https://ggplot2-book.org/polishing.html) of {ggplot2} visualisations, can be found in the [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/index.html) book by Hadley Wickham [@Wickham2016a].
+{ggplot2}는 데이터 시각화를 만들기 위해 특별히 고안된 {tidyverse} 프레임워크 내의 R 패키지입니다. [패키지 문서](https://ggplot2.tidyverse.org/)는 다양한 유형의 차트를 만드는 방법에 대한 지침을 제공합니다. {ggplot2} 시각화의 [색상 변경](https://ggplot2-book.org/scale-colour.html) 및 [스타일 변경](https://ggplot2-book.org/polishing.html)에 대한 조언은 Hadley Wickham의 책 [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/index.html) [@Wickham2016a]에서 찾을 수 있습니다.
 
-Let's set up a basic data set to make some plots with {ggplot2}.
+{ggplot2}로 플롯을 만들기 위해 기본 데이터 세트를 설정해 보겠습니다.
 
 ```{r}
 #| code-fold: false
@@ -91,9 +91,9 @@ plot_df <- data.frame(x = LETTERS[1:4],
                       y = 1:4)
 ```
 
-**Example**: changing the non-mapped colours in {ggplot2}.
+**예**: {ggplot2}에서 매핑되지 않은 색상 변경.
 
-In {ggplot2}, the `colour` (or `color`) argument changes the colour that outlines an element, and `fill` changes the colour that fills the element. If all of the, e.g., bars, lines, or points should have the same colour, you can set either the `fill` or `colour` arguments to have one of the RSS colours. The options are: `signif_red`, `signif_blue`, `signif_green`, `signif_orange`, or `signif_yellow`.
+{ggplot2}에서 `colour`(또는 `color`) 인수는 요소의 윤곽선을 나타내는 색상을 변경하고, `fill`은 요소를 채우는 색상을 변경합니다. 모든 막대, 선 또는 점이 동일한 색상을 가져야 하는 경우 `fill` 또는 `colour` 인수를 RSS 색상 중 하나로 설정할 수 있습니다. 옵션은 `signif_red`, `signif_blue`, `signif_green`, `signif_orange`, 또는 `signif_yellow`입니다.
 
 ```{r}
 ggplot(data = plot_df,
@@ -101,13 +101,13 @@ ggplot(data = plot_df,
   geom_col(fill = signif_yellow)
 ```
 
-![Bar chart with bars coloured yellow.](images/tools-yellow-bars.png){fig-alt="Bar chart with bars coloured yellow"}
+![노란색으로 칠해진 막대가 있는 막대 차트.](images/tools-yellow-bars.png){fig-alt="노란색으로 칠해진 막대가 있는 막대 차트"}
 
-**Example**: using a discrete colour scale in {ggplot2}.
+**예**: {ggplot2}에서 이산 색상 스케일 사용.
 
-For working with qualitative (discrete) data, the best palette to use is `"signif_qual"`. This palette currently only contains four colours.
+정성적(이산) 데이터로 작업할 때 사용할 수 있는 가장 좋은 팔레트는 `"signif_qual"`입니다. 이 팔레트에는 현재 4가지 색상만 포함되어 있습니다.
 
--   Discrete (fill) scale: `scale_fill_rss_d()`
+-   이산 (채우기) 스케일: `scale_fill_rss_d()`
 
 ```{r}
 ggplot(data = plot_df,
@@ -116,9 +116,9 @@ ggplot(data = plot_df,
   scale_fill_rss_d(palette = "signif_qual")
 ```
 
-![Bar chart with colours from `signif_qual`.](images/tools-qual-bars.png){fig-alt="Bar chart with colours from signif_qual"}
+![`signif_qual`의 색상이 있는 막대 차트.](images/tools-qual-bars.png){fig-alt="signif_qual의 색상이 있는 막대 차트"}
 
--   Discrete (colour) scale: `scale_colour_rss_d()`
+-   이산 (색상) 스케일: `scale_colour_rss_d()`
 
 ```{r}
 ggplot(data = plot_df,
@@ -127,13 +127,13 @@ ggplot(data = plot_df,
   scale_colour_rss_d(palette = "signif_qual")
 ```
 
-![Scatter plot with colours from `signif_qual`.](images/tools-qual-points.png){fig-alt="Scatter plot with colours from signif_qual"}
+![`signif_qual`의 색상이 있는 산점도.](images/tools-qual-points.png){fig-alt="signif_qual의 색상이 있는 산점도"}
 
-**Example**: using a continuous colour scale in {ggplot2}.
+**예**: {ggplot2}에서 연속 색상 스케일 사용.
 
-Continuous colour scales may be sequential or diverging. For working with sequential (continuous) data, the best palette to use is `"signif_seq"`.
+연속 색상 스케일은 순차적이거나 발산적일 수 있습니다. 순차적(연속) 데이터로 작업할 때 사용할 수 있는 가장 좋은 팔레트는 `"signif_seq"`입니다.
 
--   Continuous (fill) scale: `scale_fill_rss_c()`
+-   연속 (채우기) 스케일: `scale_fill_rss_c()`
 
 ```{r}
 ggplot(data = plot_df,
@@ -142,9 +142,9 @@ ggplot(data = plot_df,
   scale_fill_rss_c(palette = "signif_seq")
 ```
 
-![Bar chart showing sequential green colour palette.](images/tools-seq-bars.png){fig-alt="Bar chart showing sequential green colour palette"}
+![순차적 녹색 색상 팔레트를 보여주는 막대 차트.](images/tools-seq-bars.png){fig-alt="순차적 녹색 색상 팔레트를 보여주는 막대 차트"}
 
--   Continuous (colour) scale: `scale_colour_rss_c()`
+-   연속 (색상) 스케일: `scale_colour_rss_c()`
 
 ```{r}
 ggplot(data = plot_df,
@@ -153,11 +153,11 @@ ggplot(data = plot_df,
   scale_colour_rss_c(palette = "signif_seq")
 ```
 
-![Scatter plot showing sequential green colour palette.](images/tools-seq-points.png){fig-alt="Scatter plot showing sequential green colour palette"}
+![순차적 녹색 색상 팔레트를 보여주는 산점도.](images/tools-seq-points.png){fig-alt="순차적 녹색 색상 팔레트를 보여주는 산점도"}
 
-For working with diverging (continuous) data, the best palette to use is `"signif_div"`.
+발산적(연속) 데이터로 작업할 때 사용할 수 있는 가장 좋은 팔레트는 `"signif_div"`입니다.
 
--   Continuous (fill) scale: `scale_fill_rss_c()`
+-   연속 (채우기) 스케일: `scale_fill_rss_c()`
 
 ```{r}
 ggplot(data = plot_df,
@@ -166,9 +166,9 @@ ggplot(data = plot_df,
   scale_fill_rss_c(palette = "signif_div")
 ```
 
-![Bar chart showing diverging red to blue palette.](images/tools-div-bars.png){fig-alt="Bar chart showing diverging red to blue palette"}
+![발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트.](images/tools-div-bars.png){fig-alt="발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트"}
 
-If you want to centre the diverging scale around a different value, you can alternatively pass the pre-defined colours from {RSSthemes} into `scale_fill_gradient2()` in {ggplot2}:
+발산적 스케일을 다른 값을 중심으로 맞추려면 {RSSthemes}에서 미리 정의된 색상을 {ggplot2}의 `scale_fill_gradient2()`에 전달할 수도 있습니다:
 
 ```{r}
 ggplot(data = plot_df,
@@ -177,41 +177,41 @@ ggplot(data = plot_df,
   scale_fill_gradient2(low = signif_red, high = signif_blue, midpoint = 2)
 ```
 
-![Bar chart showing diverging red to blue palette centred at 2.](images/tools-div-bars-grad.png){fig-alt="Bar chart showing diverging red to blue palette centred at 2"}
+![2를 중심으로 하는 발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트.](images/tools-div-bars-grad.png){fig-alt="2를 중심으로 하는 발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트"}
 
-**Example**: changing the theme in {ggplot2}.
+**예**: {ggplot2}에서 테마 변경.
 
-Within {ggplot2}, themes allow you to control the appearance of the non-data elements of your plot. The default theme is `theme_grey()` which has a darker background. We recommend using a white or transparent background, such as those created with `theme_minimal()` or `theme_bw()`.
+{ggplot2} 내에서 테마를 사용하면 플롯의 비 데이터 요소 모양을 제어할 수 있습니다. 기본 테마는 `theme_grey()`로 배경이 더 어둡습니다. `theme_minimal()` 또는 `theme_bw()`로 만든 것과 같은 흰색 또는 투명 배경을 사용하는 것이 좋습니다.
 
-You can also use `theme_significance()` from {RSSthemes} which additionally sets the plot font to one of those used in *Significance* magazine. Check that you have already run `library(RSSthemes)` to ensure the fonts load correctly.
+또한 {RSSthemes}의 `theme_significance()`를 사용하여 플롯 글꼴을 *Significance* 매거진에서 사용하는 글꼴 중 하나로 추가 설정할 수 있습니다. 글꼴이 올바르게 로드되도록 `library(RSSthemes)`를 이미 실행했는지 확인하십시오.
 
 ```{r}
 ggplot(data = plot_df,
        mapping = aes(x = x, y = y, fill = x)) +
   geom_col() +
-  labs(title = "My Significance Plot",
-       subtitle = "Some longer sentence explaining what is happening in the chart.",
-       caption = "Source: name of data source") +
+  labs(title = "나의 Significance 플롯",
+       subtitle = "차트에서 일어나는 일을 설명하는 긴 문장.",
+       caption = "출처: 데이터 소스 이름") +
   scale_fill_rss_d(palette = "signif_qual") +
   theme_significance()
 ```
 
-![Bar chart styled with `theme_significance()`.](images/tools-theme.png){fig-alt="Bar chart with bars coloured green, yellow, blue, and orange showing custom theme"}
+![`theme_significance()`로 스타일이 지정된 막대 차트.](images/tools-theme.png){fig-alt="사용자 정의 테마를 보여주는 녹색, 노란색, 파란색, 주황색으로 칠해진 막대가 있는 막대 차트"}
 
-If you find a bug in the {RSSthemes} package, or something that isn't working quite as you expected, please submit a [GitHub issue](https://github.com/nrennie/RSSthemes/issues).
+{RSSthemes} 패키지에서 버그를 발견하거나 예상대로 작동하지 않는 것이 있으면 [GitHub 이슈](https://github.com/nrennie/RSSthemes/issues)를 제출해 주십시오.
 
-#### Exporting images from R
+#### R에서 이미지 내보내기
 
-There are different ways to export and save images from R. Using the *Export* button on the *Plots* pane in RStudio doesn't usually result in images of high enough resolution for publication quality graphics. The minimum image resolution for images published in print is 300 dpi. If you use `ggsave()` from {ggplot2}, 300 dpi is the default resolution. We recommend saving images in PDF or EPS file format as this makes it easier for them to be resized.
+R에서 이미지를 내보내고 저장하는 방법에는 여러 가지가 있습니다. RStudio의 *Plots* 창에서 *Export* 버튼을 사용해도 출판 품질 그래픽으로 충분한 고해상도 이미지가 생성되지 않는 경우가 많습니다. 인쇄물로 출판되는 이미지의 최소 이미지 해상도는 300 dpi입니다. {ggplot2}의 `ggsave()`를 사용하는 경우 300 dpi가 기본 해상도입니다. 크기를 조정하기 쉽도록 PDF 또는 EPS 파일 형식으로 이미지를 저장하는 것이 좋습니다.
 
-Further information on specific image sizes for different RSS publications is given in the [Publication specifications](#publication-specifications) section.
+다양한 RSS 간행물에 대한 특정 이미지 크기에 대한 추가 정보는 [출판 사양](#publication-specifications) 섹션에 나와 있습니다.
 
-As an example, suppose you were creating a plot for the Features section of *Significance* magazine, and you wanted the plot to span two of the three columns. From the [table](#features-section) below, the width of the image should be 124 mm. To use the `pdf()` function to save an image, the width and height should be in inches (124 mm \~ 4.88 in). If we want a 2:1 aspect ratio, we make the height equal to half the width:
+예를 들어 *Significance* 매거진의 Features 섹션에 대한 플롯을 만들고 플롯이 3개 열 중 2개 열에 걸치도록 하려는 경우를 가정해 보겠습니다. 아래 [표](#features-section)에서 이미지 너비는 124mm여야 합니다. `pdf()` 함수를 사용하여 이미지를 저장하려면 너비와 높이가 인치 단위여야 합니다(124mm \~ 4.88인치). 2:1 종횡비를 원하는 경우 높이를 너비의 절반으로 만듭니다:
 
 ```{r}
-pdf(file = "significance-feature-plot.pdf", # name of file
-    width = 4.88,                           # width of plot
-    height = 4.88 / 2                       # height of plot
+pdf(file = "significance-feature-plot.pdf", # 파일 이름
+    width = 4.88,                           # 플롯 너비
+    height = 4.88 / 2                       # 플롯 높이
     ) 
 plot(1:4, 1:4)
 dev.off()
@@ -219,19 +219,19 @@ dev.off()
 
 ### Python
 
-[Python](https://www.python.org/) is a general-purpose programming language, with libraries available that provide capabilities for data analysis and visualisation.
+[Python](https://www.python.org/)은 범용 프로그래밍 언어로, 데이터 분석 및 시각화 기능을 제공하는 라이브러리를 사용할 수 있습니다.
 
-A work-in-progress Python package for implementing RSS colour palettes can be found at [github.com/nrennie/RSSpythemes](https://github.com/nrennie/RSSpythemes). If you'd like to contribute to this Python package development, please [raise an issue](https://github.com/nrennie/RSSpythemes/issues) or create a pull request on GitHub.
+RSS 색상 팔레트 구현을 위한 진행 중인 Python 패키지는 [github.com/nrennie/RSSpythemes](https://github.com/nrennie/RSSpythemes)에서 찾을 수 있습니다. 이 Python 패키지 개발에 기여하고 싶다면 GitHub에서 [이슈를 제기](https://github.com/nrennie/RSSpythemes/issues)하거나 풀 리퀘스트를 생성해 주십시오.
 
 #### Matplotlib
 
-[Matplotlib](https://matplotlib.org/) is a Python library for creating static, animated, and interactive data visualisations.
+[Matplotlib](https://matplotlib.org/)은 정적, 애니메이션 및 대화형 데이터 시각화를 생성하기 위한 Python 라이브러리입니다.
 
-**Example**: changing bar chart colours in matplotlib.
+**예**: matplotlib에서 막대 차트 색상 변경.
 
-You can change the colour of chart elements in matplotlib using the `color` argument:
+`color` 인수를 사용하여 matplotlib에서 차트 요소의 색상을 변경할 수 있습니다:
 
-```python
+```{python}
 import matplotlib.pyplot as plt
 # generate data
 x_vals = ['A', 'B', 'C', 'D']
@@ -241,11 +241,11 @@ plt.bar(x_vals, y_vals, color = "#009cc4")
 plt.show()
 ```
 
-![Bar chart with bars coloured in *Significance* blue.](images/tools-blue-py.png){fig-alt="Bar charts visualising plant growth of average height for different treatments with user specified colour in blue."}
+![*Significance* 파란색으로 칠해진 막대가 있는 막대 차트.](images/tools-blue-py.png){fig-alt="파란색 사용자 지정 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."}
 
-If the colours in your plot are based on values in your data, you can also change the colours used by providing a list of colours:
+플롯의 색상이 데이터의 값을 기반으로 하는 경우 색상 목록을 제공하여 사용되는 색상을 변경할 수도 있습니다:
 
-```python
+```{python}
 # define colour palette
 signif_qual = ['#3fa535', '#f4c100', '#009cc4', '#f07d00']
 # create barchart
@@ -253,20 +253,20 @@ plt.bar(x_vals, y_vals, label = x_vals, color = signif_qual)
 plt.show()
 ```
 
-![Bar chart showing the colours from the `signif_qual` palette.](images/tools-qual-py.png){fig-alt="Barchart showing the colours from signif_qual"}
+![`signif_qual` 팔레트의 색상을 보여주는 막대 차트.](images/tools-qual-py.png){fig-alt="signif_qual의 색상을 보여주는 막대 차트"}
 
-**Example**: changing the font family in matplotlib.
+**예**: matplotlib에서 글꼴 패밀리 변경.
 
-You can change the font used in all elements of the plot using `rcParams`. Good practice when setting a custom font family is to add a generic font family (such as sans serif) as a back up. If you're using a font that isn't pre-installed on your system, you can load it in using `font_manager`:
+`rcParams`를 사용하여 플롯의 모든 요소에 사용되는 글꼴을 변경할 수 있습니다. 사용자 지정 글꼴 패밀리를 설정할 때 좋은 방법은 일반 글꼴 패밀리(예: sans serif)를 백업으로 추가하는 것입니다. 시스템에 미리 설치되지 않은 글꼴을 사용하는 경우 `font_manager`를 사용하여 글꼴을 로드할 수 있습니다:
 
-```python
+```{python}
 from matplotlib import font_manager
 font_manager.fontManager.addfont("SourceSans3-Regular.ttf")
 ```
 
-You can specify a different font family, weight, or size using `fontdic` for individual elements.
+개별 요소에 대해 `fontdic`을 사용하여 다른 글꼴 패밀리, 두께 또는 크기를 지정할 수 있습니다.
 
-```python
+```{python}
 # define fonts
 from matplotlib import rcParams
 rcParams['font.family'] = ['Source Sans 3', 'sans-serif']
@@ -274,7 +274,7 @@ rcParams['font.family'] = ['Source Sans 3', 'sans-serif']
 # create barchart
 fig, ax = plt.subplots(1, 1)
 plt.bar(x_vals, y_vals, color = signif_qual, label = x_vals)
-plt.title('My Significance Plot', fontdict = {'fontsize':14}, loc = 'left')
+plt.title('나의 Significance 플롯', fontdict = {'fontsize':14}, loc = 'left')
 # add grid lines lines
 ax.set_axisbelow(True)
 ax.xaxis.grid(color = 'lightgrey')
@@ -285,22 +285,22 @@ ax.legend(ncol = 4, loc = 'lower center',
 plt.show()
 ```
 
-![Barchart showing the use of Source Sans font.](images/tools-py-font.png){fig-alt="Barchart showing the use of Source Sans font."}
+![Source Sans 글꼴 사용을 보여주는 막대 차트.](images/tools-py-font.png){fig-alt="Source Sans 글꼴 사용을 보여주는 막대 차트."}
 
 ### Julia
 
-[Julia](https://www.julialang.org/) is a general-purpose programming language, focused in high performance, while providing easy syntax.
-Julia has libraries available that provide capabilities for data analysis and visualisation.
+[Julia](https://www.julialang.org/)는 고성능에 초점을 맞추면서도 쉬운 구문을 제공하는 범용 프로그래밍 언어입니다.
+Julia에는 데이터 분석 및 시각화 기능을 제공하는 라이브러리가 있습니다.
 
 #### Makie
 
-[Makie](https://makie.org) is a high-level plotting library for the [Julia](https://www.julialang.org/) programming language.
+[Makie](https://makie.org)는 [Julia](https://www.julialang.org/) 프로그래밍 언어를 위한 고수준 플로팅 라이브러리입니다.
 
-**Example**: changing bar chart colours in Makie.
+**예**: Makie에서 막대 차트 색상 변경.
 
-You can change the colour of chart elements in Makie using the `color` argument and custom tick labels using the `xticks` argument inside `axis`:
+Makie에서는 `color` 인수를 사용하여 차트 요소의 색상을 변경하고 `axis` 내부의 `xticks` 인수를 사용하여 사용자 지정 눈금 레이블을 변경할 수 있습니다:
 
-```julia
+```{julia}
 using CairoMakie
 # generate data
 x_vals = [1, 2, 3, 4]
@@ -309,27 +309,27 @@ y_vals = [1, 2, 3, 4]
 barplot(x_vals, y_vals, color="#009cc4", axis=(; xticks=(1:4, ["A", "B", "C", "D"])))
 ```
 
-![Bar chart with bars coloured in *Significance* blue.](images/tools-blue-jl.png){fig-alt="Bar charts visualising plant growth of average height for different treatments with user specified colour in blue."}
+![*Significance* 파란색으로 칠해진 막대가 있는 막대 차트.](images/tools-blue-jl.png){fig-alt="파란색 사용자 지정 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."}
 
-If the colours in your plot are based on values in your data, you can also change the colours used by providing a list of colours:
+플롯의 색상이 데이터의 값을 기반으로 하는 경우 색상 목록을 제공하여 사용되는 색상을 변경할 수도 있습니다:
 
-```julia
+```{julia}
 # define colour palette
 signif_qual = ["#3fa535", "#f4c100", "#009cc4", "#f07d00"]
 # create barchart
 barplot(x_vals, y_vals, color=signif_qual, axis=(; xticks=(1:4, ["A", "B", "C", "D"])))
 ```
 
-![Bar chart showing the colours from the `signif_qual` palette.](images/tools-qual-jl.png){fig-alt="Barchart showing the colours from signif_qual"}
+![`signif_qual` 팔레트의 색상을 보여주는 막대 차트.](images/tools-qual-jl.png){fig-alt="signif_qual의 색상을 보여주는 막대 차트"}
 
-You can specify custom labels and titles using the `axis` argument:
+`axis` 인수를 사용하여 사용자 지정 레이블과 제목을 지정할 수 있습니다:
 
-```julia
+```{julia}
 # define labels and title
-title = "My Significance Plot"
-subtitle = "Some longer sentence explaining what is happening in the chart."
-xlabel = "X-axis label"
-ylabel = "Y-axis label"
+title = "나의 Significance 플롯"
+subtitle = "차트에서 일어나는 일을 설명하는 긴 문장."
+xlabel = "X축 레이블"
+ylabel = "Y축 레이블"
 
 # create barchart
 barplot(x_vals,
@@ -346,18 +346,18 @@ barplot(x_vals,
 )
 ```
 
-![Barchart showing the use of custom labels and titles.](images/tools-jl-labels.png){fig-alt="Barchart showing the use of custom labels and titles."}
+![사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트.](images/tools-jl-labels.png){fig-alt="사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트."}
 
 #### AlgebraOfGraphics
 
-[AlgebraOfGraphics](https://aog.makie.org) is a high-level plotting library for the [Julia](https://www.julialang.org/) programming language that uses [Makie](https://makie.org) as a plotting backend.
-It follows the grammar of graphics and is similar to R's `ggplot2`.
+[AlgebraOfGraphics](https://aog.makie.org)는 플로팅 백엔드로 [Makie](https://makie.org)를 사용하는 [Julia](https://www.julialang.org/) 프로그래밍 언어를 위한 고수준 플로팅 라이브러리입니다.
+그래픽 문법을 따르며 R의 `ggplot2`와 유사합니다.
 
-**Example**: changing bar chart colours in AlgebraOfGraphics.
+**예**: AlgebraOfGraphics에서 막대 차트 색상 변경.
 
-You can change the colour of chart elements in Makie using the `color` argument and custom tick labels using the `xticks` argument inside `axis`:
+Makie에서는 `color` 인수를 사용하여 차트 요소의 색상을 변경하고 `axis` 내부의 `xticks` 인수를 사용하여 사용자 지정 눈금 레이블을 변경할 수 있습니다:
 
-```julia
+```{julia}
 using AlgebraOfGraphics
 using CairoMakie
 # generate data
@@ -368,11 +368,11 @@ plt = data((; x_vals, y_vals)) * mapping(:x_vals, :y_vals) * visual(BarPlot; col
 draw(plt; axis=(; xticks=(1:4, ["A", "B", "C", "D"])))
 ```
 
-![Bar chart with bars coloured in *Significance* blue.](images/tools-blue-jl.png){fig-alt="Bar charts visualising plant growth of average height for different treatments with user specified colour in blue."}
+![*Significance* 파란색으로 칠해진 막대가 있는 막대 차트.](images/tools-blue-jl.png){fig-alt="파란색 사용자 지정 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."}
 
-If the colours in your plot are based on values in your data, you can also change the colours used by providing a list of colours:
+플롯의 색상이 데이터의 값을 기반으로 하는 경우 색상 목록을 제공하여 사용되는 색상을 변경할 수도 있습니다:
 
-```julia
+```{julia}
 # define colour palette
 signif_qual = ["#3fa535", "#f4c100", "#009cc4", "#f07d00"]
 # create barchart
@@ -380,16 +380,16 @@ plt = data((; x_vals, y_vals)) * mapping(:x_vals, :y_vals) * visual(BarPlot; col
 draw(plt; axis=(; xticks=(1:4, ["A", "B", "C", "D"])))
 ```
 
-![Bar chart showing the colours from the `signif_qual` palette.](images/tools-qual-jl.png){fig-alt="Barchart showing the colours from signif_qual"}
+![`signif_qual` 팔레트의 색상을 보여주는 막대 차트.](images/tools-qual-jl.png){fig-alt="signif_qual의 색상을 보여주는 막대 차트"}
 
-You can specify custom labels and titles using the `axis` argument:
+`axis` 인수를 사용하여 사용자 지정 레이블과 제목을 지정할 수 있습니다:
 
-```julia
+```{julia}
 # define labels and title
-title = "My Significance Plot"
-subtitle = "Some longer sentence explaining what is happening in the chart."
-xlabel = "X-axis label"
-ylabel = "Y-axis label"
+title = "나의 Significance 플롯"
+subtitle = "차트에서 일어나는 일을 설명하는 긴 문장."
+xlabel = "X축 레이블"
+ylabel = "Y축 레이블"
 
 # create barchart
 draw(plt;
@@ -404,40 +404,40 @@ draw(plt;
 )
 ```
 
-![Barchart showing the use of custom labels and titles.](images/tools-jl-labels.png){fig-alt="Barchart showing the use of custom labels and titles."}
+![사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트.](images/tools-jl-labels.png){fig-alt="사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트."}
 
-## Publication specifications {#publication-specifications}
+## 출판 사양 {#publication-specifications}
 
-The following information should be used to design graphs and charts that meet RSS publication requirements. Details include page sizes and column widths, font types and sizes, and image resolutions and file formats.
+다음 정보는 RSS 출판 요구 사항을 충족하는 그래프 및 차트를 디자인하는 데 사용해야 합니다. 세부 정보에는 페이지 크기 및 열 너비, 글꼴 유형 및 크기, 이미지 해상도 및 파일 형식이 포함됩니다.
 
 ### *Significance* Magazine
 
 |                                |                                 |
 |--------------------------------|---------------------------------|
-| Page size                      | \(W\) 212.55 mm x (H) 263.65 mm |
-| Text area                      | \(W\) 188 mm x (H) 212 mm       |
-| Image resolution               | 300 dpi (print quality)         |
-| Recommended image file formats | jpeg, png                       |
+| 페이지 크기                    | \(W\) 212.55 mm x (H) 263.65 mm |
+| 텍스트 영역                    | \(W\) 188 mm x (H) 212 mm       |
+| 이미지 해상도                  | 300 dpi (인쇄 품질)             |
+| 권장 이미지 파일 형식          | jpeg, png                       |
 
-#### Notebook section
+#### Notebook 섹션
 
-Uses four-column layout.
+4열 레이아웃을 사용합니다.
 
 +-----------------+-------------------------------------------+
-| 1x column width | 45 mm                                     |
+| 1x 열 너비      | 45 mm                                     |
 +-----------------+-------------------------------------------+
-| 2x column width | 93 mm                                     |
+| 2x 열 너비      | 93 mm                                     |
 +-----------------+-------------------------------------------+
-| 3x column width | 140 mm                                    |
+| 3x 열 너비      | 140 mm                                    |
 +-----------------+-------------------------------------------+
-| 4x column width | 188 mm                                    |
+| 4x 열 너비      | 188 mm                                    |
 +-----------------+-------------------------------------------+
-| Body font       | Meta Serif OT, Book                       |
+| 본문 글꼴       | Meta Serif OT, Book                       |
 +-----------------+-------------------------------------------+
-| Font size       | 8.5 pt                                    |
+| 글꼴 크기       | 8.5 pt                                    |
 +-----------------+-------------------------------------------+
-| Section colour  | Red:\                                     |
-|                 | (in `RSSthemes` package use `signif_red`) |
+| 섹션 색상       | 빨강:\                                    |
+|                 | (`RSSthemes` 패키지에서 `signif_red` 사용)|
 |                 |                                           |
 |                 | -   CMYK = 0, 96, 98, 1                   |
 |                 |                                           |
@@ -446,23 +446,23 @@ Uses four-column layout.
 |                 | -   Hex code = #e41b12                    |
 +-----------------+-------------------------------------------+
 
-#### Features section {#features-section}
+#### Features 섹션 {#features-section}
 
-Uses three-column layout.
+3열 레이아웃을 사용합니다.
 
 +-----------------+---------------------------------------------+
-| 1x column width | 60 mm                                       |
+| 1x 열 너비      | 60 mm                                       |
 +-----------------+---------------------------------------------+
-| 2x column width | 124 mm                                      |
+| 2x 열 너비      | 124 mm                                      |
 +-----------------+---------------------------------------------+
-| 3x column width | 188 mm                                      |
+| 3x 열 너비      | 188 mm                                      |
 +-----------------+---------------------------------------------+
-| Body font       | Source Sans Pro, Regular                    |
+| 본문 글꼴       | Source Sans Pro, Regular                    |
 +-----------------+---------------------------------------------+
-| Font size       | 9 pt                                        |
+| 글꼴 크기       | 9 pt                                        |
 +-----------------+---------------------------------------------+
-| Section colour  | Green:\                                     |
-|                 | (in `RSSthemes` package use `signif_green`) |
+| 섹션 색상       | 녹색:\                                      |
+|                 | (`RSSthemes` 패키지에서 `signif_green` 사용)|
 |                 |                                             |
 |                 | -   CMYK = 75, 5, 100, 0                    |
 |                 |                                             |
@@ -471,25 +471,25 @@ Uses three-column layout.
 |                 | -   Hex code = #3fa535                      |
 +-----------------+---------------------------------------------+
 
-#### Profiles / Perspectives / Statscom section
+#### Profiles / Perspectives / Statscom 섹션
 
-Uses three-column layout.
+3열 레이아웃을 사용합니다.
 
 +------------------+----------------------------------------------+
-| 1x column width  | 60 mm                                        |
+| 1x 열 너비       | 60 mm                                        |
 +------------------+----------------------------------------------+
-| 2x column width  | 124 mm                                       |
+| 2x 열 너비       | 124 mm                                       |
 +------------------+----------------------------------------------+
-| 3x column width  | 188 mm                                       |
+| 3x 열 너비       | 188 mm                                       |
 +------------------+----------------------------------------------+
-| Body font        | Meta Serif OT, Book                          |
+| 본문 글꼴        | Meta Serif OT, Book                          |
 +------------------+----------------------------------------------+
-| Font size        | 8.5 pt                                       |
+| 글꼴 크기        | 8.5 pt                                       |
 +------------------+----------------------------------------------+
-| Section colours: |                                              |
+| 섹션 색상:       |                                              |
 +------------------+----------------------------------------------+
-| Profiles         | Blue:\                                       |
-|                  | (in `RSSthemes` package use `signif_blue`)   |
+| Profiles         | 파랑:\                                       |
+|                  | (`RSSthemes` 패키지에서 `signif_blue` 사용)  |
 |                  |                                              |
 |                  | -   CMYK = 78, 19, 15, 1                     |
 |                  |                                              |
@@ -497,8 +497,8 @@ Uses three-column layout.
 |                  |                                              |
 |                  | -   Hex code = #009cc4                       |
 +------------------+----------------------------------------------+
-| Perspectives     | Yellow:\                                     |
-|                  | (in `RSSthemes` package use `signif_yellow`) |
+| Perspectives     | 노랑:\                                       |
+|                  | (`RSSthemes` 패키지에서 `signif_yellow` 사용)|
 |                  |                                              |
 |                  | -   CMYK = 5, 24, 95, 1                      |
 |                  |                                              |
@@ -506,8 +506,8 @@ Uses three-column layout.
 |                  |                                              |
 |                  | -   Hex code = #f4c100                       |
 +------------------+----------------------------------------------+
-| Statscomm        | Orange:\                                     |
-|                  | (in `RSSthemes` package use `signif_orange`) |
+| Statscomm        | 주황:\                                       |
+|                  | (`RSSthemes` 패키지에서 `signif_orange` 사용)|
 |                  |                                              |
 |                  | -   CMYK = 0, 60, 99, 0                      |
 |                  |                                              |
@@ -518,13 +518,13 @@ Uses three-column layout.
 
 ### Journal of the Royal Statistical Society Series A
 
-Uses a single-column layout.
+단일 열 레이아웃을 사용합니다.
 
 |                                |                           |
 |--------------------------------|---------------------------|
-| Page size                      | \(W\) 189 mm x (H) 246 mm |
-| Text area                      | \(W\) 136 mm x (H) 217 mm |
-| Body font                      | Sabon LT Std Roman        |
-| Font size                      | 9.25 pt                   |
-| Image resolution               | 300 dpi (print quality)   |
-| Recommended image file formats | jpeg, png                 |
+| 페이지 크기                    | \(W\) 189 mm x (H) 246 mm |
+| 텍스트 영역                    | \(W\) 136 mm x (H) 217 mm |
+| 본문 글꼴                      | Sabon LT Std Roman        |
+| 글꼴 크기                      | 9.25 pt                   |
+| 이미지 해상도                  | 300 dpi (인쇄 품질)       |
+| 권장 이미지 파일 형식          | jpeg, png                 |

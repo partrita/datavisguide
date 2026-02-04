@@ -1,30 +1,22 @@
 ---
-title: Join us at RSS Conference
+title: RSS 컨퍼런스에 참여하세요
 editor: source
 ---
 
-The authors of “Best Practices for Data Visualisation” are [hosting a session](https://virtual.oxfordabstracts.com/#/event/4019/program?session=65937&s=0) at the [RSS International Conference](https://rss.org.uk/training-events/conference-2023/) in Harrogate this September. Take part in this session to learn more about the guide and help contribute to its ongoing development.
+"데이터 시각화 모범 사례"의 저자들은 올 9월 해러게이트(Harrogate)에서 열리는 [RSS 국제 컨퍼런스](https://rss.org.uk/training-events/conference-2023/)에서 [세션](https://virtual.oxfordabstracts.com/#/event/4019/program?session=65937&s=0)을 주최합니다. 이 세션에 참여하여 가이드에 대해 자세히 알아보고 지속적인 개발에 기여해 주십시오.
 
-![](images/RSS-2023-Banner-for-website.jpg){fig-alt="Banner image for RSS International Conference 2023 in Harrogate, 4-7 September 2023" width="700px" fig-align="center"}
+![](images/RSS-2023-Banner-for-website.jpg){fig-alt="2023년 9월 4-7일 해러게이트에서 열리는 RSS 국제 컨퍼런스 2023 배너 이미지" width="700px" fig-align="center"}
 
-Our 80-minute session is divided into two halves:
+## 세션: "데이터 시각화 모범 사례" 가이드의 형성
 
-In **part 1**, authors Andreas Krause, Nicola Rennie, and Brian Tarran will introduce the guide and its key recommendations, and there will be a short demo of how to use the new [{RSSthemes} R package](https://github.com/nrennie/RSSthemes).
+**2023년 9월 6일 수요일 11:40 - 13:00**
 
-In **part 2**, attendees will be invited to share feedback with the authors, propose ideas, and start developing new and expanded sections of the guide. Attendees will be shown how to work with the guide’s source files and collaborate via GitHub. But to get the most out of the session, we recommend you work through these steps ahead of time:
+영국 왕립 통계 학회(RSS)의 "데이터 시각화 모범 사례"는 데이터 시각화가 통계학자 및 데이터 과학자의 핵심 역량으로 인식됨에 따라 가이드를 제공하고자 합니다. 이 프로젝트를 주도하는 사람들이 프로젝트의 기원과 지금까지의 진행 상황을 논의하고 다음 단계를 형성하는 데 도움을 요청합니다.
 
-1. This guide was created using [Quarto](https://quarto.org/), an open-source publishing system from Posit, the makers of RStudio. [Follow the instructions](https://quarto.org/docs/get-started/) to download and setup Quarto on your machine.
+**연사:**
 
-2. Try out the [Quarto demo](https://quarto.org/docs/get-started/hello/vscode.html) using your coding or editing tool of choice.
+-   **Brian Tarran** (영국 왕립 통계 학회)
+-   **Andreas Krause** (영국 왕립 통계 학회 및 Idorsia Pharmaceuticals Ltd)
+-   **Nicola Rennie** (영국 왕립 통계 학회 및 랭커스터 대학교)
 
-3. If you don’t have one already, head over to [GitHub.com](https://github.com/) and create a free GitHub account. Try out the GitHub demo for a basic introduction to creating repositories, forking repositories, pushing and pulling commits, and merging pull requests. The Turing Way also has a nice [GitHub Intro for Beginners](https://docs.google.com/presentation/d/e/2PACX-1vR-Qu4kYulSMGnnAHH9-OonNiLkaJrsolEecEkt0VD5_3PmKWePmiSQwxK3QHoq5gNsL-MJKowmgsAx/pub?start=false&loop=false&delayms=3000&slide=id.g526267be46_0_606).
-
-4. Once you’re feeling comfortable with GitHub, head on over to our [GitHub repository]( https://github.com/royal-statistical-society/datavisguide). Click the “Fork” button to add a copy of the repository to your own GitHub account.
-
-5. Next, you’ll want to “clone” the repository to your local machine. The easiest way to do this is using [GitHub Desktop](https://desktop.github.com/).
-
-6. Once the forked repository is on your local machine, you can start exploring the guide’s source code and files!
-
-Ready to make a contribution? Come along to our [RSS Conference session](https://virtual.oxfordabstracts.com/#/event/4019/program?session=65937&s=0) at 11:40 am on Tuesday, 5 September 2023 and share your ideas with other delegates. 
-
-Can’t wait to get started? Check out our [README](https://github.com/royal-statistical-society/datavisguide#readme) file for further instructions.
+자세한 내용은 [RSS 컨퍼런스 웹사이트](https://rss.org.uk/training-events/conference-2023/)에서 확인하십시오.

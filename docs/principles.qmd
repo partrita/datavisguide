@@ -1,5 +1,5 @@
 ---
-title: Principles and elements of visualisations
+title: 시각화의 원칙과 요소
 format:
   html:
     code-fold: true
@@ -12,19 +12,19 @@ execute:
 editor: source
 ---
 
-Data visualisations must serve a purpose. By understanding the purpose of a visualisation, we -- as author or reader -- are in a position to assess whether a visualisation succeeds in its aims or requires improvement!
+데이터 시각화는 목적을 충족해야 합니다. 시각화의 목적을 이해함으로써 우리(저자 또는 독자로서)는 시각화가 목표를 달성했는지 아니면 개선이 필요한지를 평가할 수 있는 위치에 서게 됩니다!
 
-Arguably the most common purpose of a visualisation is a comparison of groups of data, such as data on patients receiving different treatments. A good choice of axes, axis limits, labels and symbols can facilitate substantially the identification of patterns in the data, whereas poor choices for any of these elements can substantially hamper the extraction of information.
+아마도 시각화의 가장 일반적인 목적은 서로 다른 치료를 받는 환자 데이터와 같이 데이터 그룹을 비교하는 것입니다. 축, 축 제한, 레이블 및 기호를 잘 선택하면 데이터의 패턴을 식별하는 데 상당히 도움이 되지만, 이러한 요소 중 하나라도 잘못 선택하면 정보 추출을 상당히 방해할 수 있습니다.
 
-## Elements of charts
+## 차트의 요소
 
-Various elements of a visualisation can contribute to the efficacy with which information can be distilled. All visualisation software packages will output graphics in a default style, but these will rarely, if ever, be the optimum choices for the data visualisation you are creating. When designing a data visualisation, one needs to consider the range of options available. Some of these options are discussed in what follows.
+시각화의 다양한 요소는 정보를 추출하는 효율성에 기여할 수 있습니다. 모든 시각화 소프트웨어 패키지는 기본 스타일로 그래픽을 출력하지만, 이것이 여러분이 만들고 있는 데이터 시각화에 대한 최적의 선택인 경우는 드뭅니다. 데이터 시각화를 디자인할 때는 사용 가능한 다양한 옵션을 고려해야 합니다. 이러한 옵션 중 일부는 다음과 같습니다.
 
-### Layout (panels, facets)
+### 레이아웃 (패널, 패싯)
 
-The layout (arrangement of multiple panels, facets, or subplots) is highly relevant for efficient comparison. If data on the y-axis are to be compared, a single y-axis with all panels aligned horizontally facilitates comparison, whereas for efficient comparison of x-axis values, panels should be stacked. Matrix layouts (multiple rows and columns in a single figure) should only be used if the data shown in individual panels are not related or space does not permit a single row or a single column (e.g., if there are too many panels to fit on a single row).
+레이아웃(여러 패널, 패싯 또는 서브플롯의 배열)은 효율적인 비교와 매우 관련이 있습니다. y축 데이터를 비교해야 하는 경우 모든 패널을 수평으로 정렬하여 단일 y축을 사용하는 것이 비교를 용이하게 하는 반면, x축 값을 효율적으로 비교하려면 패널을 쌓아야 합니다. 매트릭스 레이아웃(단일 그림에 여러 행과 열)은 개별 패널에 표시된 데이터가 관련이 없거나 공간이 단일 행 또는 단일 열을 허용하지 않는 경우(예: 패널이 너무 많아 한 행에 맞지 않는 경우)에만 사용해야 합니다.
 
-**Example:** The figure below shows two different layouts of exactly the same data with exactly the same type of visualisation except for the layout. Note how difficult it is to compare the data across panels on the left-hand side, while it is easy with the layout on the right-hand side. The key difference is that the panels on the right share a common y-axis, which is key for comparison of y-values across panels.
+**예:** 아래 그림은 레이아웃을 제외하고는 정확히 동일한 데이터와 정확히 동일한 유형의 시각화를 보여주는 두 가지 다른 레이아웃을 보여줍니다. 왼쪽 패널의 데이터를 비교하는 것이 얼마나 어려운지, 반면 오른쪽 레이아웃에서는 얼마나 쉬운지 주목하십시오. 핵심 차이점은 오른쪽 패널이 공통 y축을 공유한다는 것이며, 이는 패널 간의 y값 비교에 핵심적입니다.
 
 ```{r}
 # ---
@@ -85,13 +85,13 @@ library(cowplot)
 plot_grid(gg[[1]], gg[[2]], rel_widths = c(1.5, 2))
 ```
 
-[![Line plots showing how choice of layout determines ease of comparison across panels.](images/principles-layout.png){fig-alt="Line plots showing how choice of layout determines ease of comparison across panels. Left panel shows 3 plots stacked vertically. Right panel shows same three plots arranged horizontally"}](images/principles-layout.png)
+[![레이아웃 선택이 패널 간 비교 용이성을 결정하는 방식을 보여주는 선 도표. 왼쪽 패널은 세로로 쌓인 3개의 플롯을 보여줍니다. 오른쪽 패널은 가로로 배열된 동일한 3개의 플롯을 보여줍니다.](images/principles-layout.png){fig-alt="레이아웃 선택이 패널 간 비교 용이성을 결정하는 방식을 보여주는 선 도표. 왼쪽 패널은 세로로 쌓인 3개의 플롯을 보여줍니다. 오른쪽 패널은 가로로 배열된 동일한 3개의 플롯을 보여줍니다."}](images/principles-layout.png)
 
-### Aspect ratio
+### 종횡비 (Aspect ratio)
 
-Our visual perception of data in a display must not depend on the choice of x- and y-axes. In many cases, a square figure avoids visual bias. A square figure should be considered in particular if the two axes share a communality such as a measurement before and after some event, observed data vs model-predicted values or, more generally, the same units (such as kg or metres). Generally, a 1:1 aspect ratio (the physical length of 1 measurement unit in the x- and the y-direction) is a good default. If the figure has identical ranges for the x- and the y-axis, a 1:1 aspect ratio yields a square figure.
+디스플레이에서 데이터에 대한 시각적 인식은 x축과 y축의 선택에 의존해서는 안 됩니다. 많은 경우 정사각형 그림은 시각적 편향을 방지합니다. 특히 두 축이 어떤 사건 전후의 측정, 관측 데이터 대 모델 예측 값, 또는 더 일반적으로 동일한 단위(kg 또는 m 등)와 같은 공통점을 공유하는 경우 정사각형 그림을 고려해야 합니다. 일반적으로 1:1 종횡비(x 방향과 y 방향에서 1 측정 단위의 물리적 길이)가 좋은 기본값입니다. 그림이 x축과 y축에 대해 동일한 범위를 갖는 경우 1:1 종횡비는 정사각형 그림을 산출합니다.
 
-**Example:** The three panels below all show the same data, aimed at enabling judgement about the goodness of a model fit (predicted vs observed values). Note the difference in visual perception between a stretched x-axis, a stretched y-axis, and a 1:1 aspect ratio with identical axis limits.
+**예:** 아래 세 패널은 모두 동일한 데이터를 보여주며, 모델 적합도(예측 값 대 관측 값)에 대한 판단을 가능하게 하는 것을 목표로 합니다. 늘어난 x축, 늘어난 y축, 그리고 동일한 축 제한을 가진 1:1 종횡비 간의 시각적 인식 차이에 주목하십시오.
 
 ```{r}
 #| message: false
@@ -158,31 +158,31 @@ library(cowplot)
 plot_grid(gg, gg2, gg3, rel_widths = c(4, 2, 3), nrow = 1)
 ```
 
-[![Scatter plots showing how visual perception of model fit can be influenced by aspect ratio.](images/principles-aspect-ratio.png){fig-alt="Scatter plots showing how visual perception of model fit can be influenced by aspect ratio. Left panel has a stretched x-axis, middle panel has a stretched y-axis, and right panel has a 1:1 aspect ratio with identical axis limits."}](images/principles-aspect-ratio.png)
+[![모델 적합도에 대한 시각적 인식이 종횡비에 의해 어떻게 영향을 받을 수 있는지 보여주는 산점도.](images/principles-aspect-ratio.png){fig-alt="모델 적합도에 대한 시각적 인식이 종횡비에 의해 어떻게 영향을 받을 수 있는지 보여주는 산점도. 왼쪽 패널은 늘어난 x축을 가지고, 가운데 패널은 늘어난 y축을 가지며, 오른쪽 패널은 동일한 축 제한을 가진 1:1 종횡비를 가집니다."}](images/principles-aspect-ratio.png)
 
-### Lines
+### 선 (Lines)
 
-Lines introduce an order, a sequence. If there is no order, data should not be interconnected by lines. If different line types indicate different groups that have an inherent order, it is helpful if the chosen line styles have an order, too (example: line thickness, dash density, or darkness of colour increases with values from the lowest to the highest group).
+선은 순서, 즉 시퀀스를 도입합니다. 순서가 없는 경우 데이터는 선으로 서로 연결되어서는 안 됩니다. 다른 선 유형이 고유한 순서를 가진 다른 그룹을 나타내는 경우, 선택한 선 스타일도 순서를 갖는 것이 좋습니다(예: 가장 낮은 그룹에서 가장 높은 그룹으로 갈수록 선 두께, 대시 밀도 또는 색상의 어두움이 증가함).
 
-### Points
+### 점 (Points)
 
-Point symbols should be chosen such that the visualisation displays the data in a meaningful way. If thousands of data points are to be shown, open circles or smaller filled symbols are better than overlapping filled symbols. If the data are discrete and observations overlay, consider jittering the data gently for a better visualisation.
+점 기호는 시각화가 데이터를 의미 있는 방식으로 표시하도록 선택해야 합니다. 수천 개의 데이터 포인트를 표시해야 하는 경우, 겹치는 채워진 기호보다 열린 원이나 더 작은 채워진 기호가 더 좋습니다. 데이터가 이산적이고 관측치가 겹치는 경우 더 나은 시각화를 위해 데이터를 부드럽게 지터링(jittering)하는 것을 고려하십시오.
 
-### Colours
+### 색상 (Colours)
 
-Colours should serve a purpose such as helping to identify different groups. Colours for pure decoration are discouraged. Tufte pointed out that because "they do have a natural visual hierarchy, varying shades of gray show varying quantities better than color", and "the shades of gray provide an easily comprehended order to the data measures. This is the key" [@Tufte2001, p. 154].
+색상은 서로 다른 그룹을 식별하는 데 도움을 주는 것과 같은 목적을 수행해야 합니다. 순수 장식용 색상은 권장하지 않습니다. Tufte는 "색상은 자연스러운 시각적 계층 구조를 가지고 있기 때문에 다양한 회색 음영이 색상보다 다양한 양을 더 잘 보여준다"며 "회색 음영은 데이터 측정에 쉽게 이해되는 순서를 제공한다. 이것이 핵심이다"라고 지적했습니다 [@Tufte2001, p. 154].
 
-### Axes
+### 축 (Axes)
 
-#### Origins and limits
+#### 원점 및 제한
 
-Axis ranges should generally start at 0 unless there is a good reason for choosing other ranges. If the data do not contain negative values, the axis should not stretch into negative values and in particular not have tick marks at negative values.
+다른 범위를 선택할 타당한 이유가 없는 한 축 범위는 일반적으로 0에서 시작해야 합니다. 데이터에 음수 값이 포함되지 않은 경우 축은 음수 값으로 뻗어 나가서는 안 되며 특히 음수 값에 눈금을 표시해서는 안 됩니다.
 
-If relative changes or ratios are displayed, the corresponding axis should be logarithmic (such that, e.g., 1/4 has the same distance to the reference point, 1, as 4) and symmetric around the point of no change. An auxiliary line at the point of no change can facilitate interpretation. Axis tickmarks and auxiliary grey lines will facilitate reading off values, avoiding wrong linear interpolation by the viewer. Axis tick mark labels should indicate the ratio (e..g, "1/4" instead of 0.25).
+상대적인 변화나 비율이 표시되는 경우 해당 축은 로그여야 하며(예: 1/4이 기준점 1까지의 거리가 4와 같도록), 변화 없음 지점을 중심으로 대칭이어야 합니다. 변화 없음 지점에 보조선을 그으면 해석이 쉬워집니다. 축 눈금과 보조 회색 선은 값을 읽는 것을 용이하게 하여 보는 사람이 잘못된 선형 보간을 하는 것을 방지합니다. 축 눈금 레이블은 비율을 나타내야 합니다(예: 0.25 대신 "1/4").
 
-If the data displayed as x and as y are comparable, axis limits should be identical and the figure square, such that distances are consistent in the x- and in the y-direction.
+x와 y로 표시되는 데이터가 비교 가능한 경우 축 제한은 동일해야 하며 그림은 정사각형이어야 하므로 x 방향과 y 방향의 거리가 일관되어야 합니다.
 
-**Example:** The figure below illustrates that the deliberate choice of axis limits (here, y-axis limits) can make a big difference to perception, and therefore interpretation, by the reader. The only difference between the two panels is the y-axis range.
+**예:** 아래 그림은 의도적인 축 제한 선택(여기서는 y축 제한)이 인식에 큰 차이를 만들 수 있으며, 따라서 독자의 해석에도 큰 차이를 만들 수 있음을 보여줍니다. 두 패널의 유일한 차이점은 y축 범위입니다.
 
 ```{r}
 library(ggplot2)
@@ -222,13 +222,13 @@ ggplot(plot_data) +
   theme_minimal()
 ```
 
-[![Bar charts showing how visual impression can be driven by the choice of axis limits.](images/principles-axes.png){fig-alt="Bar charts showing how visual impression can be driven by the choice of axis limits. Left panel chart has y-axis starting at zero, right panel has y-axis starting at 208, overselling the small 10-unit difference between two bars."}](images/principles-axes.png)
+[![축 제한의 선택에 의해 시각적 인상이 어떻게 좌우될 수 있는지 보여주는 막대 차트.](images/principles-axes.png){fig-alt="축 제한의 선택에 의해 시각적 인상이 어떻게 좌우될 수 있는지 보여주는 막대 차트. 왼쪽 패널 차트는 y축이 0에서 시작하고, 오른쪽 패널은 y축이 208에서 시작하여 두 막대 사이의 작은 10단위 차이를 과장이 있습니다."}](images/principles-axes.png)
 
-#### Linear and logarithmic axes
+#### 선형 및 로그 축
 
-**Example:** Let's say that you want to know whether some variable, y, changes (compared to a reference or baseline measurement) depending on another variable, x. For example, does blood pressure change with treatment?
+**예:** 어떤 변수 y가 다른 변수 x에 따라(참조 또는 기준 측정과 비교하여) 변하는지 알고 싶다고 가정해 봅시다. 예를 들어, 혈압이 치료에 따라 변하는가?
 
-The figure below shows data with, on average, no change compared to a reference (baseline) measurement (red horizontal line, top two panels) -- approximately half the data are below the point of no change, and the other half are above. However, this is not easily apparent from the top-left panel, which uses a linear axis, and so space is allocated asymmetrically in the vertical direction -- both up and down -- away from the reference line. In the top-right panel, which uses a logarithmic axis, the relatively even spread of the data points around the reference line is clear to see. In the bottom row, the same data are shown in histogram form, again using linear and logarithmic axes.
+아래 그림은 참조(기준) 측정과 비교하여 평균적으로 변화가 없는 데이터(빨간색 가로선, 상단 두 패널)를 보여줍니다. 데이터의 약 절반은 변화 없음 지점 아래에 있고 나머지 절반은 위에 있습니다. 그러나 선형 축을 사용하는 왼쪽 상단 패널에서는 이것이 쉽게 드러나지 않으며 공간은 참조선에서 멀어지는 수직 방향(위아래 모두)으로 비대칭적으로 할당됩니다. 로그 축을 사용하는 오른쪽 상단 패널에서는 참조선 주위에 데이터 포인트가 비교적 고르게 퍼져 있는 것을 명확하게 볼 수 있습니다. 아래쪽 행에서는 동일한 데이터가 다시 선형 및 로그 축을 사용하여 히스토그램 형식으로 표시됩니다.
 
 ```{r}
 # Naïve plot of y vs x. If there is no change (on average),
@@ -254,7 +254,6 @@ gg <- ggplot(x, aes(x = x, y = y)) +
 gg <- gg + geom_hline(yintercept = 1, color = "firebrick", linewidth = 2)
 gg <- gg + xlab("x-variable") + ylab("Fold-change")
 gg
-
 # Logarithmic axes, symmetric range (!):
 xbr <- c(1 / 10, 1 / 5, 1 / 2, 1, 2, 5, 10)
 gg <- gg + scale_y_continuous(
@@ -294,21 +293,21 @@ gg <- gg + scale_x_continuous(
 gg
 ```
 
-[![Switching from linear axes (left) to logarithmic axes (right) helps clarify changes in values relative to some baseline measure.](images/principles-log.png){fig-alt="Switching from linear axes to logarithmic axes helps clarify changes in values relative to some baseline measure. In the top row are two scatter plots, with a basline value marked with a red horizontal keyline. The top left panel is on a linear axis, while the top right panel is on a logarithmic axis and more clearly shows the even spread of data points around the baseline. In the bottom row, the same data is shown in histogram form, again with linear axis on the left and logarithmic on the right."}](images/principles-log.png)
+[![선형 축(왼쪽)에서 로그 축(오른쪽)으로 전환하면 일부 기준 측정에 대한 값의 변화를 명확히 하는 데 도움이 됩니다.](images/principles-log.png){fig-alt="선형 축에서 로그 축으로 전환하면 일부 기준 측정에 대한 값의 변화를 명확히 하는 데 도움이 됩니다. 맨 윗줄에는 두 개의 산점도가 있으며 기준 값은 빨간색 가로 키라인으로 표시되어 있습니다. 왼쪽 상단 패널은 선형 축에 있는 반면, 오른쪽 상단 패널은 로그 축에 있으며 기준선 주위에 데이터 포인트가 고르게 퍼져 있음을 더 명확하게 보여줍니다. 맨 아랫줄에는 동일한 데이터가 히스토그램 형식으로 표시되어 있으며, 다시 왼쪽에는 선형 축, 오른쪽에는 로그 축이 있습니다."}](images/principles-log.png)
 
-### Symbols
+### 기호 (Symbols)
 
-Symbols should be intuitive (for example, "+" for a positive outcome, "--" for a negative outcome, "O" for a neutral outcome). In an ideal case, symbols require only a single look at the legend to subsequently focus on the visualisation. 
+기호는 직관적이어야 합니다(예: 긍정적 결과는 "+", 부정적 결과는 "--", 중립적 결과는 "O"). 이상적인 경우, 기호는 범례를 한 번만 봐도 이후 시각화에 집중할 수 있어야 합니다.
 
-Symbols such as triangles, circles, and squares do not have an intuitive connotation. However, if there is an order in the data, it might be reflected in the order of the symbols, e.g., the number of vertices (circle, dash, triangle, square, pentagon, etc.).
+삼각형, 원, 사각형과 같은 기호는 직관적인 함축적 의미를 갖지 않습니다. 그러나 데이터에 순서가 있는 경우 기호의 순서(예: 꼭짓점 수(원, 대시, 삼각형, 사각형, 오각형 등))에 반영될 수 있습니다.
 
-### Legends
+### 범례 (Legends)
 
-Legends should not attract too much attention and certainly not cover up data. They should be placed in the margins of the figure or can be captured in a small text below the figure. 
+범례는 너무 많은 주의를 끌어서는 안 되며 데이터를 가려서는 절대 안 됩니다. 그림의 여백에 배치하거나 그림 아래에 작은 텍스트로 캡처할 수 있습니다.
 
-If legend entries refer to single objects (e.g., one line per group), placing the legend next to the corresponding object makes it easier for the reader to map legend entries to display objects.
+범례 항목이 단일 객체(예: 그룹당 한 줄)를 참조하는 경우 범례를 해당 객체 옆에 배치하면 독자가 범례 항목을 디스플레이 객체에 매핑하기가 더 쉬워집니다.
 
-**Example:** The figure below shows that ease of reading can be improved by adding the legend directly into the figure, next to the corresponding data. Note that labels must not overlay and label positions might require adaptation depending on the data.
+**예:** 아래 그림은 해당 데이터 옆에 그림에 직접 범례를 추가하여 가독성을 높일 수 있음을 보여줍니다. 레이블은 겹치지 않아야 하며 레이블 위치는 데이터에 따라 조정이 필요할 수 있습니다.
 
 ```{r}
 # ---
@@ -363,13 +362,13 @@ library(cowplot)
 plot_grid(gg.list[[1]], gg.list[[2]], rel_widths = c(2.25, 2))
 ```
 
-[![Line plots showing how direct labelling of figure elements can improve ease of reading.](images/principles-legends.png){fig-alt="Line plots showing how direct labelling of figure elements can improve ease of reading. Left panel uses a legend to identify different coloured lines. Right panel includes labelling within figure, at the end of each line."}](images/principles-legends.png)
+[![그림 요소에 직접 레이블을 지정하면 가독성이 어떻게 향상될 수 있는지 보여주는 선 도표.](images/principles-legends.png){fig-alt="그림 요소에 직접 레이블을 지정하면 가독성이 어떻게 향상될 수 있는지 보여주는 선 도표. 왼쪽 패널은 다른 색상의 선을 식별하기 위해 범례를 사용합니다. 오른쪽 패널은 각 줄 끝에 그림 내 레이블을 포함합니다."}](images/principles-legends.png)
 
-### Orientation
+### 방향 (Orientation)
 
-If there is an order in the data that is to be visualised, e.g., as a barplot, showing the data as horizontal bars and sorting values from top to bottom (highest value to lowest) is more intuitive than showing vertical bars with a left-to-right orientation [@Few2004, p. 182]. One common exception to this is where data are to be ordered according to units of time. Time is often visually interpreted as flowing left to right, from past to present to future.
+예를 들어 막대 그래프로 시각화해야 할 순서가 데이터에 있는 경우, 데이터를 가로 막대로 표시하고 위에서 아래로(가장 높은 값에서 가장 낮은 값으로) 정렬하는 것이 세로 막대를 왼쪽에서 오른쪽 방향으로 표시하는 것보다 더 직관적입니다[@Few2004, p. 182]. 이에 대한 일반적인 예외는 데이터를 시간 단위에 따라 정렬해야 하는 경우입니다. 시간은 종종 과거에서 현재, 미래로, 왼쪽에서 오른쪽으로 흐르는 것으로 시각적으로 해석됩니다.
 
-In the case of boxplots, for example, a horizontal orientation allows for a more accurate visual comparison than a vertical orientation, since it is easier for the human eye to follow an imaginary vertical line than an imaginary horizontal line, as can be seen from the figure below. Note, also, that the long x-axis labels are not readable in the panel on the left since they overlap, but they become readable with a horizontal orientation in the panel on the right.
+예를 들어 상자 그림의 경우 가로 방향이 세로 방향보다 더 정확한 시각적 비교가 가능합니다. 아래 그림에서 볼 수 있듯이 인간의 눈은 가상의 수평선보다 가상의 수직선을 따라가기가 더 쉽기 때문입니다. 또한 왼쪽 패널에서는 긴 x축 레이블이 겹쳐서 읽을 수 없지만 오른쪽 패널에서는 가로 방향으로 읽을 수 있습니다.
 
 ```{r}
 # Store figures into a list.
@@ -393,17 +392,17 @@ library(cowplot)
 plot_grid(gg.list[[1]], gg.list[[2]], rel_widths = c(2, 2.5))
 ```
 
-[![Changes to orientation can improve both readability of labels and the visual interpretation of data.](images/principles-orientation.png){fig-alt="Changes to orientation can improve both readability of labels and the visual interpretation of data. Two boxplots are shown. On the left, the boxplots are vertical: axis labels overlap and visual comparison of values is more difficult than on the right, where boxplots are horizontal and axis labels are now separated and readable."}](images/principles-orientation.png)
+[![방향을 변경하면 레이블의 가독성과 데이터의 시각적 해석을 모두 개선할 수 있습니다.](images/principles-orientation.png){fig-alt="방향을 변경하면 레이블의 가독성과 데이터의 시각적 해석을 모두 개선할 수 있습니다. 두 개의 상자 그림이 표시됩니다. 왼쪽에는 상자 그림이 세로형입니다: 축 레이블이 겹치고 시각적 값 비교가 오른쪽보다 어렵습니다. 오른쪽에는 상자 그림이 가로형이고 축 레이블이 이제 분리되어 읽을 수 있습니다."}](images/principles-orientation.png)
 
-### Auxiliary elements
+### 보조 요소 (Auxiliary elements)
 
-Generally speaking, when designing a data visualisation, we need to be wary of what Tufte calls "chart junk" -- any element of a chart that does not add to or enhance the information on display. Data are, of course, the star of the show, so should receive the most space. Meanwhile, all additional elements (lines, colours, symbols, etc.) should be assessed for their contribution to the interpretation of the data. If there is no contribution, they can be removed. A typical example of a redundant element in a data visualisation is a figure that has 5 panels (sub-figures or facets), each with x- and y-axis. To allow for efficient comparison of the data shown in the different panels, a single y-axis suffices if the panels are all aligned on a single row. This creates more space for the data and synchronises y-axis limits and data positions as a side benefit. 
+일반적으로 데이터 시각화를 디자인할 때 우리는 Tufte가 "차트 정크(chart junk)"라고 부르는 것, 즉 디스플레이의 정보를 추가하거나 향상시키지 않는 차트의 모든 요소를 경계해야 합니다. 물론 데이터가 쇼의 주인공이므로 가장 많은 공간을 차지해야 합니다. 한편, 모든 추가 요소(선, 색상, 기호 등)는 데이터 해석에 대한 기여도를 평가해야 합니다. 기여도가 없다면 제거할 수 있습니다. 데이터 시각화에서 불필요한 요소의 전형적인 예는 각각 x축과 y축이 있는 5개의 패널(하위 그림 또는 패싯)이 있는 그림입니다. 다른 패널에 표시된 데이터의 효율적인 비교를 허용하기 위해 패널이 모두 한 행에 정렬된 경우 단일 y축이면 충분합니다. 이렇게 하면 데이터를 위한 더 많은 공간이 생기고 부가적인 이점으로 y축 제한과 데이터 위치가 동기화됩니다.
 
-Some helpful additional elements can include lines at relevant points. Examples include a vertical line at x=0 (e.g., for time 0), a horizontal line at y=0 (e.g., to indicate the point of no change, or a diagonal (at y=x, e.g., to indicate no difference between x and y). Consider whether the auxiliary element is better plotted under or over the data (which generally depends on the sequence of adding graphics elements).
+도움이 되는 추가 요소에는 관련 지점의 선이 포함될 수 있습니다. 예를 들어 x=0(예: 시간 0의 경우)의 수직선, y=0(예: 변화 없음 지점을 나타내기 위해)의 수평선 또는 대각선(y=x, 예: x와 y 사이에 차이가 없음을 나타내기 위해)이 있습니다. 보조 요소를 데이터 아래에 그릴지 아니면 위에 그릴지 고려하십시오(일반적으로 그래픽 요소 추가 순서에 따라 다름).
 
-A local scatterplot smoother (loess, lowess, polynomial) can be particularly helpful to identify relationships with limited model assumptions. The confidence band (pointwise confidence intervals) should only be shown if relevant.
+로컬 산점도 평활화(loess, lowess, polynomial)는 제한된 모델 가정으로 관계를 식별하는 데 특히 도움이 될 수 있습니다. 신뢰 대역(점별 신뢰 구간)은 관련된 경우에만 표시해야 합니다.
 
-**Example:** The figure below displays changes from a starting point (time 0) over time. A plain figure (left panel) requires the reader to read the y-axis labels to identify the point of no change (y=0). The addition of a line (middle panel) indicating the point of no change makes reading easier, and choosing an axis range symmetric around the point of no change (right panel) allocates increases (changes upward) to the upper half of the visualisation and decreases (changes downward) to the lower half, making reading and interpretation more intuitive.
+**예:** 아래 그림은 시작점(시간 0)에서 시간이 지남에 따른 변화를 보여줍니다. 일반 그림(왼쪽 패널)은 독자가 y축 레이블을 읽어 변화 없음 지점(y=0)을 식별해야 합니다. 변화 없음 지점을 나타내는 선을 추가(가운데 패널)하면 읽기가 더 쉬워지고, 변화 없음 지점을 중심으로 대칭인 축 범위를 선택(오른쪽 패널)하면 증가(위쪽 변경)는 시각화의 위쪽 절반에, 감소(아래쪽 변경)는 아래쪽 절반에 할당되어 읽기와 해석이 더 직관적이 됩니다.
 
 ```{r}
 #| fig-height: 3
@@ -467,42 +466,42 @@ library(cowplot)
 plot_grid(gg, gg2, gg3, nrow = 1)
 ```
 
-[![Adding elements, such as lines to indicate the point of no change, can improve readability.](images/principles-auxiliary.png){fig-alt="Adding elements, such as lines to indicate the point of no change, can improve readability. In this three-part figure, the panel on the left is a line plot showing changes over time. In the middle plot, a keyline is added to mark the baseline -- zero -- on the y-axis, and in the right panel, the axis range is set to be symmetrical around this keyline."}](images/principles-auxiliary.png)
+[![변화 없음 지점을 나타내는 선과 같은 요소를 추가하면 가독성을 향상시킬 수 있습니다.](images/principles-auxiliary.png){fig-alt="변화 없음 지점을 나타내는 선과 같은 요소를 추가하면 가독성을 향상시킬 수 있습니다. 이 3부 그림에서 왼쪽 패널은 시간 경과에 따른 변화를 보여주는 선 도표입니다. 가운데 플롯에서는 y축의 기준선(0)을 표시하기 위해 키라인이 추가되었으며, 오른쪽 패널에서는 축 범위가 이 키라인을 중심으로 대칭으로 설정되었습니다."}](images/principles-auxiliary.png)
 
-### Three-dimensional charts
+### 3차원 차트
 
-Three-dimensional displays of data may look striking, in some respects, but accurate reading and interpretation is not straightforward with such presentations.
+3차원 데이터 디스플레이는 몇 가지 면에서 눈에 띌 수 있지만, 이러한 프레젠테이션으로 정확한 읽기와 해석은 쉽지 않습니다.
 
-**Example:** The left panel of the figure below displays a single number, 10, as a 3D bar chart. The correct identification of the value is indicated by the red "X": the height of the bar must be projected against the rear wall (the axis) from the viewing position. The panel on the right positions bars on a tilted surface, resulting in perceived height differences when there are none: the same four numbers, 10, 20, 30, and 40, are shown in each row and column.
+**예:** 아래 그림의 왼쪽 패널은 단일 숫자 10을 3D 막대 차트로 보여줍니다. 값의 올바른 식별은 빨간색 "X"로 표시됩니다. 막대의 높이는 보는 위치에서 뒤쪽 벽(축)에 투영되어야 합니다. 오른쪽 패널은 기울어진 표면에 막대를 배치하여 높이 차이가 없을 때 높이 차이가 있는 것처럼 인식되도록 합니다. 각 행과 열에 동일한 4개의 숫자 10, 20, 30, 40이 표시됩니다.
 
-[![Reading off data values from 3D charts is difficult.](images/principles-3d.png){fig-alt="Reading off data values from 3D charts is difficult. The left panel of this figure displays a single number, 10, as a 3D bar chart. The correct identification of the value is indicated by the red X on the rear wall of the image. The panel on the right positions bars on a tilted surface, resulting in perceived height differences when there are none: the same four numbers, 10, 20, 30, and 40, over several rows and columns."}](images/principles-3d.png)
+[![3D 차트에서 데이터 값을 읽는 것은 어렵습니다.](images/principles-3d.png){fig-alt="3D 차트에서 데이터 값을 읽는 것은 어렵습니다. 이 그림의 왼쪽 패널은 단일 숫자 10을 3D 막대 차트로 보여줍니다. 값의 올바른 식별은 이미지 뒤쪽 벽의 빨간색 X로 표시됩니다. 오른쪽 패널은 기울어진 표면에 막대를 배치하여 높이 차이가 없을 때 높이 차이가 있는 것처럼 인식되도록 합니다. 여러 행과 열에 걸쳐 동일한 4개의 숫자 10, 20, 30, 40이 있습니다."}](images/principles-3d.png)
 
-## Elements of tables
+## 표의 요소
 
-Tables can be an efficient means of visualisation, just like graphics -- and they also can be misleading or cumbersome to read if not properly presented. Tables should in particular be considered for a small number of data points or if precise numbers are to be shown. For example if numbers need to be overlaid on graphics to aid readability and interpretation (for example, appending digits to the end of the bars in a barchart), one might consider omitting the graphic entirely and displaying the numbers as a table.
+표는 그래픽과 마찬가지로 효율적인 시각화 수단이 될 수 있습니다. 또한 제대로 제시되지 않으면 오해를 불러일으키거나 읽기 번거로울 수도 있습니다. 특히 데이터 포인트 수가 적거나 정확한 숫자를 보여줘야 하는 경우 표를 고려해야 합니다. 예를 들어 가독성과 해석을 돕기 위해 그래픽 위에 숫자를 겹쳐서 표시해야 하는 경우(예: 막대 차트의 막대 끝에 숫자 추가), 그래픽을 완전히 생략하고 숫자를 표로 표시하는 것을 고려할 수 있습니다.
 
-Tables have design elements just like graphics. Some of them are discussed in the following.
+표에는 그래픽과 마찬가지로 디자인 요소가 있습니다. 그중 일부는 다음에서 논의됩니다.
 
-### Layout
+### 레이아웃
 
-One design element for tables is the layout, i.e., rows and columns. The layout should be chosen actively with the reader in mind. It is generally easier to compare numbers vertically than horizontally.
+표의 한 가지 디자인 요소는 레이아웃, 즉 행과 열입니다. 레이아웃은 독자를 염두에 두고 적극적으로 선택해야 합니다. 일반적으로 수평보다 수직으로 숫자를 비교하는 것이 더 쉽습니다.
 
-### Digits
+### 자릿수
 
-The number of digits should be consistent within a table row or column (i.e., the same variable) but can differ across variables (e.g., if the table contains small and large numbers). Unnecessary precision should be avoided, a lower number of digits might facilitate reading and comparison.
+자릿수는 표의 행이나 열(즉, 동일한 변수) 내에서는 일관되어야 하지만 변수 간에는 다를 수 있습니다(예: 표에 작은 숫자와 큰 숫자가 포함된 경우). 불필요한 정밀도는 피해야 하며 자릿수를 줄이면 읽기와 비교가 용이해질 수 있습니다.
 
-### Alignment
+### 정렬
 
-Numbers should be right-aligned to allow for easy identification of large and small numbers. In this way, large numbers literally stick out.
+큰 숫자와 작은 숫자를 쉽게 식별할 수 있도록 숫자는 오른쪽 정렬되어야 합니다. 이렇게 하면 큰 숫자가 말 그대로 튀어나오게 됩니다.
 
-### Multiple numbers in table cells
+### 표 셀의 여러 숫자
 
-If table cells contain more than a single value (e.g., means and confidence intervals), it should be considered if there is a better way to display the data for easy reading. Options include splitting the numbers into multiple table cells, rows, or columns, or reducing the font size for the less relevant numbers (e.g., means might be more important than confidence intervals).
+표 셀에 단일 값 이상의 값(예: 평균 및 신뢰 구간)이 포함된 경우 데이터를 쉽게 읽을 수 있도록 표시하는 더 나은 방법이 있는지 고려해야 합니다. 옵션에는 숫자를 여러 표 셀, 행 또는 열로 나누거나 덜 중요한 숫자의 글꼴 크기를 줄이는 것(예: 평균이 신뢰 구간보다 더 중요할 수 있음)이 있습니다.
 
-### Orientation
+### 방향
 
-Landscape orientation is discouraged unless it cannot be avoided. Rotating a document in order to read a part of it is cumbersome for the reader, whether in print or on screen. Splitting a table into two might be a remedy to avoid landscape orientation -- but one will need to consider whether splitting the table makes important comparisons more difficult to achieve.
+피할 수 없는 경우가 아니라면 가로 방향은 권장하지 않습니다. 일부를 읽기 위해 문서를 회전하는 것은 인쇄물이든 화면이든 독자에게 번거로운 일입니다. 표를 둘로 나누는 것은 가로 방향을 피하는 해결책이 될 수 있지만, 표를 나누는 것이 중요한 비교를 더 어렵게 만드는지 고려해야 합니다.
 
-### Fonts and colours
+### 글꼴 및 색상
 
-Different fonts and colours can be used if these serve a purpose, such as highlighting a particular value. Use of different fonts or colours for decorative purposes is discouraged.
+특정 값을 강조하는 것과 같은 목적에 부합한다면 다른 글꼴과 색상을 사용할 수 있습니다. 장식 목적으로 다른 글꼴이나 색상을 사용하는 것은 권장하지 않습니다.

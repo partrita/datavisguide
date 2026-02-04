@@ -1,70 +1,70 @@
 ---
-title: "The guide"
-subtitle: Table of contents
+title: "가이드"
+subtitle: 목차
 toc: true
 repo-actions: false
 ---
 ::: {.callout-warning appearance="simple"}
-This guide is under development, and the authors welcome feedback and contributions. See the [README file in our GitHub repository](https://github.com/royal-statistical-society/datavisguide#readme) for information on how to contribute.
+이 가이드는 개발 중이며, 저자들은 피드백과 기여를 환영합니다. 기여 방법에 대한 정보는 [GitHub 리포지토리의 README 파일](https://github.com/royal-statistical-society/datavisguide#readme)을 참조하십시오.
 :::
 
 ::: grid
 ::: {.g-col-12 .g-col-md-4 style="background-color:#f8f9fa; padding-left:1rem; padding-right:1rem;"}
-#### [Why we visualise data](/docs/why-visualise.qmd){style="text-decoration:none;"}
+#### [데이터 시각화를 하는 이유](/docs/why-visualise.qmd){style="text-decoration:none;"}
 
--   Motivation
--   A brief history of data visualisation
+-   동기
+-   데이터 시각화의 간략한 역사
 :::
 
 ::: {.g-col-12 .g-col-md-4 style="background-color:#f8f9fa; padding-left:1rem; padding-right:1rem;"}
-#### [Principles and elements of visualisations](/docs/principles.qmd){style="text-decoration:none;"}
+#### [시각화의 원칙과 요소](/docs/principles.qmd){style="text-decoration:none;"}
 
--   Elements of charts, including:
-    -   Layout
-    -   Aspect ratio
-    -   Lines, points and symbols
--   Elements of tables, including:
-    -   Layout
-    -   Digits
-    -   Alignment
+-   차트의 요소:
+    -   레이아웃
+    -   종횡비
+    -   선, 점 및 기호
+-   표의 요소:
+    -   레이아웃
+    -   자릿수
+    -   정렬
 :::
 
 ::: {.g-col-12 .g-col-md-4 style="background-color:#f8f9fa; padding-left:1rem; padding-right:1rem;"}
-#### [Choosing a visualisation type](/docs/choosing.qmd){style="text-decoration:none;"}
+#### [시각화 유형 선택하기](/docs/choosing.qmd){style="text-decoration:none;"}
 
--   Goals
--   Target audience
--   Data types
--   Data relationships
+-   목표
+-   타겟 청중
+-   데이터 유형
+-   데이터 관계
 :::
 
 ::: {.g-col-12 .g-col-md-4 style="background-color:#f8f9fa; padding-left:1rem; padding-right:1rem;"}
-#### [Styling charts for accessibility](/docs/styling.qmd){style="text-decoration:none;"}
+#### [접근성을 위한 차트 스타일링](/docs/styling.qmd){style="text-decoration:none;"}
 
--   Colours
--   Annotations
--   Fonts
--   Alt Text
+-   색상
+-   주석
+-   글꼴
+-   대체 텍스트
 :::
 
 ::: {.g-col-12 .g-col-md-4 style="background-color:#f8f9fa; padding-left:1rem; padding-right:1rem;"}
-#### [Styling charts for RSS publications](/docs/tools.qmd){style="text-decoration:none;"}
+#### [RSS 간행물을 위한 차트 스타일링](/docs/tools.qmd){style="text-decoration:none;"}
 
--   Styling with different tools, including:
+-   다양한 도구를 사용한 스타일링:
     -   R
     -   Python
     -   Julia
--   Publication specifications, including:
-    -   Pages sizes and column widths
-    -   Font types and sizes
-    -   Colours
+-   출판 사양:
+    -   페이지 크기 및 열 너비
+    -   글꼴 유형 및 크기
+    -   색상
 :::
 
 ::: {.g-col-12 .g-col-md-4 style="background-color:#f8f9fa; padding-left:1rem; padding-right:1rem;"}
-#### [References and resources](/docs/references.qmd){style="text-decoration:none;"}
+#### [참고 문헌 및 리소스](/docs/references.qmd){style="text-decoration:none;"}
 
--   Primary sources
--   Further reading
--   Additional resources
+-   주요 자료
+-   추가 읽기 자료
+-   추가 리소스
 :::
 :::

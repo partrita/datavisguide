@@ -1,52 +1,52 @@
 ---
-title: Choosing a visualisation type
+title: 시각화 유형 선택하기
 format: 
   html: default
   pdf: default
 ---
 
-## Goals and audience
+## 목표와 청중
 
-The process of deciding what type of data visualisation to create begins with a simple question: Why am I doing this? [Data visualisations must serve a purpose](/docs/principles.qmd) so all decisions about chart type, design, layout, and more, should flow from a clear understanding of the intended purpose of a graphic.
+어떤 유형의 데이터 시각화를 만들지 결정하는 과정은 간단한 질문에서 시작됩니다. 나는 왜 이것을 하고 있는가? [데이터 시각화는 목적을 충족해야 하므로](/docs/principles.qmd) 차트 유형, 디자인, 레이아웃 등에 대한 모든 결정은 그래픽의 의도된 목적에 대한 명확한 이해에서 비롯되어야 합니다.
 
-[Christian Hennig](https://statmodeling.stat.columbia.edu/2022/03/15/a-checklist-for-data-graphics/), a statistics professor at the University of Bologna, suggests working through the following questions:
+볼로냐 대학교의 통계학 교수인 [Christian Hennig](https://statmodeling.stat.columbia.edu/2022/03/15/a-checklist-for-data-graphics/)은 다음 질문들을 검토할 것을 제안합니다:
 
-> 1.  Is the aim of the graph to find something out ("analysis graph"), or to make a point to others?
-> 2.  What do you want to find out?
-> 3.  Who is the audience for the graph? (It may be yourself.)
+> 1.  그래프의 목적이 무언가를 발견하는 것인가("분석 그래프"), 아니면 다른 사람들에게 주장하는 것인가?
+> 2.  당신이 알아내고 싶은 것은 무엇인가?
+> 3.  그래프의 청중은 누구인가? (자기 자신일 수도 있다.)
 
-Identifying the target audience at an early stage is crucial, as different groups of people are likely to have different levels of [graph literacy](https://en.wikipedia.org/wiki/Graph_literacy) depending on their education level, technical expertise, prior exposure to data visualisation formats, and other factors. Design decisions that do not properly account for the needs of the intended audience will fail to achieve their aims.
+초기 단계에서 타겟 청중을 식별하는 것은 매우 중요합니다. 교육 수준, 기술적 전문성, 데이터 시각화 형식에 대한 이전 경험 및 기타 요인에 따라 다양한 그룹의 사람들이 서로 다른 수준의 [그래프 리터러시](https://en.wikipedia.org/wiki/Graph_literacy)를 가질 가능성이 높기 때문입니다. 의도한 청중의 요구를 제대로 고려하지 않은 디자인 결정은 목표를 달성하는 데 실패할 것입니다.
 
-### Checklist
+### 체크리스트
 
-Before any design decisions are made:
+디자인 결정을 내리기 전에:
 
--   Be clear about the intended purpose of a data visualisation.
--   Understand your target audience, including their needs and familiarity with different visualisation types.
+-   데이터 시각화의 의도된 목적을 명확히 하십시오.
+-   타겟 청중의 요구와 다양한 시각화 유형에 대한 친숙도를 이해하십시오.
 
-## Data
+## 데이터
 
-Software tools generally allow users the flexibility to visualise data in whatever format they choose. However, decisions about chart type must be informed either by the kind of data at hand or the data relationship that is of interest. Format choice must then be further guided by audience needs, as previously discussed.
+소프트웨어 도구는 일반적으로 사용자가 선택한 형식으로 데이터를 시각화할 수 있는 유연성을 제공합니다. 그러나 차트 유형에 대한 제안은 당면한 데이터 종류나 관심 있는 데이터 관계에 의해 결정되어야 합니다. 그런 다음, 앞서 논의한 대로 청중의 요구에 따라 형식 선택을 더 구체화해야 합니다.
 
-There are a range of online tools to help decide on a visualisation type. We recommend the following:
+시각화 유형을 결정하는 데 도움이 되는 다양한 온라인 도구가 있습니다. 다음을 추천합니다:
 
-### Type
+### 유형
 
-[From Data to Viz](https://www.data-to-viz.com/) presents users with a series of decision trees, each leading to different recommended chart formats depending on the type of data selected (numeric, categoric, etc.).
+[From Data to Viz](https://www.data-to-viz.com/)는 선택한 데이터 유형(수치형, 범주형 등)에 따라 다양한 추천 차트 형식으로 이어지는 일련의 의사 결정 트리를 사용자에게 제시합니다.
 
-[![Screenshot of From Data to Viz.](images/choosing-data-to-viz.png){width="500px" fig-alt="Screenshot of From Data to Viz website, showing decision tree of chart formats suitable for numeric data"}](images/choosing-data-to-viz.png)
+[![From Data to Viz의 스크린샷.](images/choosing-data-to-viz.png){width="500px" fig-alt="수치 데이터를 위한 적절한 차트 형식의 의사 결정 트리를 보여주는 From Data to Viz 웹사이트의 스크린샷"}](images/choosing-data-to-viz.png)
 
-### Relationship
+### 관계
 
-[Visual Vocabulary](https://ft-interactive.github.io/visual-vocabulary/) is a site developed by the data visualisation team at the *Financial Times*. It allows users to narrow down the choice of chart type based on the data relationship that is "most important in your story". Relationship options include deviation, correlation, change versus time, ranking, and more.
+[Visual Vocabulary](https://ft-interactive.github.io/visual-vocabulary/)는 *파이낸셜 타임즈(Financial Times)*의 데이터 시각화 팀이 개발한 사이트입니다. 이를 통해 사용자는 "당신의 이야기에서 가장 중요한" 데이터 관계에 따라 차트 유형 선택의 폭을 좁힐 수 있습니다. 관계 옵션에는 편차, 상관관계, 시간 대비 변화, 순위 등이 포함됩니다.
 
-[![Screenshot of Visual Vocabulary.](images/choosing-visual-vocabulary.png){width="500px" fig-alt="Screenshot of the Visual Vocabulary website, showing chart types suitable for visualising deviations from fixed reference points"}](images/choosing-visual-vocabulary.png)
+[![Visual Vocabulary의 스크린샷.](images/choosing-visual-vocabulary.png){width="500px" fig-alt="고정 참조점으로부터의 편차를 시각화하는 데 적합한 차트 유형을 보여주는 Visual Vocabulary 웹사이트의 스크린샷"}](images/choosing-visual-vocabulary.png)
 
-### Checklist
+### 체크리스트
 
--   Choose a chart type based on either data type or data relationship.
--   When selecting from a range of suitable chart types, keep in mind the needs of the target audience and their likely levels of graph literacy.
+-   데이터 유형 또는 데이터 관계에 따라 차트 유형을 선택하십시오.
+-   적절한 차트 유형 범위에서 선택할 때 타겟 청중의 요구와 예상되는 그래프 리터러시 수준을 염두에 두십시오.
 
 ::: callout-note
-Further general guidance is provided by Few's *Show Me the Numbers* [@Few2004] and Robbins' *Creating Better Graphs* [@Robbins2006].
+Few의 *Show Me the Numbers* [@Few2004] 및 Robbins의 *Creating Better Graphs* [@Robbins2006]에서 더 일반적인 지침을 제공합니다.
 :::

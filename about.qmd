@@ -1,5 +1,5 @@
 ---
-title: "About the authors"
+title: "저자 소개"
 editor: source
 ---
 
@@ -7,13 +7,13 @@ editor: source
 
 ::: grid
 ::: {.g-col-12 .g-col-md-8}
-Andreas Krause holds a PhD and an MSc in statistics and computer science. He is Chief Scientific Officer, Clinical Pharmacology & Pharmacometric Services, at Simulations Plus, Inc., providing modeling and simulation expertise to the pharmaceutical industry. His works include more than 100 peer-reviewed [scientific publications](https://scholar.google.com/citations?hl=en&user=9a--8FUAAAAJ&view_op=list_works&sortby=pubdate).
+Andreas Krause는 통계학 및 컴퓨터 과학 분야에서 박사 학위와 석사 학위를 보유하고 있습니다. 그는 Simulations Plus, Inc.의 임상 약리학 및 약물 계량 서비스(Clinical Pharmacology & Pharmacometric Services) 최고 과학 책임자(Chief Scientific Officer)로서 제약 산업에 모델링 및 시뮬레이션 전문 지식을 제공합니다. 그의 저작물에는 100편 이상의 [동료 심사 과학 출판물](https://scholar.google.com/citations?hl=en&user=9a--8FUAAAAJ&view_op=list_works&sortby=pubdate)이 포함됩니다.
 
-Andreas' scientific activities include positions as co-editor of the American Statistical Association's section on [Statistical Computing and Graphics](https://community.amstat.org/jointscsg-section/home), book review editor and board member of [*Computational Statistics*](https://www.springer.com/journal/180), associate editor and editor-in-chief of [*Pharmaceutical Statistics*](https://onlinelibrary.wiley.com/page/journal/15391612/homepage/editorialboard.html), and, currently, advisory board member of *Pharmaceutical Statistics* and the [*Journal of Pharmacokinetics and Pharmacodynamics*](https://doi.org/10.1007/s10928-023-09855-x).
+Andreas의 과학 활동에는 미국 통계 협회(American Statistical Association)의 [통계 컴퓨팅 및 그래픽](https://community.amstat.org/jointscsg-section/home) 섹션 공동 편집자, [*Computational Statistics*](https://www.springer.com/journal/180)의 서평 편집자 및 이사, [*Pharmaceutical Statistics*](https://onlinelibrary.wiley.com/page/journal/15391612/homepage/editorialboard.html)의 부편집장 및 편집장, 그리고 현재 *Pharmaceutical Statistics* 및 [*Journal of Pharmacokinetics and Pharmacodynamics*](https://doi.org/10.1007/s10928-023-09855-x)의 자문 위원 활동이 포함됩니다.
 
-Andreas started using the [S language](https://en.wikipedia.org/wiki/S_(programming_language)) in 1987, became European [S-PLUS](https://en.wikipedia.org/wiki/S-PLUS) distributor and supporter in 1988, and started using R in the 1990s. He is author of [*The Basics of S and S-Plus*](https://link.springer.com/search?query=the+basics+of+s&dc.creator=Andreas+Krause) (Springer, 4 editions, more than 20,000 copies sold) and editor of [*A picture is worth a thousand tables: graphics in life sciences*](https://doi.org/10.1007/978-1-4614-5329-1) (Springer, 2012).
+Andreas는 1987년에 [S 언어](https://en.wikipedia.org/wiki/S_(programming_language))를 사용하기 시작했고, 1988년에 유럽 [S-PLUS](https://en.wikipedia.org/wiki/S-PLUS) 배포자 및 지원자가 되었으며, 1990년대에 R을 사용하기 시작했습니다. 그는 [*The Basics of S and S-Plus*](https://link.springer.com/search?query=the+basics+of+s&dc.creator=Andreas+Krause) (Springer, 4판, 20,000부 이상 판매)의 저자이며 [*A picture is worth a thousand tables: graphics in life sciences*](https://doi.org/10.1007/978-1-4614-5329-1) (Springer, 2012)의 편집자입니다.
 
-Graphics and visualisation are long-standing topics for him, including numerous presentations and workshops on "Graphics of clinical data: the good, the bad, and the ugly" at various conferences and seminars.
+그래픽과 시각화는 그에게 오랜 관심 주제였으며, 다양한 컨퍼런스와 세미나에서 "임상 데이터의 그래픽: 좋은 것, 나쁜 것, 그리고 추한 것"에 대한 수많은 발표와 워크숍을 진행했습니다.
 
 -   LinkedIn: [linkedin.com/in/andreaskrause](https://www.linkedin.com/in/andreaskrause/)
 -   ORCID: [orcid.org/0000-0002-4686-976X](https://orcid.org/0000-0002-4686-976X)
@@ -21,7 +21,7 @@ Graphics and visualisation are long-standing topics for him, including numerous 
 
 ::: {.content-visible unless-format="pdf"}
 ::: {.g-col-12 .g-col-md-4}
-![](images/andreas.png){fig-align="center" fig-alt="Image of Andreas Krause"}
+![](images/andreas.png){fig-align="center" fig-alt="Andreas Krause의 사진"}
 :::
 :::
 :::
@@ -30,9 +30,9 @@ Graphics and visualisation are long-standing topics for him, including numerous 
 
 ::: grid
 ::: {.g-col-12 .g-col-md-8}
-Nicola Rennie is an academic, data scientist, and educator with a passion for effectively communicating data. She is a Lecturer in Health Data Science at Lancaster Medical School, where her research focuses on the use of statistical models to improve health outcomes. Her teaching experience covers topics including data visualisation, programming in R and Python, and how to effectively communicate the results of statistical analyses. Nicola is the author and maintainer of multiple R packages, and an active member of the R community -- regularly presenting at R User Group Meetups and mentoring new members of the community.
+Nicola Rennie는 데이터를 효과적으로 전달하는 데 열정을 가진 학자, 데이터 과학자, 교육자입니다. 그녀는 랭커스터 의과대학(Lancaster Medical School)의 보건 데이터 과학 강사로 재직 중이며, 건강 결과를 개선하기 위한 통계 모델 사용을 연구하고 있습니다. 그녀의 강의 분야는 데이터 시각화, R 및 Python 프로그래밍, 통계 분석 결과를 효과적으로 전달하는 방법 등을 다룹니다. Nicola는 여러 R 패키지의 저자이자 관리자이며, R 사용자 그룹 모임에서 정기적으로 발표하고 커뮤니티의 새로운 구성원을 멘토링하는 등 R 커뮤니티의 활동적인 구성원입니다.
 
--   Website: [nrennie.rbind.io](https://nrennie.rbind.io/)
+-   웹사이트: [nrennie.rbind.io](https://nrennie.rbind.io/)
 -   BlueSky: [nrennie.bsky.social](https://bsky.app/profile/nrennie.bsky.social)
 -   LinkedIn: [linkedin.com/in/nicola-rennie](https://www.linkedin.com/in/nicola-rennie/)
 -   Mastodon: [fosstodon.org/\@nrennie](https://fosstodon.org/@nrennie)
@@ -41,7 +41,7 @@ Nicola Rennie is an academic, data scientist, and educator with a passion for ef
 
 ::: {.content-visible unless-format="pdf"}
 ::: {.g-col-12 .g-col-md-4}
-![](images/nicola.jpg){fig-align="center" fig-alt="Image of Nicola Rennie wearing a red jacket"}
+![](images/nicola.jpg){fig-align="center" fig-alt="빨간 재킷을 입은 Nicola Rennie의 사진"}
 :::
 :::
 :::
@@ -50,7 +50,7 @@ Nicola Rennie is an academic, data scientist, and educator with a passion for ef
 
 ::: grid
 ::: {.g-col-12 .g-col-md-8}
-Brian Tarran is a writer and editor with 20 years of experience covering the research and data space. He worked for the Royal Statistical Society (RSS) from 2014 to 2024, and was editor of [*Significance* Magazine](https://www.significancemagazine.com/) (a joint publication of the RSS, the American Statistical Association and the Statistical Society of Australia) prior to the launch of [Real World Data Science](https://realworlddatascience.net/) in October 2022. Brian is a former editor of Research-Live.com and was launch editor of Impact magazine, both published by the Market Research Society.
+Brian Tarran은 연구 및 데이터 분야를 20년 동안 다뤄온 작가이자 편집자입니다. 그는 2014년부터 2024년까지 영국 왕립 통계 학회(RSS)에서 근무했으며, 2022년 10월 [Real World Data Science](https://realworlddatascience.net/)를 런칭하기 전까지 [*Significance* 매거진](https://www.significancemagazine.com/)(RSS, 미국 통계 협회, 호주 통계 학회 공동 간행물)의 편집자였습니다. Brian은 Research-Live.com의 전 편집자였으며, 시장 조사 협회(Market Research Society)에서 발행하는 Impact 매거진의 창간 편집자였습니다.
 
 -   Twitter: [\@brtarran](https://twitter.com/brtarran)
 -   LinkedIn: [linkedin.com/in/brian-tarran-58b0261](https://www.linkedin.com/in/brian-tarran-58b0261/)
@@ -60,19 +60,18 @@ Brian Tarran is a writer and editor with 20 years of experience covering the res
 
 ::: {.content-visible unless-format="pdf"}
 ::: {.g-col-12 .g-col-md-4}
-![](images/brian.png){fig-align="center" fig-alt="Image of Brian Tarran"}
+![](images/brian.png){fig-align="center" fig-alt="Brian Tarran의 사진"}
 :::
 :::
 :::
 
-## Contributors
-- [Jose Storopoli](https://github.com/storopoli) added Julia examples to [Styling for RSS publications](https://royal-statistical-society.github.io/datavisguide/docs/tools.html#julia).
+## 기여자
+- [Jose Storopoli](https://github.com/storopoli)가 [RSS 간행물을 위한 스타일링](https://royal-statistical-society.github.io/datavisguide/docs/tools.html#julia)에 Julia 예제를 추가했습니다.
 
-## Acknowledgements
-Thanks to Kelly Zou, Marco Geraci, Jordi Prats-Rodriguez, Marc Vandemeulebroecke, and Peter Bonate for comments on an early version of this guide. Thanks also to: 
+## 감사의 말
+이 가이드의 초기 버전에 대한 코멘트를 주신 Kelly Zou, Marco Geraci, Jordi Prats-Rodriguez, Marc Vandemeulebroecke, Peter Bonate에게 감사드립니다. 또한 다음 분들께 감사드립니다:
 
-- [Philip Shirk](https://github.com/philipshirk) for [styling fixes](https://github.com/royal-statistical-society/datavisguide/commit/f509e06baf387e4bdc895e4324f30f7b11911d5d).
-- [Brent Riechelman](https://github.com/BrentWHR) for [bug hunting](https://github.com/royal-statistical-society/datavisguide/issues/29).
-- [MMJansen](https://github.com/MMJansen) for [spotting an error](https://github.com/royal-statistical-society/datavisguide/issues/24). 
-- [Christine P. Chai](https://github.com/star1327p) for [adding DOIs to references](https://github.com/royal-statistical-society/datavisguide/pull/50) and [spotting a missing label](https://github.com/royal-statistical-society/datavisguide/issues/51).
-
+- [스타일링 수정](https://github.com/royal-statistical-society/datavisguide/commit/f509e06baf387e4bdc895e4324f30f7b11911d5d)을 해주신 [Philip Shirk](https://github.com/philipshirk).
+- [버그 탐색](https://github.com/royal-statistical-society/datavisguide/issues/29)을 해주신 [Brent Riechelman](https://github.com/BrentWHR).
+- [오류 발견](https://github.com/royal-statistical-society/datavisguide/issues/24)을 해주신 [MMJansen](https://github.com/MMJansen).
+- [참고문헌에 DOI 추가](https://github.com/royal-statistical-society/datavisguide/pull/50) 및 [누락된 라벨 발견](https://github.com/royal-statistical-society/datavisguide/issues/51)을 해주신 [Christine P. Chai](https://github.com/star1327p).

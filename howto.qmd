@@ -1,47 +1,47 @@
 ---
-title: How to use this guide
+title: "이 가이드 사용법"
 toc: true
 repo-actions: false
 ---
 
-We designed this guide to be read from beginning to end, so that each section builds on the foundations of those that came before. If this is your first time reading the guide, we would encourage you to read it in this way. However, those looking for guidance on specific aspects of data visualisation can make use of the search and navigation functions of this website.
+우리는 이 가이드가 처음부터 끝까지 읽히도록 설계하여, 각 섹션이 이전 섹션의 토대 위에 구축되도록 했습니다. 가이드를 처음 읽는다면 이 방식대로 읽을 것을 권장합니다. 하지만 데이터 시각화의 특정 측면에 대한 지침을 찾는 사람들은 이 웹사이트의 검색 및 탐색 기능을 활용할 수 있습니다.
 
-If you would prefer to read offline, you can [download the guide as a PDF](RSS-data-vis-guide.pdf). Individual sections of the guide can also be downloaded as separate PDFs using the "Other Formats \> PDF" option when shown in the right-hand navigation menu.
+오프라인으로 읽는 것을 선호한다면 [가이드를 PDF로 다운로드](RSS-data-vis-guide.pdf)할 수 있습니다. 오른쪽 탐색 메뉴에 표시되는 "Other Formats > PDF" 옵션을 사용하여 가이드의 개별 섹션을 별도의 PDF로 다운로드할 수도 있습니다.
 
-Throughout the text you will find examples of charts and graphs. For many of these, we provide code in R to allow you to reproduce the visualisations, and we encourage you to do so and to adapt the code for your own purposes.
+본문 전체에 걸쳐 차트와 그래프의 예시를 볼 수 있습니다. 이러한 예시 중 상당수에 대해 시각화를 재현할 수 있도록 R 코드를 제공하며, 여러분이 직접 해보고 자신의 목적에 맞게 코드를 수정해 볼 것을 권장합니다.
 
-## How to contribute to this guide
+## 이 가이드에 기여하는 방법
 
-#### To make a suggestion or ask a question
+#### 제안하거나 질문하기
 
-Please open up a discussion in our GitHub repository's [Discussions](https://github.com/royal-statistical-society/datavisguide/discussions) section.
+GitHub 리포지토리의 [생각 공유(Discussions)](https://github.com/royal-statistical-society/datavisguide/discussions) 섹션에서 토론을 시작해 주세요.
 
-#### If you spot a bug or an error
+#### 버그나 오류를 발견했다면
 
-Please either:
+다음 중 하나를 수행해 주세요:
 
-1.  Raise an issue in our GitHub repository's [Issues](https://github.com/royal-statistical-society/datavisguide/issues) section. You can do this using one of the 'Report an issue' links on our website; or
-2.  Fork our repository, edit the relevant file(s), and make a pull request against the `main` branch of our repository. You can do this using one of the 'Edit this page' links on our website.
+1.  GitHub 리포지토리의 [문제(Issues)](https://github.com/royal-statistical-society/datavisguide/issues) 섹션에 이슈를 제기합니다. 웹사이트의 'Report an issue' 링크 중 하나를 사용하여 이 작업을 수행할 수 있습니다. 또는
+2.  리포지토리를 포크(Fork)하고, 관련 파일을 수정한 후, 우리 리포지토리의 `main` 브랜치에 풀 리퀘스트(Pull Request)를 보냅니다. 웹사이트의 'Edit this page' 링크 중 하나를 사용하여 이 작업을 수행할 수 있습니다.
 
-#### If you want to add a new feature or section to the guide
+#### 가이드에 새로운 기능이나 섹션을 추가하고 싶다면
 
-1.  Raise an issue in our GitHub repository's [Issues](https://github.com/royal-statistical-society/datavisguide/issues) section, tag it as an 'enhancement' and describe your proposed contribution.
-2.  Fork the repository and create a new branch named, e.g., `my-new-feature-or-section`.
-3.  Add content, code and files to your branch.
-4.  Make a pull request against the `main` branch of our repository.
+1.  GitHub 리포지토리의 [문제(Issues)](https://github.com/royal-statistical-society/datavisguide/issues) 섹션에 이슈를 제기하고, 'enhancement' 태그를 단 후 제안하는 기여 내용을 설명합니다.
+2.  리포지토리를 포크하고, 예를 들어 `my-new-feature-or-section`과 같은 이름으로 새 브랜치를 만듭니다.
+3.  브랜치에 콘텐츠, 코드 및 파일을 추가합니다.
+4.  우리 리포지토리의 `main` 브랜치에 풀 리퀘스트를 보냅니다.
 
-Further information about the contribution process can be found in our repository's [README file](https://github.com/royal-statistical-society/datavisguide/tree/main#readme).
+기여 절차에 대한 자세한 내용은 리포지토리의 [README 파일](https://github.com/royal-statistical-society/datavisguide/tree/main#readme)에서 확인할 수 있습니다.
 
-## How to engage with other users of this guide
+## 이 가이드의 다른 사용자들과 교류하는 방법
 
-Readers are encouraged to make full use of our GitHub repository's [Discussions](https://github.com/royal-statistical-society/datavisguide/discussions) section. Please note that use of, and all contributions to, our website and repository are governed by our [Code of Conduct](ts-and-cs.qmd#contributor-covenant-code-of-conduct).
+독자 여러분은 GitHub 리포지토리의 [생각 공유(Discussions)](https://github.com/royal-statistical-society/datavisguide/discussions) 섹션을 최대한 활용하시기 바랍니다. 웹사이트와 리포지토리의 사용 및 모든 기여는 [행동 강령](ts-and-cs.qmd#contributor-covenant-code-of-conduct)의 적용을 받습니다.
 
-## Copyright, re-use, distribution, and disclaimer
+## 저작권, 재사용, 배포 및 면책 조항
 
-This guide is copyright © 2024 Andreas Krause, Nicola Rennie and the Royal Statistical Society. Content created by the editorial team and published in this guide is licensed under a [Creative Commons Attribution 4.0 (CC BY 4.0) International licence](http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1), meaning it can be used and adapted for any purpose, provided attribution is given to the original authors. By contributing to this guide, contributors agree to licence their own work under the same terms.
+이 가이드의 저작권은 © 2024 Andreas Krause, Nicola Rennie 및 영국 왕립 통계 학회(Royal Statistical Society)에 있습니다. 편집팀이 작성하고 이 가이드에 게시된 콘텐츠는 [Creative Commons Attribution 4.0 (CC BY 4.0) International 라이선스](http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1) 하에 배포됩니다. 이는 원저작자를 표시하는 한, 어떤 목적으로든 사용 및 수정이 가능함을 의미합니다. 이 가이드에 기여함으로써 기여자들은 자신의 작업물을 동일한 조건으로 라이선스하는 것에 동의하게 됩니다.
 
-> **How to cite:** Krause, Andreas, Nicola Rennie, and Brian Tarran. "Best Practices for Data Visualisation." Royal Statistical Society, 1 February 2024. https://doi.org/10.5281/zenodo.10600718.
+> **인용 방법:** Krause, Andreas, Nicola Rennie, and Brian Tarran. "Best Practices for Data Visualisation." Royal Statistical Society, 1 February 2024. https://doi.org/10.5281/zenodo.10600718.
 
-Statements of fact and opinion published on this website are those of the respective authors and contributors and not necessarily those of the Royal Statistical Society (RSS).
+이 웹사이트에 게시된 사실 및 의견 진술은 각각의 저자 및 기여자의 것이며 영국 왕립 통계 학회(RSS)의 입장과는 다를 수 있습니다.
 
-The authors have prepared the content of this website responsibly and carefully. However, the authors and the RSS disclaim all warranties, express or implied, as to the accuracy of the information contained in any of the materials on this website or on other linked websites or on any subsequent links. See the full [terms and conditions](ts-and-cs.qmd).
+저자들은 이 웹사이트의 콘텐츠를 책임감 있고 신중하게 준비했습니다. 그러나 저자와 RSS는 이 웹사이트나 다른 링크된 웹사이트 또는 그 이후의 링크에 포함된 정보의 정확성에 대해 명시적이든 묵시적이든 어떠한 보증도 부인합니다. 전체 [이용 약관](ts-and-cs.qmd)을 참조하십시오.

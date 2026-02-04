@@ -1,92 +1,92 @@
 ---
-title: Why we visualise data
+title: 데이터 시각화를 하는 이유
 format: 
   html: default
   pdf: default
 ---
 
-## Motivation
+## 동기
 
-Data visualisations can be a very efficient means of identifying patterns in data and conveying a message. The scientific aim of any visualisation is to allow the reader to understand data and extract information:
+데이터 시각화는 데이터의 패턴을 식별하고 메시지를 전달하는 매우 효율적인 수단이 될 수 있습니다. 모든 시각화의 과학적 목표는 독자가 데이터를 이해하고 정보를 추출할 수 있도록 하는 것입니다:
 
--   intuitively;
+-   직관적으로;
 
--   efficiently; and
+-   효율적으로; 그리고
 
--   accurately. 
+-   정확하게.
 
-It is important, when creating a visualisation, to consider the background of the reader or intended audience [@Krause2013]. Interpretation is in the eye of the beholder, and a visualisation will only succeed at conveying its message if designed with its audience in mind.
+시각화를 만들 때는 독자나 의도된 청중의 배경을 고려하는 것이 중요합니다[@Krause2013]. 해석은 보는 사람의 눈에 달려 있으며, 시각화는 청중을 염두에 두고 디자인할 때만 메시지 전달에 성공할 수 있습니다.
 
-A successful data visualisation will:
-
--   
-
-    Grab attention
-
-    :   In a sea of text, a visualisation will stand out. If a reader is short on time or uncertain about whether a document is of interest, an attention-grabbing visualisation may entice them to start reading.
+성공적인 데이터 시각화는 다음과 같은 효과가 있습니다:
 
 -   
 
-    Improve access to information
+    주의를 끕니다
 
-    :   Textual descriptions can be lengthy and hard to read, while skilfully created visualisations permit the extraction of key information more efficiently, making information extraction a fun task.
-
--   
-
-    Increase precision
-
-    :   Textual descriptions are frequently less precise than a visual depiction showing data points and corresponding axes, while a text with too many precise numbers can make it hard to follow a line of argument.
+    :   수많은 텍스트 속에서 시각화는 눈에 띕니다. 독자가 시간이 부족하거나 문서가 흥미로운지 확신할 수 없는 경우, 시선을 사로잡는 시각화는 독서의 시작을 유도할 수 있습니다.
 
 -   
 
-    Bolster credibility
+    정보 접근성 향상
 
-    :   While a textual summary provides a story, a visualisation of the data can add credibility to otherwise unsubstantiated claims: readers can see the numbers for themselves and arrive at the (same?) conclusions.
+    :   텍스트 설명은 길고 읽기 어려울 수 있는 반면, 능숙하게 만든 시각화는 핵심 정보를 더 효율적으로 추출할 수 있게 하여 정보 추출을 즐거운 작업으로 만듭니다.
 
 -   
 
-    Summarise content
+    정밀도 증가
 
-    :   Visual displays allow for summarising complex textual content, aiding the reader in memorising key points.
+    :   텍스트 설명은 데이터 포인트와 해당 축을 보여주는 시각적 묘사보다 덜 정확한 경우가 많으며, 정확한 숫자가 너무 많은 텍스트는 논의의 흐름을 따라가기 어렵게 만들 수 있습니다.
 
-For these reasons, data visualisations are key elements in almost any kind of publication -- scientific papers, media reports, conference presentations, social media posts, video summaries, etc.
+-   
 
-Tables, too, are a way to visualise data or statistics, and can be similarly important components of a publication. A table may in some cases visualise data better than a graphic. For example, five numbers are probably better displayed in a table than in a complex pie chart that uses colours, angles, and possibly shading and more than two dimensions. 
+    신뢰성 강화
 
-## A brief history of data visualisation
+    :   텍스트 요약은 이야기를 제공하지만, 데이터 시각화는 입증되지 않은 주장에 신뢰성을 더할 수 있습니다. 독자는 숫자를 직접 확인하고 (동일한?) 결론에 도달할 수 있습니다.
 
-Data visualisation has been, for a long time, both a topic of scientific research and an evolving art form with a variety of high-impact applications.
+-   
 
-In 1859, [Florence Nightingale](https://en.wikipedia.org/wiki/Florence_Nightingale), the founder of modern nursing, published her findings on the sanitary status of the British army during the war with Russia. She showed raw data as well as summary statistics in tables and charts (Nightingale, 1859). One chart in particular continues to be celebrated today: a polar area chart on the "causes of mortality in the army in the East".
+    콘텐츠 요약
 
-[![Florence Nightingale\'s polar area chart, "Diagram of the causes of mortality in the army in the East". Source: Wikimedia Commons.](images/Nightingale-mortality.jpg){width="500px"}](images/Nightingale-mortality.jpg)
+    :   시각적 디스플레이는 복잡한 텍스트 콘텐츠를 요약할 수 있게 하여 독자가 요점을 기억하는 데 도움을 줍니다.
 
-What made Nightingale's graphs "particularly iconic was their powerful use of visual rhetoric to make an argument about data" [@Hedley]. This quality is also evident in other visualisations produced by Nightingale's contemporaries.
+이러한 이유로 데이터 시각화는 과학 논문, 언론 보도, 컨퍼런스 발표, 소셜 미디어 게시물, 비디오 요약 등 거의 모든 종류의 간행물에서 핵심 요소입니다.
 
-A simplistic but rather impactful visualisation of the water pumps in London associated with transmission of cholera paved the way for root cause identification. Medical doctor John Snow collected data on cholera deaths and created a visualisation where the number of deaths was represented by the height of a bar at the corresponding address in London. This visualisation showed that the deaths clustered around Broad Street, which helped identify the cause of the cholera transmission, the Broad Street water pump [@Snow1854; @SnowWikipedia].
+표 역시 데이터나 통계를 시각화하는 방법이며, 간행물의 유사하게 중요한 구성 요소가 될 수 있습니다. 어떤 경우에는 표가 그래픽보다 데이터를 더 잘 시각화할 수도 있습니다. 예를 들어, 5개의 숫자는 색상, 각도, 그리고 경우에 따라 음영과 2차원 이상을 사용하는 복잡한 파이 차트보다는 표에 표시하는 것이 더 나을 것입니다.
 
-[![Map by John Snow showing clusters of cholera cases in the London epidemic of 1854. Source: Wikimedia Commons.](images/Snow-cholera-map.jpg){width="500px"}](images/Snow-cholera-map.jpg)
+## 데이터 시각화의 간략한 역사
 
-An early complex visualisation was created by Minard in 1861, depicting [data from Napoleon's march on Moscow](https://academic.oup.com/jrssig/article/5/3/133/7029764) in 1812/13 and his subsequent retreat.
+데이터 시각화는 오랫동안 과학 연구 주제이자 다양한 고부가가치 응용 분야를 가진 진화하는 예술 형식이었습니다.
 
-[![Charles Minard\'s 1869 map of "the successive losses in men of the French Army in the Russian campaign 1812--1813". Source: Wikimedia Commons.](images/Minard.png){width="500px"}](images/minard.png)
+1859년 현대 간호학의 창시자인 [플로렌스 나이팅게일(Florence Nightingale)](https://en.wikipedia.org/wiki/Florence_Nightingale)은 러시아와의 전쟁 중 영국군의 위생 상태에 대한 연구 결과를 발표했습니다. 그녀는 표와 차트로 원본 데이터와 요약 통계를 보여주었습니다(Nightingale, 1859). 특히 하나의 차트가 오늘날까지 기념되고 있는데, 바로 "동부 군대의 사망 원인에 대한 다이어그램"이라는 극좌표 영역 차트(polar area chart)입니다.
 
-The map shows latitude and longitude of the army as it moved. The line shows the direction of movement, and the line width represents the size of the army (the surviving soldiers). Particular locations were marked by the date of the army presence, and the temperature is shown, too. Six variables were elegantly woven into a single display [@Tufte2001; @Corbett2001; @Robinson1967].
+[![플로렌스 나이팅게일의 극좌표 영역 차트, "동부 군대의 사망 원인에 대한 다이어그램". 출처: 위키미디어 공용.](images/Nightingale-mortality.jpg){width="500px"}](images/Nightingale-mortality.jpg)
 
-The Paris Exposition in 1900 featured W. E. B. Du Bois exhibiting graphs, charts, and maps of how Black Americans were living [@DuBois1900; @BattleBaptiste2018].
+나이팅게일의 그래프를 "특히 상징적으로 만든 것은 데이터에 대한 주장을 펼치기 위해 시각적 수사학을 강력하게 사용했다는 점"입니다[@Hedley]. 이러한 특성은 나이팅게일의 동시대인들이 만든 다른 시각화에서도 분명하게 나타납니다.
 
-[![A series of statistical charts illustrating the condition of the descendants of former African slaves now in residence in the United States of America. Drawing, ca. 1900. //hdl.loc.gov/loc.pnp/ppmsca.33899. Source: Library of Congress.](images/du-bois.jpg){width="500px"}](images/du-bois.jpg)
+콜레라 전파와 관련된 런던의 물 펌프에 대한 단순하지만 꽤 영향력 있는 시각화는 근본 원인 규명의 길을 열었습니다. 의사 존 스노우(John Snow)는 콜레라 사망자에 대한 데이터를 수집하고 해당 런던 주소에 사망자 수를 막대 높이로 나타낸 시각화를 만들었습니다. 이 시각화는 사망자가 브로드 스트리트(Broad Street) 주변에 밀집되어 있음을 보여주었고, 이를 통해 콜레라 전파의 원인인 브로드 스트리트 물 펌프를 식별하는 데 도움을 주었습니다[@Snow1854; @SnowWikipedia].
 
-Groundbreaking work in modern visualisation was provided by Tukey with his book *Exploratory Data Analysis* [@Tukey1977], and Edward Tufte [@Tufte1990; @Tufte2004; @Tufte2006].
+[![1854년 런던 전염병 당시 콜레라 사례의 군집을 보여주는 존 스노우의 지도. 출처: 위키미디어 공용.](images/Snow-cholera-map.jpg){width="500px"}](images/Snow-cholera-map.jpg)
 
-The historical development of visualisations is provided in various publications by Michael Friendly [@Friendly2005; @Friendly2018; @Friendly2022].
+초기의 복잡한 시각화는 1861년 미나르(Minard)가 1812/13년 [나폴레옹의 모스크바 진군](https://academic.oup.com/jrssig/article/5/3/133/7029764)과 이후의 퇴각 데이터를 묘사하여 만들었습니다.
 
-Data were visualised by hand until computers came along. The first monitors and printers worked in text mode only, with a resolution of 25 rows and 80 columns or similar, which did not permit much detail or precision. Graphics terminals and dot matrix printers followed, and resolutions kept increasing with the development of laser printers.
+[![1869년 샤를 미나르가 그린 "1812-1813년 러시아 원정에서 프랑스군 병력의 연도별 손실" 지도. 출처: 위키미디어 공용.](images/Minard.png){width="500px"}](images/minard.png)
 
-Statistical systems such as SAS enabled creation of data visualisations early on [@SAS].
+지도는 군대가 이동함에 따라 위도와 경도를 보여줍니다. 선은 이동 방향을 나타내며 선의 너비는 군대의 규모(생존한 군인 수)를 나타냅니다. 특정 위치는 군대가 있었던 날짜로 표시되었으며 온도도 함께 표시됩니다. 6개의 변수가 단일 디스플레이에 우아하게 엮여 있습니다[@Tufte2001; @Corbett2001; @Robinson1967].
 
-Arguably the most consistent implementation of a graphics system was realised with ggplot [@Wickham2011; @Wickham2016] based on Wilkinson's *The Grammar of Graphics* [@Wilkinson2005].
+1900년 파리 박람회에서 W. E. B. Du Bois는 흑인 미국인들의 생활상을 보여주는 그래프, 차트, 지도를 전시했습니다[@DuBois1900; @BattleBaptiste2018].
 
-A key component of ggplot2 is the feature of creating conditional displays. These allow for subsetting the data by the values of one or more variables. The concept was introduced by Cleveland [@Cleveland1993; @Cleveland1994], showcasing a widely known barley data set that was analysed in textbooks for decades until a visualisation strongly suggested an error in the data set -- two years of crop yield of one variety at one of six farms were accidentally swapped. It took a visualisation to reveal what numerous numerical analyses had missed!
+[![미국에 거주하는 전 아프리카 노예 후손들의 상태를 보여주는 일련의 통계 차트. 드로잉, ca. 1900. //hdl.loc.gov/loc.pnp/ppmsca.33899. 출처: 미국 의회 도서관.](images/du-bois.jpg){width="500px"}](images/du-bois.jpg)
 
-Cleveland named the display type "trellis", being inspired by a trellis in his garden [@Cleveland1993]. The trellis concept was first implemented in S [@Becker1984] and S-PLUS [@Becker1996]. When R [@RTeam2021] was developed by Robert Gentleman and Ross Ihaka in Auckland NZ in the 1980s, a package named `lattice` was developed [@Sarkar2008] since "trellis" carried a trademark (by Lucent and later MathSoft). With the advent of ggplot, the term faceting (with functions facet_grid and facet_wrap) replaced the "lattice" with its "panels".
+현대 시각화의 획기적인 작업은 튜키의 책 *탐색적 데이터 분석(Exploratory Data Analysis)*[@Tukey1977]과 에드워드 터프티(Edward Tufte)[@Tufte1990; @Tufte2004; @Tufte2006]에 의해 제공되었습니다.
+
+시각화의 역사적 발전은 마이클 프렌들리(Michael Friendly)의 다양한 간행물[@Friendly2005; @Friendly2018; @Friendly2022]에서 제공됩니다.
+
+컴퓨터가 등장하기 전까지 데이터는 손으로 시각화했습니다. 최초의 모니터와 프린터는 텍스트 모드로만 작동했으며 25행 80열 정도의 해상도로 많은 세부 사항이나 정밀도를 허용하지 않았습니다. 그래픽 터미널과 도트 매트릭스 프린터가 뒤를 이었고 레이저 프린터의 개발과 함께 해상도는 계속 증가했습니다.
+
+SAS와 같은 통계 시스템은 일찍부터 데이터 시각화 생성을 가능하게 했습니다[@SAS].
+
+아마도 가장 일관된 그래픽 시스템의 구현은 윌킨슨(Wilkinson)의 *The Grammar of Graphics*[@Wilkinson2005]에 기반한 ggplot[@Wickham2011; @Wickham2016]으로 실현되었을 것입니다.
+
+ggplot2의 핵심 구성 요소는 조건부 디스플레이를 생성하는 기능입니다. 이를 통해 하나 이상의 변수 값으로 데이터를 부분 집합화할 수 있습니다. 이 개념은 클리블랜드(Cleveland)[@Cleveland1993; @Cleveland1994]가 도입했으며, 널리 알려진 보리 데이터 세트를 선보였습니다. 이 데이터 세트는 6개 농장 중 한 곳에서 두 해 동안의 작물 수확량이 실수로 뒤바뀐 사실이 시각화를 통해 강력하게 시사될 때까지 수십 년 동안 교과서에서 분석되었습니다. 수많은 수치 분석이 놓친 것을 시각화가 밝혀낸 것입니다!
+
+클리블랜드는 자신의 정원에 있는 격자 구조물(trellis)에서 영감을 받아 디스플레이 유형을 "trellis"라고 명명했습니다[@Cleveland1993]. Trellis 개념은 S[@Becker1984]와 S-PLUS[@Becker1996]에서 처음 구현되었습니다. 1980년대 뉴질랜드 오클랜드에서 로버트 젠틀맨(Robert Gentleman)과 로스 이하카(Ross Ihaka)가 R[@RTeam2021]을 개발했을 때, "trellis"가 상표(Lucent와 이후 MathSoft)로 등록되어 있었기 때문에 `lattice`라는 패키지가 개발되었습니다[@Sarkar2008]. ggplot의 등장으로 패싯(faceting, facet_grid 및 facet_wrap 함수 사용)이라는 용어가 "lattice"와 그 "패널(panels)"을 대체했습니다.
