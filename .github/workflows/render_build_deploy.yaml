@@ -19,26 +19,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y fonts-noto-cjk
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Setup Pixi
+        uses: prefix-dev/setup-pixi-action@v0.8.1
         with:
-          tinytex: true
+          pixi-version: v0.39.0
+          cache: true
 
-      - name: Set up R
-        uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
-
-      - name: Install R packages
-        run: |
-          install.packages(c("rmarkdown", "knitr", "tidyverse", "stringr"))
-        shell: Rscript {0}
+      - name: Install TinyTeX
+        run: pixi run quarto install tinytex
 
       - name: Render PDF
-        run: quarto render _make_pdf.qmd --to pdf
+        run: pixi run pdf
 
       - name: Render Website
-        run: quarto render
+        run: pixi run quarto render
 
       - name: Copy PDF to Site
         run: cp RSS-data-vis-guide.pdf _site/
