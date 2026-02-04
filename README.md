@@ -2,7 +2,23 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10600718.svg)](https://doi.org/10.5281/zenodo.10600718)
 
+
 이 GitHub 리포지토리는 <https://royal-statistical-society.github.io/datavisguide/> 웹사이트의 모든 소스 파일과 코드를 포함하고 있습니다. 사이트와 콘텐츠는 개발 중이며, 편집자들은 피드백과 기여를 환영합니다.
+
+## 개발 환경 설정 (Pixi)
+
+이 프로젝트는 패키지 관리를 위해 [pixi](https://prefix.dev/)를 사용합니다. Pixi를 설치한 후 다음 명령어를 사용하여 환경을 설정하고 프로젝트를 실행할 수 있습니다.
+
+```bash
+# pixi 설치 (이미 설치된 경우 생략)
+curl -fsSL https://pixi.sh/install.sh | bash
+
+# 의존성 설치 및 쉘 실행
+pixi shell
+
+# 웹사이트 미리보기
+pixi run quarto preview
+```
 
 ## 제안하거나 질문하기
 
@@ -37,5 +53,3 @@
 편집팀이 작성하고 이 웹사이트 및 리포지토리에 게시된 콘텐츠는 [Creative Commons Attribution 4.0 (CC BY 4.0) International 라이선스](http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1) 하에 배포됩니다. 이는 원저작자를 표시하는 한, 어떤 목적으로든 사용 및 수정이 가능함을 의미합니다. 이 가이드에 기여함으로써 기여자들은 자신의 작업물을 동일한 조건으로 라이선스하는 것에 동의하게 됩니다.
 
 이 사이트는 [Quarto](https://quarto.org/)로 구축되었습니다. Quarto 사용을 시작하려면 <https://quarto.org/docs/get-started/>를 방문하세요.
-
-## 
