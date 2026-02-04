@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>시각화의 원칙과 요소 – Best Practices for Data Visualisation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../docs/choosing.html" rel="next">
+<link href="../docs/why-visualise.html" rel="prev">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d0872397c0adf65e6feb0eabd53c4188.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5VHDJ5PKRW"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-5VHDJ5PKRW', { 'anonymize_ip': true});
+</script>
+
+
+<meta property="og:title" content="시각화의 원칙과 요소 – Best Practices for Data Visualisation">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://royal-statistical-society.github.io/datavisguide/docs/images/principles-layout.png">
+<meta property="og:site_name" content="Best Practices for Data Visualisation">
+<meta property="og:image:alt" content="레이아웃 선택이 패널 간 비교 용이성을 결정하는 방식을 보여주는 선 도표. 왼쪽 패널은 세로로 쌓인 3개의 플롯을 보여줍니다. 오른쪽 패널은 가로로 배열된 동일한 3개의 플롯을 보여줍니다.">
+<meta property="og:image:height" content="600">
+<meta property="og:image:width" content="1200">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/RSS_logo_colour.png" alt="RSS logo" class="navbar-logo light-content">
+    <img src="../images/RSS_logo_colour.png" alt="RSS logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Best Practices for Data Visualisation</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-royal-statistical-society-publications" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Royal Statistical Society publications</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-royal-statistical-society-publications">    
+        <li>
+    <a class="dropdown-item" href="https://academic.oup.com/jrsssa">
+ <span class="dropdown-text">Journal of the Royal Statistical Society</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://realworlddatascience.net/">
+ <span class="dropdown-text">Real World Data Science</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://academic.oup.com/jrssig">
+ <span class="dropdown-text">Significance Magazine</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/royal-statistical-society/datavisguide"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/index.html">The guide</a></li><li class="breadcrumb-item"><a href="../docs/principles.html">Principles and elements of visualisations</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../howto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How to use this guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../docs/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The guide</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/why-visualise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Why we visualise data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/principles.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Principles and elements of visualisations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/choosing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Choosing a visualisation type</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/styling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Styling for accessibility</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Styling for RSS publications</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References and resources</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the authors</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ts-and-cs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terms and conditions</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#차트의-요소" id="toc-차트의-요소" class="nav-link active" data-scroll-target="#차트의-요소">차트의 요소</a>
+  <ul class="collapse">
+  <li><a href="#레이아웃-패널-패싯" id="toc-레이아웃-패널-패싯" class="nav-link" data-scroll-target="#레이아웃-패널-패싯">레이아웃 (패널, 패싯)</a></li>
+  <li><a href="#종횡비-aspect-ratio" id="toc-종횡비-aspect-ratio" class="nav-link" data-scroll-target="#종횡비-aspect-ratio">종횡비 (Aspect ratio)</a></li>
+  <li><a href="#선-lines" id="toc-선-lines" class="nav-link" data-scroll-target="#선-lines">선 (Lines)</a></li>
+  <li><a href="#점-points" id="toc-점-points" class="nav-link" data-scroll-target="#점-points">점 (Points)</a></li>
+  <li><a href="#색상-colours" id="toc-색상-colours" class="nav-link" data-scroll-target="#색상-colours">색상 (Colours)</a></li>
+  <li><a href="#축-axes" id="toc-축-axes" class="nav-link" data-scroll-target="#축-axes">축 (Axes)</a></li>
+  <li><a href="#기호-symbols" id="toc-기호-symbols" class="nav-link" data-scroll-target="#기호-symbols">기호 (Symbols)</a></li>
+  <li><a href="#범례-legends" id="toc-범례-legends" class="nav-link" data-scroll-target="#범례-legends">범례 (Legends)</a></li>
+  <li><a href="#방향-orientation" id="toc-방향-orientation" class="nav-link" data-scroll-target="#방향-orientation">방향 (Orientation)</a></li>
+  <li><a href="#보조-요소-auxiliary-elements" id="toc-보조-요소-auxiliary-elements" class="nav-link" data-scroll-target="#보조-요소-auxiliary-elements">보조 요소 (Auxiliary elements)</a></li>
+  <li><a href="#차원-차트" id="toc-차원-차트" class="nav-link" data-scroll-target="#차원-차트">3차원 차트</a></li>
+  </ul></li>
+  <li><a href="#표의-요소" id="toc-표의-요소" class="nav-link" data-scroll-target="#표의-요소">표의 요소</a>
+  <ul class="collapse">
+  <li><a href="#레이아웃" id="toc-레이아웃" class="nav-link" data-scroll-target="#레이아웃">레이아웃</a></li>
+  <li><a href="#자릿수" id="toc-자릿수" class="nav-link" data-scroll-target="#자릿수">자릿수</a></li>
+  <li><a href="#정렬" id="toc-정렬" class="nav-link" data-scroll-target="#정렬">정렬</a></li>
+  <li><a href="#표-셀의-여러-숫자" id="toc-표-셀의-여러-숫자" class="nav-link" data-scroll-target="#표-셀의-여러-숫자">표 셀의 여러 숫자</a></li>
+  <li><a href="#방향" id="toc-방향" class="nav-link" data-scroll-target="#방향">방향</a></li>
+  <li><a href="#글꼴-및-색상" id="toc-글꼴-및-색상" class="nav-link" data-scroll-target="#글꼴-및-색상">글꼴 및 색상</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/royal-statistical-society/datavisguide/edit/main/docs/principles.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/royal-statistical-society/datavisguide/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="principles.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/index.html">The guide</a></li><li class="breadcrumb-item"><a href="../docs/principles.html">Principles and elements of visualisations</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">시각화의 원칙과 요소</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>데이터 시각화는 목적을 충족해야 합니다. 시각화의 목적을 이해함으로써 우리(저자 또는 독자로서)는 시각화가 목표를 달성했는지 아니면 개선이 필요한지를 평가할 수 있는 위치에 서게 됩니다!</p>
+<p>아마도 시각화의 가장 일반적인 목적은 서로 다른 치료를 받는 환자 데이터와 같이 데이터 그룹을 비교하는 것입니다. 축, 축 제한, 레이블 및 기호를 잘 선택하면 데이터의 패턴을 식별하는 데 상당히 도움이 되지만, 이러한 요소 중 하나라도 잘못 선택하면 정보 추출을 상당히 방해할 수 있습니다.</p>
+<section id="차트의-요소" class="level2">
+<h2 class="anchored" data-anchor-id="차트의-요소">차트의 요소</h2>
+<p>시각화의 다양한 요소는 정보를 추출하는 효율성에 기여할 수 있습니다. 모든 시각화 소프트웨어 패키지는 기본 스타일로 그래픽을 출력하지만, 이것이 여러분이 만들고 있는 데이터 시각화에 대한 최적의 선택인 경우는 드뭅니다. 데이터 시각화를 디자인할 때는 사용 가능한 다양한 옵션을 고려해야 합니다. 이러한 옵션 중 일부는 다음과 같습니다.</p>
+<section id="레이아웃-패널-패싯" class="level3">
+<h3 class="anchored" data-anchor-id="레이아웃-패널-패싯">레이아웃 (패널, 패싯)</h3>
+<p>레이아웃(여러 패널, 패싯 또는 서브플롯의 배열)은 효율적인 비교와 매우 관련이 있습니다. y축 데이터를 비교해야 하는 경우 모든 패널을 수평으로 정렬하여 단일 y축을 사용하는 것이 비교를 용이하게 하는 반면, x축 값을 효율적으로 비교하려면 패널을 쌓아야 합니다. 매트릭스 레이아웃(단일 그림에 여러 행과 열)은 개별 패널에 표시된 데이터가 관련이 없거나 공간이 단일 행 또는 단일 열을 허용하지 않는 경우(예: 패널이 너무 많아 한 행에 맞지 않는 경우)에만 사용해야 합니다.</p>
+<p><strong>예:</strong> 아래 그림은 레이아웃을 제외하고는 정확히 동일한 데이터와 정확히 동일한 유형의 시각화를 보여주는 두 가지 다른 레이아웃을 보여줍니다. 왼쪽 패널의 데이터를 비교하는 것이 얼마나 어려운지, 반면 오른쪽 레이아웃에서는 얼마나 쉬운지 주목하십시오. 핵심 차이점은 오른쪽 패널이 공통 y축을 공유한다는 것이며, 이는 패널 간의 y값 비교에 핵심적입니다.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Data set creation.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">93384</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">24</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">32</span> <span class="co"># no of subjects</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span>n, <span class="at">time =</span> time)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>bw <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(data<span class="sc">$</span>ID)),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">bw =</span> <span class="fu">rlnorm</span>(n, <span class="fu">log</span>(<span class="dv">75</span>), <span class="at">sdlog =</span> <span class="fl">0.25</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>bw<span class="sc">$</span>bw.category <span class="ot">&lt;-</span> <span class="fu">cut</span>(bw<span class="sc">$</span>bw,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="fu">quantile</span>(bw<span class="sc">$</span>bw, <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.33</span>, <span class="fl">0.66</span>, <span class="dv">1</span>)),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>), <span class="st">"body weight"</span>),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">include.lowest =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">merge</span>(data, bw)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data[<span class="fu">order</span>(data<span class="sc">$</span>ID, data<span class="sc">$</span>time), ]</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate drug concentrations as a function of body weight.</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>conc <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">/</span> (data<span class="sc">$</span>bw<span class="sc">^</span><span class="fl">1.0</span>) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.085</span> <span class="sc">*</span> data<span class="sc">$</span>time) <span class="sc">*</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rlnorm</span>(<span class="fu">nrow</span>(data), <span class="at">sdlog =</span> <span class="fl">0.25</span>) <span class="sc">+</span> <span class="co"># res. error</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  (data<span class="sc">$</span>ID <span class="sc">-</span> <span class="fu">mean</span>(data<span class="sc">$</span>ID)) <span class="sc">/</span> <span class="fu">mean</span>(data<span class="sc">$</span>ID) <span class="sc">/</span> <span class="dv">4</span> <span class="co"># r. eff</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualisation.</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ID <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>ID)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> conc, <span class="at">group =</span> ID, <span class="at">color =</span> ID)) <span class="sc">+</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="at">by =</span> <span class="dv">4</span>))</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"time [h]"</span>) <span class="sc">+</span> </span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"drug concentration [ng/mL]"</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">facet_grid</span>(bw.category <span class="sc">~</span> .)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"1x3"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">facet_grid</span>(. <span class="sc">~</span> bw.category)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Add space to the rhs of the first figure for better separation in the cowplot.</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">4</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="st">"lines"</span>))</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Both figures into a single output figure.</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg[[<span class="dv">1</span>]], gg[[<span class="dv">2</span>]], <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/principles-layout.png"><img src="images/principles-layout.png" class="img-fluid figure-img" alt="레이아웃 선택이 패널 간 비교 용이성을 결정하는 방식을 보여주는 선 도표. 왼쪽 패널은 세로로 쌓인 3개의 플롯을 보여줍니다. 오른쪽 패널은 가로로 배열된 동일한 3개의 플롯을 보여줍니다."></a></p>
+<figcaption>레이아웃 선택이 패널 간 비교 용이성을 결정하는 방식을 보여주는 선 도표. 왼쪽 패널은 세로로 쌓인 3개의 플롯을 보여줍니다. 오른쪽 패널은 가로로 배열된 동일한 3개의 플롯을 보여줍니다.</figcaption>
+</figure>
+</div>
+</section>
+<section id="종횡비-aspect-ratio" class="level3">
+<h3 class="anchored" data-anchor-id="종횡비-aspect-ratio">종횡비 (Aspect ratio)</h3>
+<p>디스플레이에서 데이터에 대한 시각적 인식은 x축과 y축의 선택에 의존해서는 안 됩니다. 많은 경우 정사각형 그림은 시각적 편향을 방지합니다. 특히 두 축이 어떤 사건 전후의 측정, 관측 데이터 대 모델 예측 값, 또는 더 일반적으로 동일한 단위(kg 또는 m 등)와 같은 공통점을 공유하는 경우 정사각형 그림을 고려해야 합니다. 일반적으로 1:1 종횡비(x 방향과 y 방향에서 1 측정 단위의 물리적 길이)가 좋은 기본값입니다. 그림이 x축과 y축에 대해 동일한 범위를 갖는 경우 1:1 종횡비는 정사각형 그림을 산출합니다.</p>
+<p><strong>예:</strong> 아래 세 패널은 모두 동일한 데이터를 보여주며, 모델 적합도(예측 값 대 관측 값)에 대한 판단을 가능하게 하는 것을 목표로 합니다. 늘어난 x축, 늘어난 y축, 그리고 동일한 축 제한을 가진 1:1 종횡비 간의 시각적 인식 차이에 주목하십시오.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed vs predicted (any data with comparable x and y will do).</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Data set.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Old Faithful Geyser (Yellowstone) data set with eruption duration</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   and waiting time to the next eruption (both in minutes).</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> faithful<span class="sc">$</span>eruptions,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> faithful<span class="sc">$</span>waiting</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression model fit.</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition of predicted values to the data set.</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Range of y and y predicted combined.</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">range</span>(<span class="fu">unlist</span>(data[<span class="fu">c</span>(<span class="st">"y"</span>, <span class="st">"pred"</span>)]))</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting.</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> pred, <span class="at">y =</span> y))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding the line of identity, y = x</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># (note: plotting it first will add points on top).</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding points, removing grey background.</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding regression fit (local smoother, loess) of y~x.</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding axis labels.</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"predicted"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"observed"</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Aspect ratios are commonly not fixed but adapted to figure size.</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co">#   With dynamic displays, the point of different perception</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co">#   might not be obvious depending on the figure/screen size.</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co">#   To make that point independent of figure height and width,</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co">#     the aspect ratio is fixed in this example.</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">coord_fixed</span>(<span class="at">ratio=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the figure and fix the aspect ratio to 2, i.e., </span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#   one pixel in x corresponds to 2 pixels in y.</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>gg2 <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">coord_fixed</span>(<span class="at">ratio=</span><span class="dv">2</span>)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the aspect ratio to 1 (1 unit in x and y </span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#   corresponds to the same number of pixels) and </span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#   setting axis limits to be identical.</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>gg3 <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">coord_fixed</span>(<span class="at">ratio=</span><span class="dv">1</span>, <span class="at">xlim=</span>r, <span class="at">ylim=</span>r)</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Cow (column-wise) plot, combine all figures into one.</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg, gg2, gg3, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/principles-aspect-ratio.png"><img src="images/principles-aspect-ratio.png" class="img-fluid figure-img" alt="모델 적합도에 대한 시각적 인식이 종횡비에 의해 어떻게 영향을 받을 수 있는지 보여주는 산점도. 왼쪽 패널은 늘어난 x축을 가지고, 가운데 패널은 늘어난 y축을 가지며, 오른쪽 패널은 동일한 축 제한을 가진 1:1 종횡비를 가집니다."></a></p>
+<figcaption>모델 적합도에 대한 시각적 인식이 종횡비에 의해 어떻게 영향을 받을 수 있는지 보여주는 산점도.</figcaption>
+</figure>
+</div>
+</section>
+<section id="선-lines" class="level3">
+<h3 class="anchored" data-anchor-id="선-lines">선 (Lines)</h3>
+<p>선은 순서, 즉 시퀀스를 도입합니다. 순서가 없는 경우 데이터는 선으로 서로 연결되어서는 안 됩니다. 다른 선 유형이 고유한 순서를 가진 다른 그룹을 나타내는 경우, 선택한 선 스타일도 순서를 갖는 것이 좋습니다(예: 가장 낮은 그룹에서 가장 높은 그룹으로 갈수록 선 두께, 대시 밀도 또는 색상의 어두움이 증가함).</p>
+</section>
+<section id="점-points" class="level3">
+<h3 class="anchored" data-anchor-id="점-points">점 (Points)</h3>
+<p>점 기호는 시각화가 데이터를 의미 있는 방식으로 표시하도록 선택해야 합니다. 수천 개의 데이터 포인트를 표시해야 하는 경우, 겹치는 채워진 기호보다 열린 원이나 더 작은 채워진 기호가 더 좋습니다. 데이터가 이산적이고 관측치가 겹치는 경우 더 나은 시각화를 위해 데이터를 부드럽게 지터링(jittering)하는 것을 고려하십시오.</p>
+</section>
+<section id="색상-colours" class="level3">
+<h3 class="anchored" data-anchor-id="색상-colours">색상 (Colours)</h3>
+<p>색상은 서로 다른 그룹을 식별하는 데 도움을 주는 것과 같은 목적을 수행해야 합니다. 순수 장식용 색상은 권장하지 않습니다. Tufte는 “색상은 자연스러운 시각적 계층 구조를 가지고 있기 때문에 다양한 회색 음영이 색상보다 다양한 양을 더 잘 보여준다”며 “회색 음영은 데이터 측정에 쉽게 이해되는 순서를 제공한다. 이것이 핵심이다”라고 지적했습니다 <span class="citation" data-cites="Tufte2001">(<a href="#ref-Tufte2001" role="doc-biblioref">Tufte 2001, 154</a>)</span>.</p>
+</section>
+<section id="축-axes" class="level3">
+<h3 class="anchored" data-anchor-id="축-axes">축 (Axes)</h3>
+<section id="원점-및-제한" class="level4">
+<h4 class="anchored" data-anchor-id="원점-및-제한">원점 및 제한</h4>
+<p>다른 범위를 선택할 타당한 이유가 없는 한 축 범위는 일반적으로 0에서 시작해야 합니다. 데이터에 음수 값이 포함되지 않은 경우 축은 음수 값으로 뻗어 나가서는 안 되며 특히 음수 값에 눈금을 표시해서는 안 됩니다.</p>
+<p>상대적인 변화나 비율이 표시되는 경우 해당 축은 로그여야 하며(예: 1/4이 기준점 1까지의 거리가 4와 같도록), 변화 없음 지점을 중심으로 대칭이어야 합니다. 변화 없음 지점에 보조선을 그으면 해석이 쉬워집니다. 축 눈금과 보조 회색 선은 값을 읽는 것을 용이하게 하여 보는 사람이 잘못된 선형 보간을 하는 것을 방지합니다. 축 눈금 레이블은 비율을 나타내야 합니다(예: 0.25 대신 “1/4”).</p>
+<p>x와 y로 표시되는 데이터가 비교 가능한 경우 축 제한은 동일해야 하며 그림은 정사각형이어야 하므로 x 방향과 y 방향의 거리가 일관되어야 합니다.</p>
+<p><strong>예:</strong> 아래 그림은 의도적인 축 제한 선택(여기서는 y축 제한)이 인식에 큰 차이를 만들 수 있으며, 따라서 독자의 해석에도 큰 차이를 만들 수 있음을 보여줍니다. 두 패널의 유일한 차이점은 y축 범위입니다.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">factor</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"Our product"</span>, <span class="st">"Competitor"</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Our product"</span>, <span class="st">"Competitor"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">220</span>, <span class="dv">210</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Original plot</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> value),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"black"</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">220</span>, <span class="at">by =</span> <span class="dv">20</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Offset the y axis</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>offset <span class="ot">&lt;-</span> <span class="dv">208</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data) <span class="sc">+</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> value <span class="sc">-</span> offset),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"black"</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">14</span>, <span class="at">by =</span> <span class="dv">2</span>),</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">0</span> <span class="sc">+</span> offset, <span class="dv">14</span> <span class="sc">+</span> offset, <span class="at">by =</span> <span class="dv">2</span>),</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/principles-axes.png"><img src="images/principles-axes.png" class="img-fluid figure-img" alt="축 제한의 선택에 의해 시각적 인상이 어떻게 좌우될 수 있는지 보여주는 막대 차트. 왼쪽 패널 차트는 y축이 0에서 시작하고, 오른쪽 패널은 y축이 208에서 시작하여 두 막대 사이의 작은 10단위 차이를 과장이 있습니다."></a></p>
+<figcaption>축 제한의 선택에 의해 시각적 인상이 어떻게 좌우될 수 있는지 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+</section>
+<section id="선형-및-로그-축" class="level4">
+<h4 class="anchored" data-anchor-id="선형-및-로그-축">선형 및 로그 축</h4>
+<p><strong>예:</strong> 어떤 변수 y가 다른 변수 x에 따라(참조 또는 기준 측정과 비교하여) 변하는지 알고 싶다고 가정해 봅시다. 예를 들어, 혈압이 치료에 따라 변하는가?</p>
+<p>아래 그림은 참조(기준) 측정과 비교하여 평균적으로 변화가 없는 데이터(빨간색 가로선, 상단 두 패널)를 보여줍니다. 데이터의 약 절반은 변화 없음 지점 아래에 있고 나머지 절반은 위에 있습니다. 그러나 선형 축을 사용하는 왼쪽 상단 패널에서는 이것이 쉽게 드러나지 않으며 공간은 참조선에서 멀어지는 수직 방향(위아래 모두)으로 비대칭적으로 할당됩니다. 로그 축을 사용하는 오른쪽 상단 패널에서는 참조선 주위에 데이터 포인트가 비교적 고르게 퍼져 있는 것을 명확하게 볼 수 있습니다. 아래쪽 행에서는 동일한 데이터가 다시 선형 및 로그 축을 사용하여 히스토그램 형식으로 표시됩니다.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Naïve plot of y vs x. If there is no change (on average),</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># half the data are below the line of no change.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Asymmetric view, and it depends on y/x or x/y.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">33838</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rlnorm</span>(<span class="dv">200</span>, <span class="dv">2</span>, <span class="fl">0.2</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rlnorm</span>(<span class="dv">200</span>, <span class="fl">0.2</span>, <span class="fl">0.75</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Add an outlier manually.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbind</span>(x, <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">quantile</span>(x<span class="sc">$</span>x, <span class="fl">0.8</span>), <span class="at">y =</span> <span class="fu">max</span>(x<span class="sc">$</span>y) <span class="sc">*</span> <span class="fl">1.5</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting.</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of y vs x.</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x-variable"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Fold-change"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Logarithmic axes, symmetric range (!):</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>xbr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">10</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">5</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> xbr, <span class="at">trans =</span> <span class="st">"log10"</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">limits =</span> <span class="fu">max</span>(<span class="fu">abs</span>(x<span class="sc">$</span>y))<span class="sc">^</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Second axis:</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> xbr,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">paste</span>(<span class="dv">100</span> <span class="sc">*</span> xbr, <span class="st">"%"</span>, <span class="at">sep =</span> <span class="st">""</span>),</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">trans =</span> <span class="st">"log10"</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">limits =</span> <span class="fu">max</span>(<span class="fu">abs</span>(x<span class="sc">$</span>y))<span class="sc">^</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">trans =</span> <span class="sc">~</span> . <span class="sc">*</span> <span class="dv">1</span>, <span class="at">breaks =</span> xbr,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">ifelse</span>(xbr <span class="sc">&lt;</span> <span class="dv">1</span>, <span class="fu">paste</span>(<span class="st">"1/"</span>, <span class="dv">1</span> <span class="sc">/</span> xbr, <span class="at">sep =</span> <span class="st">""</span>), xbr)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Univariate distribution (histogram).</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> y)) <span class="sc">+</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Fold-change"</span>)</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">fill =</span> <span class="st">"gray"</span>)</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Symmetric range, log scale.</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> xbr,</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">ifelse</span>(xbr <span class="sc">&lt;</span> <span class="dv">1</span>, <span class="fu">paste</span>(<span class="st">"1/"</span>, <span class="dv">1</span> <span class="sc">/</span> xbr), xbr),</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">trans =</span> <span class="st">"log10"</span>,</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">limits =</span> <span class="fu">max</span>(<span class="fu">abs</span>(x<span class="sc">$</span>x))<span class="sc">^</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>gg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/principles-log.png"><img src="images/principles-log.png" class="img-fluid figure-img" alt="선형 축에서 로그 축으로 전환하면 일부 기준 측정에 대한 값의 변화를 명확히 하는 데 도움이 됩니다. 맨 윗줄에는 두 개의 산점도가 있으며 기준 값은 빨간색 가로 키라인으로 표시되어 있습니다. 왼쪽 상단 패널은 선형 축에 있는 반면, 오른쪽 상단 패널은 로그 축에 있으며 기준선 주위에 데이터 포인트가 고르게 퍼져 있음을 더 명확하게 보여줍니다. 맨 아랫줄에는 동일한 데이터가 히스토그램 형식으로 표시되어 있으며, 다시 왼쪽에는 선형 축, 오른쪽에는 로그 축이 있습니다."></a></p>
+<figcaption>선형 축(왼쪽)에서 로그 축(오른쪽)으로 전환하면 일부 기준 측정에 대한 값의 변화를 명확히 하는 데 도움이 됩니다.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="기호-symbols" class="level3">
+<h3 class="anchored" data-anchor-id="기호-symbols">기호 (Symbols)</h3>
+<p>기호는 직관적이어야 합니다(예: 긍정적 결과는 “+”, 부정적 결과는 “–”, 중립적 결과는 “O”). 이상적인 경우, 기호는 범례를 한 번만 봐도 이후 시각화에 집중할 수 있어야 합니다.</p>
+<p>삼각형, 원, 사각형과 같은 기호는 직관적인 함축적 의미를 갖지 않습니다. 그러나 데이터에 순서가 있는 경우 기호의 순서(예: 꼭짓점 수(원, 대시, 삼각형, 사각형, 오각형 등))에 반영될 수 있습니다.</p>
+</section>
+<section id="범례-legends" class="level3">
+<h3 class="anchored" data-anchor-id="범례-legends">범례 (Legends)</h3>
+<p>범례는 너무 많은 주의를 끌어서는 안 되며 데이터를 가려서는 절대 안 됩니다. 그림의 여백에 배치하거나 그림 아래에 작은 텍스트로 캡처할 수 있습니다.</p>
+<p>범례 항목이 단일 객체(예: 그룹당 한 줄)를 참조하는 경우 범례를 해당 객체 옆에 배치하면 독자가 범례 항목을 디스플레이 객체에 매핑하기가 더 쉬워집니다.</p>
+<p><strong>예:</strong> 아래 그림은 해당 데이터 옆에 그림에 직접 범례를 추가하여 가독성을 높일 수 있음을 보여줍니다. 레이블은 겹치지 않아야 하며 레이블 위치는 데이터에 따라 조정이 필요할 수 있습니다.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># EU stock markets, year and indices DAX, SMI, CAC, and FTSE.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store graphics into a list.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>gg.list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data set (reformat EuStockMarkets that comes with R).</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> EuStockMarkets</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> <span class="fu">as.vector</span>(<span class="fu">time</span>(x)),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">index =</span> <span class="fu">rep</span>(<span class="fu">colnames</span>(x), <span class="fu">rep</span>(<span class="fu">nrow</span>(x), <span class="fu">ncol</span>(x))),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">as.vector</span>(x),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>index2 <span class="ot">&lt;-</span> df<span class="sc">$</span>index <span class="co"># For use with labels later.</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard layout and legend.</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> value, <span class="at">group =</span> index, <span class="at">color =</span> index, <span class="at">label =</span> index2))</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Nicer axis tick mark settings.</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>ax <span class="ot">&lt;-</span> <span class="fu">pretty</span>(df<span class="sc">$</span>time, <span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">range</span>(ax), <span class="at">breaks =</span> ax)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"year"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Stock index"</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>gg.list[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> gg</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the last element of each time series for x,y of the label.</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Use that the last element is the first element of the reversed order,</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#   and extract the first element per index by using !duplicated.</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> df[<span class="fu">rev</span>(<span class="fu">order</span>(df<span class="sc">$</span>time)), ] <span class="co"># descending in time.</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> y[<span class="sc">!</span><span class="fu">duplicated</span>(y<span class="sc">$</span>index), ] <span class="co"># first entry per index</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>y<span class="sc">$</span>index2 <span class="ot">&lt;-</span> y<span class="sc">$</span>index <span class="co"># Create a copy that contains formatted strings.</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(y<span class="sc">$</span>index2)[<span class="fu">levels</span>(y<span class="sc">$</span>index2) <span class="sc">==</span> <span class="st">"FTSE"</span>] <span class="ot">&lt;-</span> <span class="st">"</span><span class="sc">\n\n</span><span class="st">FTSE"</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a newline to separate FTSE from DAX.</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that the factor level is modified, not the data.</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the legend, move labels into figure.</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> y, <span class="at">hjust =</span> <span class="st">"left"</span>, <span class="at">nudge_x =</span> <span class="fl">0.1</span>)</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co"># aes as before, nudge adds space on the lhs.</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>gg.list[[<span class="dv">2</span>]] <span class="ot">&lt;-</span> gg</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Both figures into a single output figure.</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg.list[[<span class="dv">1</span>]], gg.list[[<span class="dv">2</span>]], <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="fl">2.25</span>, <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/principles-legends.png"><img src="images/principles-legends.png" class="img-fluid figure-img" alt="그림 요소에 직접 레이블을 지정하면 가독성이 어떻게 향상될 수 있는지 보여주는 선 도표. 왼쪽 패널은 다른 색상의 선을 식별하기 위해 범례를 사용합니다. 오른쪽 패널은 각 줄 끝에 그림 내 레이블을 포함합니다."></a></p>
+<figcaption>그림 요소에 직접 레이블을 지정하면 가독성이 어떻게 향상될 수 있는지 보여주는 선 도표.</figcaption>
+</figure>
+</div>
+</section>
+<section id="방향-orientation" class="level3">
+<h3 class="anchored" data-anchor-id="방향-orientation">방향 (Orientation)</h3>
+<p>예를 들어 막대 그래프로 시각화해야 할 순서가 데이터에 있는 경우, 데이터를 가로 막대로 표시하고 위에서 아래로(가장 높은 값에서 가장 낮은 값으로) 정렬하는 것이 세로 막대를 왼쪽에서 오른쪽 방향으로 표시하는 것보다 더 직관적입니다<span class="citation" data-cites="Few2004">(<a href="#ref-Few2004" role="doc-biblioref">Few 2004, 182</a>)</span>. 이에 대한 일반적인 예외는 데이터를 시간 단위에 따라 정렬해야 하는 경우입니다. 시간은 종종 과거에서 현재, 미래로, 왼쪽에서 오른쪽으로 흐르는 것으로 시각적으로 해석됩니다.</p>
+<p>예를 들어 상자 그림의 경우 가로 방향이 세로 방향보다 더 정확한 시각적 비교가 가능합니다. 아래 그림에서 볼 수 있듯이 인간의 눈은 가상의 수평선보다 가상의 수직선을 따라가기가 더 쉽기 때문입니다. 또한 왼쪽 패널에서는 긴 x축 레이블이 겹쳐서 읽을 수 없지만 오른쪽 패널에서는 가로 방향으로 읽을 수 있습니다.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store figures into a list.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>gg.list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> mpg <span class="co"># miles per gallon data set.</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>car <span class="ot">&lt;-</span> <span class="fu">paste</span>(x<span class="sc">$</span>manufacturer, x<span class="sc">$</span>model)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> car, <span class="at">y =</span> hwy, <span class="at">group =</span> car))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Miles per gallon (highway)"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>gg.list[[<span class="st">"vertical orientation"</span>]] <span class="ot">&lt;-</span> gg</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>gg.list[[<span class="st">"horizontal orientation"</span>]] <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">coord_flip</span>()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Both figures into a single output figure.</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg.list[[<span class="dv">1</span>]], gg.list[[<span class="dv">2</span>]], <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">2.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/principles-orientation.png"><img src="images/principles-orientation.png" class="img-fluid figure-img" alt="방향을 변경하면 레이블의 가독성과 데이터의 시각적 해석을 모두 개선할 수 있습니다. 두 개의 상자 그림이 표시됩니다. 왼쪽에는 상자 그림이 세로형입니다: 축 레이블이 겹치고 시각적 값 비교가 오른쪽보다 어렵습니다. 오른쪽에는 상자 그림이 가로형이고 축 레이블이 이제 분리되어 읽을 수 있습니다."></a></p>
+<figcaption>방향을 변경하면 레이블의 가독성과 데이터의 시각적 해석을 모두 개선할 수 있습니다.</figcaption>
+</figure>
+</div>
+</section>
+<section id="보조-요소-auxiliary-elements" class="level3">
+<h3 class="anchored" data-anchor-id="보조-요소-auxiliary-elements">보조 요소 (Auxiliary elements)</h3>
+<p>일반적으로 데이터 시각화를 디자인할 때 우리는 Tufte가 “차트 정크(chart junk)”라고 부르는 것, 즉 디스플레이의 정보를 추가하거나 향상시키지 않는 차트의 모든 요소를 경계해야 합니다. 물론 데이터가 쇼의 주인공이므로 가장 많은 공간을 차지해야 합니다. 한편, 모든 추가 요소(선, 색상, 기호 등)는 데이터 해석에 대한 기여도를 평가해야 합니다. 기여도가 없다면 제거할 수 있습니다. 데이터 시각화에서 불필요한 요소의 전형적인 예는 각각 x축과 y축이 있는 5개의 패널(하위 그림 또는 패싯)이 있는 그림입니다. 다른 패널에 표시된 데이터의 효율적인 비교를 허용하기 위해 패널이 모두 한 행에 정렬된 경우 단일 y축이면 충분합니다. 이렇게 하면 데이터를 위한 더 많은 공간이 생기고 부가적인 이점으로 y축 제한과 데이터 위치가 동기화됩니다.</p>
+<p>도움이 되는 추가 요소에는 관련 지점의 선이 포함될 수 있습니다. 예를 들어 x=0(예: 시간 0의 경우)의 수직선, y=0(예: 변화 없음 지점을 나타내기 위해)의 수평선 또는 대각선(y=x, 예: x와 y 사이에 차이가 없음을 나타내기 위해)이 있습니다. 보조 요소를 데이터 아래에 그릴지 아니면 위에 그릴지 고려하십시오(일반적으로 그래픽 요소 추가 순서에 따라 다름).</p>
+<p>로컬 산점도 평활화(loess, lowess, polynomial)는 제한된 모델 가정으로 관계를 식별하는 데 특히 도움이 될 수 있습니다. 신뢰 대역(점별 신뢰 구간)은 관련된 경우에만 표시해야 합니다.</p>
+<p><strong>예:</strong> 아래 그림은 시작점(시간 0)에서 시간이 지남에 따른 변화를 보여줍니다. 일반 그림(왼쪽 패널)은 독자가 y축 레이블을 읽어 변화 없음 지점(y=0)을 식별해야 합니다. 변화 없음 지점을 나타내는 선을 추가(가운데 패널)하면 읽기가 더 쉬워지고, 변화 없음 지점을 중심으로 대칭인 축 범위를 선택(오른쪽 패널)하면 증가(위쪽 변경)는 시각화의 위쪽 절반에, 감소(아래쪽 변경)는 아래쪽 절반에 할당되어 읽기와 해석이 더 직관적이 됩니다.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for data set generation.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>make.data <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">24</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.2</span> <span class="sc">*</span> x) <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.21</span> <span class="sc">*</span> x),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fl">0.25</span>, <span class="co"># std dev of y</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">4384590</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">50</span>) {</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Setting the random number seed for reproducibility.</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Creation of x- and y-variables.</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  x2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(x, n)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  y2 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    y2 <span class="ot">&lt;-</span> <span class="fu">c</span>(y2, y <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> (n <span class="sc">/</span> <span class="dv">4</span> <span class="sc">-</span> i)) <span class="sc">+</span> <span class="fu">rlnorm</span>(<span class="fu">length</span>(y), <span class="at">sd =</span> sd))</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Creation of an identifier for each profile.</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  ID <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="fu">rep</span>(<span class="fu">length</span>(y), n)))</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Composition of the data set.</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">PD =</span> <span class="dv">100</span> <span class="sc">*</span> y2, <span class="at">time =</span> x, <span class="at">ID =</span> ID)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Addition of a baseline variable.</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  BL <span class="ot">&lt;-</span> df[df<span class="sc">$</span>time <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"PD"</span>)]</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(BL) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"BL"</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, BL)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Addition of change from baseline.</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>Change <span class="ot">&lt;-</span> df<span class="sc">$</span>PD <span class="sc">-</span> df<span class="sc">$</span>BL</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Definition of treatment.</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>trt <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>BL <span class="sc">&gt;</span> <span class="fu">mean</span>(df<span class="sc">$</span>BL), <span class="st">"active"</span>, <span class="st">" placebo"</span>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the data.</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">make.data</span>()</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Figures.</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> Change, <span class="at">group =</span> ID, <span class="at">color =</span> ID))</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Time [h]"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Change from baseline"</span>)</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">facet_grid</span>(. <span class="sc">~</span> trt)</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition of an auxiliary line at y=0.</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>gg2 <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>)</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Symmetric y-axis limits.</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>gg3 <span class="ot">&lt;-</span> gg2 <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">max</span>(<span class="fu">abs</span>(x<span class="sc">$</span>Change)))</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging all plots into one figure.</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg, gg2, gg3, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/principles-auxiliary.png"><img src="images/principles-auxiliary.png" class="img-fluid figure-img" alt="변화 없음 지점을 나타내는 선과 같은 요소를 추가하면 가독성을 향상시킬 수 있습니다. 이 3부 그림에서 왼쪽 패널은 시간 경과에 따른 변화를 보여주는 선 도표입니다. 가운데 플롯에서는 y축의 기준선(0)을 표시하기 위해 키라인이 추가되었으며, 오른쪽 패널에서는 축 범위가 이 키라인을 중심으로 대칭으로 설정되었습니다."></a></p>
+<figcaption>변화 없음 지점을 나타내는 선과 같은 요소를 추가하면 가독성을 향상시킬 수 있습니다.</figcaption>
+</figure>
+</div>
+</section>
+<section id="차원-차트" class="level3">
+<h3 class="anchored" data-anchor-id="차원-차트">3차원 차트</h3>
+<p>3차원 데이터 디스플레이는 몇 가지 면에서 눈에 띌 수 있지만, 이러한 프레젠테이션으로 정확한 읽기와 해석은 쉽지 않습니다.</p>
+<p><strong>예:</strong> 아래 그림의 왼쪽 패널은 단일 숫자 10을 3D 막대 차트로 보여줍니다. 값의 올바른 식별은 빨간색 “X”로 표시됩니다. 막대의 높이는 보는 위치에서 뒤쪽 벽(축)에 투영되어야 합니다. 오른쪽 패널은 기울어진 표면에 막대를 배치하여 높이 차이가 없을 때 높이 차이가 있는 것처럼 인식되도록 합니다. 각 행과 열에 동일한 4개의 숫자 10, 20, 30, 40이 표시됩니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/principles-3d.png"><img src="images/principles-3d.png" class="img-fluid figure-img" alt="3D 차트에서 데이터 값을 읽는 것은 어렵습니다. 이 그림의 왼쪽 패널은 단일 숫자 10을 3D 막대 차트로 보여줍니다. 값의 올바른 식별은 이미지 뒤쪽 벽의 빨간색 X로 표시됩니다. 오른쪽 패널은 기울어진 표면에 막대를 배치하여 높이 차이가 없을 때 높이 차이가 있는 것처럼 인식되도록 합니다. 여러 행과 열에 걸쳐 동일한 4개의 숫자 10, 20, 30, 40이 있습니다."></a></p>
+<figcaption>3D 차트에서 데이터 값을 읽는 것은 어렵습니다.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="표의-요소" class="level2">
+<h2 class="anchored" data-anchor-id="표의-요소">표의 요소</h2>
+<p>표는 그래픽과 마찬가지로 효율적인 시각화 수단이 될 수 있습니다. 또한 제대로 제시되지 않으면 오해를 불러일으키거나 읽기 번거로울 수도 있습니다. 특히 데이터 포인트 수가 적거나 정확한 숫자를 보여줘야 하는 경우 표를 고려해야 합니다. 예를 들어 가독성과 해석을 돕기 위해 그래픽 위에 숫자를 겹쳐서 표시해야 하는 경우(예: 막대 차트의 막대 끝에 숫자 추가), 그래픽을 완전히 생략하고 숫자를 표로 표시하는 것을 고려할 수 있습니다.</p>
+<p>표에는 그래픽과 마찬가지로 디자인 요소가 있습니다. 그중 일부는 다음에서 논의됩니다.</p>
+<section id="레이아웃" class="level3">
+<h3 class="anchored" data-anchor-id="레이아웃">레이아웃</h3>
+<p>표의 한 가지 디자인 요소는 레이아웃, 즉 행과 열입니다. 레이아웃은 독자를 염두에 두고 적극적으로 선택해야 합니다. 일반적으로 수평보다 수직으로 숫자를 비교하는 것이 더 쉽습니다.</p>
+</section>
+<section id="자릿수" class="level3">
+<h3 class="anchored" data-anchor-id="자릿수">자릿수</h3>
+<p>자릿수는 표의 행이나 열(즉, 동일한 변수) 내에서는 일관되어야 하지만 변수 간에는 다를 수 있습니다(예: 표에 작은 숫자와 큰 숫자가 포함된 경우). 불필요한 정밀도는 피해야 하며 자릿수를 줄이면 읽기와 비교가 용이해질 수 있습니다.</p>
+</section>
+<section id="정렬" class="level3">
+<h3 class="anchored" data-anchor-id="정렬">정렬</h3>
+<p>큰 숫자와 작은 숫자를 쉽게 식별할 수 있도록 숫자는 오른쪽 정렬되어야 합니다. 이렇게 하면 큰 숫자가 말 그대로 튀어나오게 됩니다.</p>
+</section>
+<section id="표-셀의-여러-숫자" class="level3">
+<h3 class="anchored" data-anchor-id="표-셀의-여러-숫자">표 셀의 여러 숫자</h3>
+<p>표 셀에 단일 값 이상의 값(예: 평균 및 신뢰 구간)이 포함된 경우 데이터를 쉽게 읽을 수 있도록 표시하는 더 나은 방법이 있는지 고려해야 합니다. 옵션에는 숫자를 여러 표 셀, 행 또는 열로 나누거나 덜 중요한 숫자의 글꼴 크기를 줄이는 것(예: 평균이 신뢰 구간보다 더 중요할 수 있음)이 있습니다.</p>
+</section>
+<section id="방향" class="level3">
+<h3 class="anchored" data-anchor-id="방향">방향</h3>
+<p>피할 수 없는 경우가 아니라면 가로 방향은 권장하지 않습니다. 일부를 읽기 위해 문서를 회전하는 것은 인쇄물이든 화면이든 독자에게 번거로운 일입니다. 표를 둘로 나누는 것은 가로 방향을 피하는 해결책이 될 수 있지만, 표를 나누는 것이 중요한 비교를 더 어렵게 만드는지 고려해야 합니다.</p>
+</section>
+<section id="글꼴-및-색상" class="level3">
+<h3 class="anchored" data-anchor-id="글꼴-및-색상">글꼴 및 색상</h3>
+<p>특정 값을 강조하는 것과 같은 목적에 부합한다면 다른 글꼴과 색상을 사용할 수 있습니다. 장식 목적으로 다른 글꼴이나 색상을 사용하는 것은 권장하지 않습니다.</p>
+
+
+<!-- -->
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Few2004" class="csl-entry" role="listitem">
+Few, Stephen. 2004. <em>Show Me the Numbers</em>. Burlingame, CA: Analytics Press.
+</div>
+<div id="ref-Tufte2001" class="csl-entry" role="listitem">
+Tufte, Edward R. 2001. <em>The Visual Display of Quantitative Information</em>. 2nd ed. Cheshire, CT: Graphics Press.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/royal-statistical-society\.github\.io\/datavisguide\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../docs/why-visualise.html" class="pagination-link" aria-label="Why we visualise data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Why we visualise data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../docs/choosing.html" class="pagination-link" aria-label="Choosing a visualisation type">
+        <span class="nav-page-text">Choosing a visualisation type</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 시각화의 원칙과 요소</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf: default</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span><span class="co"> </span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: false</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>데이터 시각화는 목적을 충족해야 합니다. 시각화의 목적을 이해함으로써 우리(저자 또는 독자로서)는 시각화가 목표를 달성했는지 아니면 개선이 필요한지를 평가할 수 있는 위치에 서게 됩니다!</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>아마도 시각화의 가장 일반적인 목적은 서로 다른 치료를 받는 환자 데이터와 같이 데이터 그룹을 비교하는 것입니다. 축, 축 제한, 레이블 및 기호를 잘 선택하면 데이터의 패턴을 식별하는 데 상당히 도움이 되지만, 이러한 요소 중 하나라도 잘못 선택하면 정보 추출을 상당히 방해할 수 있습니다.</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## 차트의 요소</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>시각화의 다양한 요소는 정보를 추출하는 효율성에 기여할 수 있습니다. 모든 시각화 소프트웨어 패키지는 기본 스타일로 그래픽을 출력하지만, 이것이 여러분이 만들고 있는 데이터 시각화에 대한 최적의 선택인 경우는 드뭅니다. 데이터 시각화를 디자인할 때는 사용 가능한 다양한 옵션을 고려해야 합니다. 이러한 옵션 중 일부는 다음과 같습니다.</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### 레이아웃 (패널, 패싯)</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>레이아웃(여러 패널, 패싯 또는 서브플롯의 배열)은 효율적인 비교와 매우 관련이 있습니다. y축 데이터를 비교해야 하는 경우 모든 패널을 수평으로 정렬하여 단일 y축을 사용하는 것이 비교를 용이하게 하는 반면, x축 값을 효율적으로 비교하려면 패널을 쌓아야 합니다. 매트릭스 레이아웃(단일 그림에 여러 행과 열)은 개별 패널에 표시된 데이터가 관련이 없거나 공간이 단일 행 또는 단일 열을 허용하지 않는 경우(예: 패널이 너무 많아 한 행에 맞지 않는 경우)에만 사용해야 합니다.</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>**예:** 아래 그림은 레이아웃을 제외하고는 정확히 동일한 데이터와 정확히 동일한 유형의 시각화를 보여주는 두 가지 다른 레이아웃을 보여줍니다. 왼쪽 패널의 데이터를 비교하는 것이 얼마나 어려운지, 반면 오른쪽 레이아웃에서는 얼마나 쉬운지 주목하십시오. 핵심 차이점은 오른쪽 패널이 공통 y축을 공유한다는 것이며, 이는 패널 간의 y값 비교에 핵심적입니다.</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Data set creation.</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">93384</span>)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">24</span>)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">32</span> <span class="co"># no of subjects</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span>n, <span class="at">time =</span> time)</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>bw <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(data<span class="sc">$</span>ID)),</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">bw =</span> <span class="fu">rlnorm</span>(n, <span class="fu">log</span>(<span class="dv">75</span>), <span class="at">sdlog =</span> <span class="fl">0.25</span>)</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>bw<span class="sc">$</span>bw.category <span class="ot">&lt;-</span> <span class="fu">cut</span>(bw<span class="sc">$</span>bw,</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="fu">quantile</span>(bw<span class="sc">$</span>bw, <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.33</span>, <span class="fl">0.66</span>, <span class="dv">1</span>)),</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>), <span class="st">"body weight"</span>),</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">include.lowest =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">merge</span>(data, bw)</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data[<span class="fu">order</span>(data<span class="sc">$</span>ID, data<span class="sc">$</span>time), ]</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate drug concentrations as a function of body weight.</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>conc <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">/</span> (data<span class="sc">$</span>bw<span class="sc">^</span><span class="fl">1.0</span>) <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.085</span> <span class="sc">*</span> data<span class="sc">$</span>time) <span class="sc">*</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rlnorm</span>(<span class="fu">nrow</span>(data), <span class="at">sdlog =</span> <span class="fl">0.25</span>) <span class="sc">+</span> <span class="co"># res. error</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>  (data<span class="sc">$</span>ID <span class="sc">-</span> <span class="fu">mean</span>(data<span class="sc">$</span>ID)) <span class="sc">/</span> <span class="fu">mean</span>(data<span class="sc">$</span>ID) <span class="sc">/</span> <span class="dv">4</span> <span class="co"># r. eff</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualisation.</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ID <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>ID)</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> conc, <span class="at">group =</span> ID, <span class="at">color =</span> ID)) <span class="sc">+</span></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="at">by =</span> <span class="dv">4</span>))</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"time [h]"</span>) <span class="sc">+</span> </span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"drug concentration [ng/mL]"</span>)</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">facet_grid</span>(bw.category <span class="sc">~</span> .)</span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"1x3"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> <span class="fu">facet_grid</span>(. <span class="sc">~</span> bw.category)</span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Add space to the rhs of the first figure for better separation in the cowplot.</span></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>gg[[<span class="st">"3x1"</span>]] <span class="ot">&lt;-</span> gg[[<span class="st">"3x1"</span>]] <span class="sc">+</span> </span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">4</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="st">"lines"</span>))</span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Both figures into a single output figure.</span></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg[[<span class="dv">1</span>]], gg[[<span class="dv">2</span>]], <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="dv">2</span>))</span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![레이아웃 선택이 패널 간 비교 용이성을 결정하는 방식을 보여주는 선 도표. 왼쪽 패널은 세로로 쌓인 3개의 플롯을 보여줍니다. 오른쪽 패널은 가로로 배열된 동일한 3개의 플롯을 보여줍니다.](images/principles-layout.png)</span><span class="ot">{fig-alt="레이아웃 선택이 패널 간 비교 용이성을 결정하는 방식을 보여주는 선 도표. 왼쪽 패널은 세로로 쌓인 3개의 플롯을 보여줍니다. 오른쪽 패널은 가로로 배열된 동일한 3개의 플롯을 보여줍니다."}</span><span class="co">](images/principles-layout.png)</span></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### 종횡비 (Aspect ratio)</span></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>디스플레이에서 데이터에 대한 시각적 인식은 x축과 y축의 선택에 의존해서는 안 됩니다. 많은 경우 정사각형 그림은 시각적 편향을 방지합니다. 특히 두 축이 어떤 사건 전후의 측정, 관측 데이터 대 모델 예측 값, 또는 더 일반적으로 동일한 단위(kg 또는 m 등)와 같은 공통점을 공유하는 경우 정사각형 그림을 고려해야 합니다. 일반적으로 1:1 종횡비(x 방향과 y 방향에서 1 측정 단위의 물리적 길이)가 좋은 기본값입니다. 그림이 x축과 y축에 대해 동일한 범위를 갖는 경우 1:1 종횡비는 정사각형 그림을 산출합니다.</span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>**예:** 아래 세 패널은 모두 동일한 데이터를 보여주며, 모델 적합도(예측 값 대 관측 값)에 대한 판단을 가능하게 하는 것을 목표로 합니다. 늘어난 x축, 늘어난 y축, 그리고 동일한 축 제한을 가진 1:1 종횡비 간의 시각적 인식 차이에 주목하십시오.</span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a><span class="co"># Observed vs predicted (any data with comparable x and y will do).</span></span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Data set.</span></span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a><span class="co"># Old Faithful Geyser (Yellowstone) data set with eruption duration</span></span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a><span class="co">#   and waiting time to the next eruption (both in minutes).</span></span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> faithful<span class="sc">$</span>eruptions,</span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> faithful<span class="sc">$</span>waiting</span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression model fit.</span></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data)</span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition of predicted values to the data set.</span></span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit)</span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a><span class="co"># Range of y and y predicted combined.</span></span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">range</span>(<span class="fu">unlist</span>(data[<span class="fu">c</span>(<span class="st">"y"</span>, <span class="st">"pred"</span>)]))</span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting.</span></span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> pred, <span class="at">y =</span> y))</span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding the line of identity, y = x</span></span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a><span class="co"># (note: plotting it first will add points on top).</span></span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>)</span>
+<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding points, removing grey background.</span></span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding regression fit (local smoother, loess) of y~x.</span></span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding axis labels.</span></span>
+<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"predicted"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"observed"</span>)</span>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a><span class="co"># Aspect ratios are commonly not fixed but adapted to figure size.</span></span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a><span class="co">#   With dynamic displays, the point of different perception</span></span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a><span class="co">#   might not be obvious depending on the figure/screen size.</span></span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a><span class="co">#   To make that point independent of figure height and width,</span></span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a><span class="co">#     the aspect ratio is fixed in this example.</span></span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">coord_fixed</span>(<span class="at">ratio=</span><span class="fl">0.5</span>)</span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the figure and fix the aspect ratio to 2, i.e., </span></span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a><span class="co">#   one pixel in x corresponds to 2 pixels in y.</span></span>
+<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a>gg2 <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">coord_fixed</span>(<span class="at">ratio=</span><span class="dv">2</span>)</span>
+<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the aspect ratio to 1 (1 unit in x and y </span></span>
+<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a><span class="co">#   corresponds to the same number of pixels) and </span></span>
+<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a><span class="co">#   setting axis limits to be identical.</span></span>
+<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a>gg3 <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">coord_fixed</span>(<span class="at">ratio=</span><span class="dv">1</span>, <span class="at">xlim=</span>r, <span class="at">ylim=</span>r)</span>
+<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a><span class="co"># Cow (column-wise) plot, combine all figures into one.</span></span>
+<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg, gg2, gg3, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![모델 적합도에 대한 시각적 인식이 종횡비에 의해 어떻게 영향을 받을 수 있는지 보여주는 산점도.](images/principles-aspect-ratio.png)</span><span class="ot">{fig-alt="모델 적합도에 대한 시각적 인식이 종횡비에 의해 어떻게 영향을 받을 수 있는지 보여주는 산점도. 왼쪽 패널은 늘어난 x축을 가지고, 가운데 패널은 늘어난 y축을 가지며, 오른쪽 패널은 동일한 축 제한을 가진 1:1 종횡비를 가집니다."}</span><span class="co">](images/principles-aspect-ratio.png)</span></span>
+<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a><span class="fu">### 선 (Lines)</span></span>
+<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a>선은 순서, 즉 시퀀스를 도입합니다. 순서가 없는 경우 데이터는 선으로 서로 연결되어서는 안 됩니다. 다른 선 유형이 고유한 순서를 가진 다른 그룹을 나타내는 경우, 선택한 선 스타일도 순서를 갖는 것이 좋습니다(예: 가장 낮은 그룹에서 가장 높은 그룹으로 갈수록 선 두께, 대시 밀도 또는 색상의 어두움이 증가함).</span>
+<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### 점 (Points)</span></span>
+<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a>점 기호는 시각화가 데이터를 의미 있는 방식으로 표시하도록 선택해야 합니다. 수천 개의 데이터 포인트를 표시해야 하는 경우, 겹치는 채워진 기호보다 열린 원이나 더 작은 채워진 기호가 더 좋습니다. 데이터가 이산적이고 관측치가 겹치는 경우 더 나은 시각화를 위해 데이터를 부드럽게 지터링(jittering)하는 것을 고려하십시오.</span>
+<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a><span class="fu">### 색상 (Colours)</span></span>
+<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a>색상은 서로 다른 그룹을 식별하는 데 도움을 주는 것과 같은 목적을 수행해야 합니다. 순수 장식용 색상은 권장하지 않습니다. Tufte는 "색상은 자연스러운 시각적 계층 구조를 가지고 있기 때문에 다양한 회색 음영이 색상보다 다양한 양을 더 잘 보여준다"며 "회색 음영은 데이터 측정에 쉽게 이해되는 순서를 제공한다. 이것이 핵심이다"라고 지적했습니다 <span class="co">[</span><span class="ot">@Tufte2001, p. 154</span><span class="co">]</span>.</span>
+<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a><span class="fu">### 축 (Axes)</span></span>
+<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 원점 및 제한</span></span>
+<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a>다른 범위를 선택할 타당한 이유가 없는 한 축 범위는 일반적으로 0에서 시작해야 합니다. 데이터에 음수 값이 포함되지 않은 경우 축은 음수 값으로 뻗어 나가서는 안 되며 특히 음수 값에 눈금을 표시해서는 안 됩니다.</span>
+<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>상대적인 변화나 비율이 표시되는 경우 해당 축은 로그여야 하며(예: 1/4이 기준점 1까지의 거리가 4와 같도록), 변화 없음 지점을 중심으로 대칭이어야 합니다. 변화 없음 지점에 보조선을 그으면 해석이 쉬워집니다. 축 눈금과 보조 회색 선은 값을 읽는 것을 용이하게 하여 보는 사람이 잘못된 선형 보간을 하는 것을 방지합니다. 축 눈금 레이블은 비율을 나타내야 합니다(예: 0.25 대신 "1/4").</span>
+<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a>x와 y로 표시되는 데이터가 비교 가능한 경우 축 제한은 동일해야 하며 그림은 정사각형이어야 하므로 x 방향과 y 방향의 거리가 일관되어야 합니다.</span>
+<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>**예:** 아래 그림은 의도적인 축 제한 선택(여기서는 y축 제한)이 인식에 큰 차이를 만들 수 있으며, 따라서 독자의 해석에도 큰 차이를 만들 수 있음을 보여줍니다. 두 패널의 유일한 차이점은 y축 범위입니다.</span>
+<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">factor</span>(</span>
+<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"Our product"</span>, <span class="st">"Competitor"</span>),</span>
+<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Our product"</span>, <span class="st">"Competitor"</span>)</span>
+<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">220</span>, <span class="dv">210</span>)</span>
+<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a><span class="co"># Original plot</span></span>
+<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data) <span class="sc">+</span></span>
+<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(</span>
+<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> value),</span>
+<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"black"</span></span>
+<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">220</span>, <span class="at">by =</span> <span class="dv">20</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb8-212"><a href="#cb8-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-213"><a href="#cb8-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Offset the y axis</span></span>
+<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a>offset <span class="ot">&lt;-</span> <span class="dv">208</span></span>
+<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data) <span class="sc">+</span></span>
+<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(</span>
+<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> value <span class="sc">-</span> offset),</span>
+<span id="cb8-219"><a href="#cb8-219" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb8-220"><a href="#cb8-220" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"black"</span></span>
+<span id="cb8-221"><a href="#cb8-221" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-222"><a href="#cb8-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb8-223"><a href="#cb8-223" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">14</span>, <span class="at">by =</span> <span class="dv">2</span>),</span>
+<span id="cb8-224"><a href="#cb8-224" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">0</span> <span class="sc">+</span> offset, <span class="dv">14</span> <span class="sc">+</span> offset, <span class="at">by =</span> <span class="dv">2</span>),</span>
+<span id="cb8-225"><a href="#cb8-225" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb8-226"><a href="#cb8-226" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-227"><a href="#cb8-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb8-228"><a href="#cb8-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-230"><a href="#cb8-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-231"><a href="#cb8-231" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![축 제한의 선택에 의해 시각적 인상이 어떻게 좌우될 수 있는지 보여주는 막대 차트.](images/principles-axes.png)</span><span class="ot">{fig-alt="축 제한의 선택에 의해 시각적 인상이 어떻게 좌우될 수 있는지 보여주는 막대 차트. 왼쪽 패널 차트는 y축이 0에서 시작하고, 오른쪽 패널은 y축이 208에서 시작하여 두 막대 사이의 작은 10단위 차이를 과장이 있습니다."}</span><span class="co">](images/principles-axes.png)</span></span>
+<span id="cb8-232"><a href="#cb8-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-233"><a href="#cb8-233" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 선형 및 로그 축</span></span>
+<span id="cb8-234"><a href="#cb8-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-235"><a href="#cb8-235" aria-hidden="true" tabindex="-1"></a>**예:** 어떤 변수 y가 다른 변수 x에 따라(참조 또는 기준 측정과 비교하여) 변하는지 알고 싶다고 가정해 봅시다. 예를 들어, 혈압이 치료에 따라 변하는가?</span>
+<span id="cb8-236"><a href="#cb8-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-237"><a href="#cb8-237" aria-hidden="true" tabindex="-1"></a>아래 그림은 참조(기준) 측정과 비교하여 평균적으로 변화가 없는 데이터(빨간색 가로선, 상단 두 패널)를 보여줍니다. 데이터의 약 절반은 변화 없음 지점 아래에 있고 나머지 절반은 위에 있습니다. 그러나 선형 축을 사용하는 왼쪽 상단 패널에서는 이것이 쉽게 드러나지 않으며 공간은 참조선에서 멀어지는 수직 방향(위아래 모두)으로 비대칭적으로 할당됩니다. 로그 축을 사용하는 오른쪽 상단 패널에서는 참조선 주위에 데이터 포인트가 비교적 고르게 퍼져 있는 것을 명확하게 볼 수 있습니다. 아래쪽 행에서는 동일한 데이터가 다시 선형 및 로그 축을 사용하여 히스토그램 형식으로 표시됩니다.</span>
+<span id="cb8-238"><a href="#cb8-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-241"><a href="#cb8-241" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-242"><a href="#cb8-242" aria-hidden="true" tabindex="-1"></a><span class="co"># Naïve plot of y vs x. If there is no change (on average),</span></span>
+<span id="cb8-243"><a href="#cb8-243" aria-hidden="true" tabindex="-1"></a><span class="co"># half the data are below the line of no change.</span></span>
+<span id="cb8-244"><a href="#cb8-244" aria-hidden="true" tabindex="-1"></a><span class="co"># Asymmetric view, and it depends on y/x or x/y.</span></span>
+<span id="cb8-245"><a href="#cb8-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-246"><a href="#cb8-246" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">33838</span>)</span>
+<span id="cb8-247"><a href="#cb8-247" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-248"><a href="#cb8-248" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rlnorm</span>(<span class="dv">200</span>, <span class="dv">2</span>, <span class="fl">0.2</span>),</span>
+<span id="cb8-249"><a href="#cb8-249" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rlnorm</span>(<span class="dv">200</span>, <span class="fl">0.2</span>, <span class="fl">0.75</span>)</span>
+<span id="cb8-250"><a href="#cb8-250" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-251"><a href="#cb8-251" aria-hidden="true" tabindex="-1"></a><span class="co"># Add an outlier manually.</span></span>
+<span id="cb8-252"><a href="#cb8-252" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbind</span>(x, <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">quantile</span>(x<span class="sc">$</span>x, <span class="fl">0.8</span>), <span class="at">y =</span> <span class="fu">max</span>(x<span class="sc">$</span>y) <span class="sc">*</span> <span class="fl">1.5</span>))</span>
+<span id="cb8-253"><a href="#cb8-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-254"><a href="#cb8-254" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-255"><a href="#cb8-255" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting.</span></span>
+<span id="cb8-256"><a href="#cb8-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-257"><a href="#cb8-257" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-258"><a href="#cb8-258" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of y vs x.</span></span>
+<span id="cb8-259"><a href="#cb8-259" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb8-260"><a href="#cb8-260" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-261"><a href="#cb8-261" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>)</span>
+<span id="cb8-263"><a href="#cb8-263" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x-variable"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Fold-change"</span>)</span>
+<span id="cb8-264"><a href="#cb8-264" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a><span class="co"># Logarithmic axes, symmetric range (!):</span></span>
+<span id="cb8-266"><a href="#cb8-266" aria-hidden="true" tabindex="-1"></a>xbr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">10</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">5</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span>
+<span id="cb8-267"><a href="#cb8-267" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb8-268"><a href="#cb8-268" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> xbr, <span class="at">trans =</span> <span class="st">"log10"</span>,</span>
+<span id="cb8-269"><a href="#cb8-269" aria-hidden="true" tabindex="-1"></a>  <span class="at">limits =</span> <span class="fu">max</span>(<span class="fu">abs</span>(x<span class="sc">$</span>y))<span class="sc">^</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb8-270"><a href="#cb8-270" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-271"><a href="#cb8-271" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb8-272"><a href="#cb8-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-273"><a href="#cb8-273" aria-hidden="true" tabindex="-1"></a><span class="co"># Second axis:</span></span>
+<span id="cb8-274"><a href="#cb8-274" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb8-275"><a href="#cb8-275" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> xbr,</span>
+<span id="cb8-276"><a href="#cb8-276" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">paste</span>(<span class="dv">100</span> <span class="sc">*</span> xbr, <span class="st">"%"</span>, <span class="at">sep =</span> <span class="st">""</span>),</span>
+<span id="cb8-277"><a href="#cb8-277" aria-hidden="true" tabindex="-1"></a>  <span class="at">trans =</span> <span class="st">"log10"</span>,</span>
+<span id="cb8-278"><a href="#cb8-278" aria-hidden="true" tabindex="-1"></a>  <span class="at">limits =</span> <span class="fu">max</span>(<span class="fu">abs</span>(x<span class="sc">$</span>y))<span class="sc">^</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb8-279"><a href="#cb8-279" aria-hidden="true" tabindex="-1"></a>  <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(</span>
+<span id="cb8-280"><a href="#cb8-280" aria-hidden="true" tabindex="-1"></a>    <span class="at">trans =</span> <span class="sc">~</span> . <span class="sc">*</span> <span class="dv">1</span>, <span class="at">breaks =</span> xbr,</span>
+<span id="cb8-281"><a href="#cb8-281" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">ifelse</span>(xbr <span class="sc">&lt;</span> <span class="dv">1</span>, <span class="fu">paste</span>(<span class="st">"1/"</span>, <span class="dv">1</span> <span class="sc">/</span> xbr, <span class="at">sep =</span> <span class="st">""</span>), xbr)</span>
+<span id="cb8-282"><a href="#cb8-282" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-283"><a href="#cb8-283" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-284"><a href="#cb8-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-285"><a href="#cb8-285" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-286"><a href="#cb8-286" aria-hidden="true" tabindex="-1"></a><span class="co"># Univariate distribution (histogram).</span></span>
+<span id="cb8-287"><a href="#cb8-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-288"><a href="#cb8-288" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> y)) <span class="sc">+</span></span>
+<span id="cb8-289"><a href="#cb8-289" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb8-290"><a href="#cb8-290" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Fold-change"</span>)</span>
+<span id="cb8-291"><a href="#cb8-291" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">fill =</span> <span class="st">"gray"</span>)</span>
+<span id="cb8-292"><a href="#cb8-292" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb8-293"><a href="#cb8-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-294"><a href="#cb8-294" aria-hidden="true" tabindex="-1"></a><span class="co"># Symmetric range, log scale.</span></span>
+<span id="cb8-295"><a href="#cb8-295" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb8-296"><a href="#cb8-296" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> xbr,</span>
+<span id="cb8-297"><a href="#cb8-297" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">ifelse</span>(xbr <span class="sc">&lt;</span> <span class="dv">1</span>, <span class="fu">paste</span>(<span class="st">"1/"</span>, <span class="dv">1</span> <span class="sc">/</span> xbr), xbr),</span>
+<span id="cb8-298"><a href="#cb8-298" aria-hidden="true" tabindex="-1"></a>  <span class="at">trans =</span> <span class="st">"log10"</span>,</span>
+<span id="cb8-299"><a href="#cb8-299" aria-hidden="true" tabindex="-1"></a>  <span class="at">limits =</span> <span class="fu">max</span>(<span class="fu">abs</span>(x<span class="sc">$</span>x))<span class="sc">^</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb8-300"><a href="#cb8-300" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-301"><a href="#cb8-301" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb8-302"><a href="#cb8-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-303"><a href="#cb8-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-304"><a href="#cb8-304" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![선형 축(왼쪽)에서 로그 축(오른쪽)으로 전환하면 일부 기준 측정에 대한 값의 변화를 명확히 하는 데 도움이 됩니다.](images/principles-log.png)</span><span class="ot">{fig-alt="선형 축에서 로그 축으로 전환하면 일부 기준 측정에 대한 값의 변화를 명확히 하는 데 도움이 됩니다. 맨 윗줄에는 두 개의 산점도가 있으며 기준 값은 빨간색 가로 키라인으로 표시되어 있습니다. 왼쪽 상단 패널은 선형 축에 있는 반면, 오른쪽 상단 패널은 로그 축에 있으며 기준선 주위에 데이터 포인트가 고르게 퍼져 있음을 더 명확하게 보여줍니다. 맨 아랫줄에는 동일한 데이터가 히스토그램 형식으로 표시되어 있으며, 다시 왼쪽에는 선형 축, 오른쪽에는 로그 축이 있습니다."}</span><span class="co">](images/principles-log.png)</span></span>
+<span id="cb8-305"><a href="#cb8-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-306"><a href="#cb8-306" aria-hidden="true" tabindex="-1"></a><span class="fu">### 기호 (Symbols)</span></span>
+<span id="cb8-307"><a href="#cb8-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-308"><a href="#cb8-308" aria-hidden="true" tabindex="-1"></a>기호는 직관적이어야 합니다(예: 긍정적 결과는 "+", 부정적 결과는 "--", 중립적 결과는 "O"). 이상적인 경우, 기호는 범례를 한 번만 봐도 이후 시각화에 집중할 수 있어야 합니다.</span>
+<span id="cb8-309"><a href="#cb8-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-310"><a href="#cb8-310" aria-hidden="true" tabindex="-1"></a>삼각형, 원, 사각형과 같은 기호는 직관적인 함축적 의미를 갖지 않습니다. 그러나 데이터에 순서가 있는 경우 기호의 순서(예: 꼭짓점 수(원, 대시, 삼각형, 사각형, 오각형 등))에 반영될 수 있습니다.</span>
+<span id="cb8-311"><a href="#cb8-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-312"><a href="#cb8-312" aria-hidden="true" tabindex="-1"></a><span class="fu">### 범례 (Legends)</span></span>
+<span id="cb8-313"><a href="#cb8-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-314"><a href="#cb8-314" aria-hidden="true" tabindex="-1"></a>범례는 너무 많은 주의를 끌어서는 안 되며 데이터를 가려서는 절대 안 됩니다. 그림의 여백에 배치하거나 그림 아래에 작은 텍스트로 캡처할 수 있습니다.</span>
+<span id="cb8-315"><a href="#cb8-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-316"><a href="#cb8-316" aria-hidden="true" tabindex="-1"></a>범례 항목이 단일 객체(예: 그룹당 한 줄)를 참조하는 경우 범례를 해당 객체 옆에 배치하면 독자가 범례 항목을 디스플레이 객체에 매핑하기가 더 쉬워집니다.</span>
+<span id="cb8-317"><a href="#cb8-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-318"><a href="#cb8-318" aria-hidden="true" tabindex="-1"></a>**예:** 아래 그림은 해당 데이터 옆에 그림에 직접 범례를 추가하여 가독성을 높일 수 있음을 보여줍니다. 레이블은 겹치지 않아야 하며 레이블 위치는 데이터에 따라 조정이 필요할 수 있습니다.</span>
+<span id="cb8-319"><a href="#cb8-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-322"><a href="#cb8-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-323"><a href="#cb8-323" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-324"><a href="#cb8-324" aria-hidden="true" tabindex="-1"></a><span class="co"># EU stock markets, year and indices DAX, SMI, CAC, and FTSE.</span></span>
+<span id="cb8-325"><a href="#cb8-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-326"><a href="#cb8-326" aria-hidden="true" tabindex="-1"></a><span class="co"># Store graphics into a list.</span></span>
+<span id="cb8-327"><a href="#cb8-327" aria-hidden="true" tabindex="-1"></a>gg.list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb8-328"><a href="#cb8-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data set (reformat EuStockMarkets that comes with R).</span></span>
+<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> EuStockMarkets</span>
+<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> <span class="fu">as.vector</span>(<span class="fu">time</span>(x)),</span>
+<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a>  <span class="at">index =</span> <span class="fu">rep</span>(<span class="fu">colnames</span>(x), <span class="fu">rep</span>(<span class="fu">nrow</span>(x), <span class="fu">ncol</span>(x))),</span>
+<span id="cb8-334"><a href="#cb8-334" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">as.vector</span>(x),</span>
+<span id="cb8-335"><a href="#cb8-335" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-336"><a href="#cb8-336" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-337"><a href="#cb8-337" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>index2 <span class="ot">&lt;-</span> df<span class="sc">$</span>index <span class="co"># For use with labels later.</span></span>
+<span id="cb8-338"><a href="#cb8-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-339"><a href="#cb8-339" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-340"><a href="#cb8-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-341"><a href="#cb8-341" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard layout and legend.</span></span>
+<span id="cb8-342"><a href="#cb8-342" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> value, <span class="at">group =</span> index, <span class="at">color =</span> index, <span class="at">label =</span> index2))</span>
+<span id="cb8-343"><a href="#cb8-343" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb8-344"><a href="#cb8-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-345"><a href="#cb8-345" aria-hidden="true" tabindex="-1"></a><span class="co"># Nicer axis tick mark settings.</span></span>
+<span id="cb8-346"><a href="#cb8-346" aria-hidden="true" tabindex="-1"></a>ax <span class="ot">&lt;-</span> <span class="fu">pretty</span>(df<span class="sc">$</span>time, <span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb8-347"><a href="#cb8-347" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">range</span>(ax), <span class="at">breaks =</span> ax)</span>
+<span id="cb8-348"><a href="#cb8-348" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"year"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Stock index"</span>)</span>
+<span id="cb8-349"><a href="#cb8-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-350"><a href="#cb8-350" aria-hidden="true" tabindex="-1"></a>gg.list[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> gg</span>
+<span id="cb8-351"><a href="#cb8-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-352"><a href="#cb8-352" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the last element of each time series for x,y of the label.</span></span>
+<span id="cb8-353"><a href="#cb8-353" aria-hidden="true" tabindex="-1"></a><span class="co"># Use that the last element is the first element of the reversed order,</span></span>
+<span id="cb8-354"><a href="#cb8-354" aria-hidden="true" tabindex="-1"></a><span class="co">#   and extract the first element per index by using !duplicated.</span></span>
+<span id="cb8-355"><a href="#cb8-355" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> df[<span class="fu">rev</span>(<span class="fu">order</span>(df<span class="sc">$</span>time)), ] <span class="co"># descending in time.</span></span>
+<span id="cb8-356"><a href="#cb8-356" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> y[<span class="sc">!</span><span class="fu">duplicated</span>(y<span class="sc">$</span>index), ] <span class="co"># first entry per index</span></span>
+<span id="cb8-357"><a href="#cb8-357" aria-hidden="true" tabindex="-1"></a>y<span class="sc">$</span>index2 <span class="ot">&lt;-</span> y<span class="sc">$</span>index <span class="co"># Create a copy that contains formatted strings.</span></span>
+<span id="cb8-358"><a href="#cb8-358" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(y<span class="sc">$</span>index2)[<span class="fu">levels</span>(y<span class="sc">$</span>index2) <span class="sc">==</span> <span class="st">"FTSE"</span>] <span class="ot">&lt;-</span> <span class="st">"</span><span class="sc">\n\n</span><span class="st">FTSE"</span></span>
+<span id="cb8-359"><a href="#cb8-359" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a newline to separate FTSE from DAX.</span></span>
+<span id="cb8-360"><a href="#cb8-360" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that the factor level is modified, not the data.</span></span>
+<span id="cb8-361"><a href="#cb8-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-362"><a href="#cb8-362" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the legend, move labels into figure.</span></span>
+<span id="cb8-363"><a href="#cb8-363" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> y, <span class="at">hjust =</span> <span class="st">"left"</span>, <span class="at">nudge_x =</span> <span class="fl">0.1</span>)</span>
+<span id="cb8-364"><a href="#cb8-364" aria-hidden="true" tabindex="-1"></a><span class="co"># aes as before, nudge adds space on the lhs.</span></span>
+<span id="cb8-365"><a href="#cb8-365" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb8-366"><a href="#cb8-366" aria-hidden="true" tabindex="-1"></a>gg.list[[<span class="dv">2</span>]] <span class="ot">&lt;-</span> gg</span>
+<span id="cb8-367"><a href="#cb8-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-368"><a href="#cb8-368" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-369"><a href="#cb8-369" aria-hidden="true" tabindex="-1"></a><span class="co"># Both figures into a single output figure.</span></span>
+<span id="cb8-370"><a href="#cb8-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-371"><a href="#cb8-371" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb8-372"><a href="#cb8-372" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg.list[[<span class="dv">1</span>]], gg.list[[<span class="dv">2</span>]], <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="fl">2.25</span>, <span class="dv">2</span>))</span>
+<span id="cb8-373"><a href="#cb8-373" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-374"><a href="#cb8-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-375"><a href="#cb8-375" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![그림 요소에 직접 레이블을 지정하면 가독성이 어떻게 향상될 수 있는지 보여주는 선 도표.](images/principles-legends.png)</span><span class="ot">{fig-alt="그림 요소에 직접 레이블을 지정하면 가독성이 어떻게 향상될 수 있는지 보여주는 선 도표. 왼쪽 패널은 다른 색상의 선을 식별하기 위해 범례를 사용합니다. 오른쪽 패널은 각 줄 끝에 그림 내 레이블을 포함합니다."}</span><span class="co">](images/principles-legends.png)</span></span>
+<span id="cb8-376"><a href="#cb8-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-377"><a href="#cb8-377" aria-hidden="true" tabindex="-1"></a><span class="fu">### 방향 (Orientation)</span></span>
+<span id="cb8-378"><a href="#cb8-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-379"><a href="#cb8-379" aria-hidden="true" tabindex="-1"></a>예를 들어 막대 그래프로 시각화해야 할 순서가 데이터에 있는 경우, 데이터를 가로 막대로 표시하고 위에서 아래로(가장 높은 값에서 가장 낮은 값으로) 정렬하는 것이 세로 막대를 왼쪽에서 오른쪽 방향으로 표시하는 것보다 더 직관적입니다<span class="co">[</span><span class="ot">@Few2004, p. 182</span><span class="co">]</span>. 이에 대한 일반적인 예외는 데이터를 시간 단위에 따라 정렬해야 하는 경우입니다. 시간은 종종 과거에서 현재, 미래로, 왼쪽에서 오른쪽으로 흐르는 것으로 시각적으로 해석됩니다.</span>
+<span id="cb8-380"><a href="#cb8-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-381"><a href="#cb8-381" aria-hidden="true" tabindex="-1"></a>예를 들어 상자 그림의 경우 가로 방향이 세로 방향보다 더 정확한 시각적 비교가 가능합니다. 아래 그림에서 볼 수 있듯이 인간의 눈은 가상의 수평선보다 가상의 수직선을 따라가기가 더 쉽기 때문입니다. 또한 왼쪽 패널에서는 긴 x축 레이블이 겹쳐서 읽을 수 없지만 오른쪽 패널에서는 가로 방향으로 읽을 수 있습니다.</span>
+<span id="cb8-382"><a href="#cb8-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-385"><a href="#cb8-385" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-386"><a href="#cb8-386" aria-hidden="true" tabindex="-1"></a><span class="co"># Store figures into a list.</span></span>
+<span id="cb8-387"><a href="#cb8-387" aria-hidden="true" tabindex="-1"></a>gg.list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb8-388"><a href="#cb8-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-389"><a href="#cb8-389" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-390"><a href="#cb8-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-391"><a href="#cb8-391" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> mpg <span class="co"># miles per gallon data set.</span></span>
+<span id="cb8-392"><a href="#cb8-392" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>car <span class="ot">&lt;-</span> <span class="fu">paste</span>(x<span class="sc">$</span>manufacturer, x<span class="sc">$</span>model)</span>
+<span id="cb8-393"><a href="#cb8-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-394"><a href="#cb8-394" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> car, <span class="at">y =</span> hwy, <span class="at">group =</span> car))</span>
+<span id="cb8-395"><a href="#cb8-395" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Miles per gallon (highway)"</span>)</span>
+<span id="cb8-396"><a href="#cb8-396" aria-hidden="true" tabindex="-1"></a>gg.list[[<span class="st">"vertical orientation"</span>]] <span class="ot">&lt;-</span> gg</span>
+<span id="cb8-397"><a href="#cb8-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-398"><a href="#cb8-398" aria-hidden="true" tabindex="-1"></a>gg.list[[<span class="st">"horizontal orientation"</span>]] <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">coord_flip</span>()</span>
+<span id="cb8-399"><a href="#cb8-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-400"><a href="#cb8-400" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-401"><a href="#cb8-401" aria-hidden="true" tabindex="-1"></a><span class="co"># Both figures into a single output figure.</span></span>
+<span id="cb8-402"><a href="#cb8-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-403"><a href="#cb8-403" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb8-404"><a href="#cb8-404" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg.list[[<span class="dv">1</span>]], gg.list[[<span class="dv">2</span>]], <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">2.5</span>))</span>
+<span id="cb8-405"><a href="#cb8-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-406"><a href="#cb8-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-407"><a href="#cb8-407" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![방향을 변경하면 레이블의 가독성과 데이터의 시각적 해석을 모두 개선할 수 있습니다.](images/principles-orientation.png)</span><span class="ot">{fig-alt="방향을 변경하면 레이블의 가독성과 데이터의 시각적 해석을 모두 개선할 수 있습니다. 두 개의 상자 그림이 표시됩니다. 왼쪽에는 상자 그림이 세로형입니다: 축 레이블이 겹치고 시각적 값 비교가 오른쪽보다 어렵습니다. 오른쪽에는 상자 그림이 가로형이고 축 레이블이 이제 분리되어 읽을 수 있습니다."}</span><span class="co">](images/principles-orientation.png)</span></span>
+<span id="cb8-408"><a href="#cb8-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-409"><a href="#cb8-409" aria-hidden="true" tabindex="-1"></a><span class="fu">### 보조 요소 (Auxiliary elements)</span></span>
+<span id="cb8-410"><a href="#cb8-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-411"><a href="#cb8-411" aria-hidden="true" tabindex="-1"></a>일반적으로 데이터 시각화를 디자인할 때 우리는 Tufte가 "차트 정크(chart junk)"라고 부르는 것, 즉 디스플레이의 정보를 추가하거나 향상시키지 않는 차트의 모든 요소를 경계해야 합니다. 물론 데이터가 쇼의 주인공이므로 가장 많은 공간을 차지해야 합니다. 한편, 모든 추가 요소(선, 색상, 기호 등)는 데이터 해석에 대한 기여도를 평가해야 합니다. 기여도가 없다면 제거할 수 있습니다. 데이터 시각화에서 불필요한 요소의 전형적인 예는 각각 x축과 y축이 있는 5개의 패널(하위 그림 또는 패싯)이 있는 그림입니다. 다른 패널에 표시된 데이터의 효율적인 비교를 허용하기 위해 패널이 모두 한 행에 정렬된 경우 단일 y축이면 충분합니다. 이렇게 하면 데이터를 위한 더 많은 공간이 생기고 부가적인 이점으로 y축 제한과 데이터 위치가 동기화됩니다.</span>
+<span id="cb8-412"><a href="#cb8-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-413"><a href="#cb8-413" aria-hidden="true" tabindex="-1"></a>도움이 되는 추가 요소에는 관련 지점의 선이 포함될 수 있습니다. 예를 들어 x=0(예: 시간 0의 경우)의 수직선, y=0(예: 변화 없음 지점을 나타내기 위해)의 수평선 또는 대각선(y=x, 예: x와 y 사이에 차이가 없음을 나타내기 위해)이 있습니다. 보조 요소를 데이터 아래에 그릴지 아니면 위에 그릴지 고려하십시오(일반적으로 그래픽 요소 추가 순서에 따라 다름).</span>
+<span id="cb8-414"><a href="#cb8-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-415"><a href="#cb8-415" aria-hidden="true" tabindex="-1"></a>로컬 산점도 평활화(loess, lowess, polynomial)는 제한된 모델 가정으로 관계를 식별하는 데 특히 도움이 될 수 있습니다. 신뢰 대역(점별 신뢰 구간)은 관련된 경우에만 표시해야 합니다.</span>
+<span id="cb8-416"><a href="#cb8-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-417"><a href="#cb8-417" aria-hidden="true" tabindex="-1"></a>**예:** 아래 그림은 시작점(시간 0)에서 시간이 지남에 따른 변화를 보여줍니다. 일반 그림(왼쪽 패널)은 독자가 y축 레이블을 읽어 변화 없음 지점(y=0)을 식별해야 합니다. 변화 없음 지점을 나타내는 선을 추가(가운데 패널)하면 읽기가 더 쉬워지고, 변화 없음 지점을 중심으로 대칭인 축 범위를 선택(오른쪽 패널)하면 증가(위쪽 변경)는 시각화의 위쪽 절반에, 감소(아래쪽 변경)는 아래쪽 절반에 할당되어 읽기와 해석이 더 직관적이 됩니다.</span>
+<span id="cb8-418"><a href="#cb8-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-421"><a href="#cb8-421" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-422"><a href="#cb8-422" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3</span></span>
+<span id="cb8-423"><a href="#cb8-423" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for data set generation.</span></span>
+<span id="cb8-424"><a href="#cb8-424" aria-hidden="true" tabindex="-1"></a>make.data <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb8-425"><a href="#cb8-425" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">24</span>),</span>
+<span id="cb8-426"><a href="#cb8-426" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.2</span> <span class="sc">*</span> x) <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.21</span> <span class="sc">*</span> x),</span>
+<span id="cb8-427"><a href="#cb8-427" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fl">0.25</span>, <span class="co"># std dev of y</span></span>
+<span id="cb8-428"><a href="#cb8-428" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">4384590</span>,</span>
+<span id="cb8-429"><a href="#cb8-429" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">50</span>) {</span>
+<span id="cb8-430"><a href="#cb8-430" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Setting the random number seed for reproducibility.</span></span>
+<span id="cb8-431"><a href="#cb8-431" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb8-432"><a href="#cb8-432" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Creation of x- and y-variables.</span></span>
+<span id="cb8-433"><a href="#cb8-433" aria-hidden="true" tabindex="-1"></a>  x2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(x, n)</span>
+<span id="cb8-434"><a href="#cb8-434" aria-hidden="true" tabindex="-1"></a>  y2 <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb8-435"><a href="#cb8-435" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb8-436"><a href="#cb8-436" aria-hidden="true" tabindex="-1"></a>    y2 <span class="ot">&lt;-</span> <span class="fu">c</span>(y2, y <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">*</span> (n <span class="sc">/</span> <span class="dv">4</span> <span class="sc">-</span> i)) <span class="sc">+</span> <span class="fu">rlnorm</span>(<span class="fu">length</span>(y), <span class="at">sd =</span> sd))</span>
+<span id="cb8-437"><a href="#cb8-437" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-438"><a href="#cb8-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-439"><a href="#cb8-439" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Creation of an identifier for each profile.</span></span>
+<span id="cb8-440"><a href="#cb8-440" aria-hidden="true" tabindex="-1"></a>  ID <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="fu">rep</span>(<span class="fu">length</span>(y), n)))</span>
+<span id="cb8-441"><a href="#cb8-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-442"><a href="#cb8-442" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Composition of the data set.</span></span>
+<span id="cb8-443"><a href="#cb8-443" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">PD =</span> <span class="dv">100</span> <span class="sc">*</span> y2, <span class="at">time =</span> x, <span class="at">ID =</span> ID)</span>
+<span id="cb8-444"><a href="#cb8-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-445"><a href="#cb8-445" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Addition of a baseline variable.</span></span>
+<span id="cb8-446"><a href="#cb8-446" aria-hidden="true" tabindex="-1"></a>  BL <span class="ot">&lt;-</span> df[df<span class="sc">$</span>time <span class="sc">==</span> <span class="dv">0</span>, <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"PD"</span>)]</span>
+<span id="cb8-447"><a href="#cb8-447" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(BL) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"BL"</span>)</span>
+<span id="cb8-448"><a href="#cb8-448" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, BL)</span>
+<span id="cb8-449"><a href="#cb8-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-450"><a href="#cb8-450" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Addition of change from baseline.</span></span>
+<span id="cb8-451"><a href="#cb8-451" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>Change <span class="ot">&lt;-</span> df<span class="sc">$</span>PD <span class="sc">-</span> df<span class="sc">$</span>BL</span>
+<span id="cb8-452"><a href="#cb8-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-453"><a href="#cb8-453" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Definition of treatment.</span></span>
+<span id="cb8-454"><a href="#cb8-454" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>trt <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>BL <span class="sc">&gt;</span> <span class="fu">mean</span>(df<span class="sc">$</span>BL), <span class="st">"active"</span>, <span class="st">" placebo"</span>)</span>
+<span id="cb8-455"><a href="#cb8-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-456"><a href="#cb8-456" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb8-457"><a href="#cb8-457" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-458"><a href="#cb8-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-459"><a href="#cb8-459" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the data.</span></span>
+<span id="cb8-460"><a href="#cb8-460" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">make.data</span>()</span>
+<span id="cb8-461"><a href="#cb8-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-462"><a href="#cb8-462" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb8-463"><a href="#cb8-463" aria-hidden="true" tabindex="-1"></a><span class="co"># Figures.</span></span>
+<span id="cb8-464"><a href="#cb8-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-465"><a href="#cb8-465" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-466"><a href="#cb8-466" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> Change, <span class="at">group =</span> ID, <span class="at">color =</span> ID))</span>
+<span id="cb8-467"><a href="#cb8-467" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb8-468"><a href="#cb8-468" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Time [h]"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Change from baseline"</span>)</span>
+<span id="cb8-469"><a href="#cb8-469" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb8-470"><a href="#cb8-470" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">facet_grid</span>(. <span class="sc">~</span> trt)</span>
+<span id="cb8-471"><a href="#cb8-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-472"><a href="#cb8-472" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition of an auxiliary line at y=0.</span></span>
+<span id="cb8-473"><a href="#cb8-473" aria-hidden="true" tabindex="-1"></a>gg2 <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>)</span>
+<span id="cb8-474"><a href="#cb8-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-475"><a href="#cb8-475" aria-hidden="true" tabindex="-1"></a><span class="co"># Symmetric y-axis limits.</span></span>
+<span id="cb8-476"><a href="#cb8-476" aria-hidden="true" tabindex="-1"></a>gg3 <span class="ot">&lt;-</span> gg2 <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">max</span>(<span class="fu">abs</span>(x<span class="sc">$</span>Change)))</span>
+<span id="cb8-477"><a href="#cb8-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-478"><a href="#cb8-478" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging all plots into one figure.</span></span>
+<span id="cb8-479"><a href="#cb8-479" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb8-480"><a href="#cb8-480" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(gg, gg2, gg3, <span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb8-481"><a href="#cb8-481" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-482"><a href="#cb8-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-483"><a href="#cb8-483" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![변화 없음 지점을 나타내는 선과 같은 요소를 추가하면 가독성을 향상시킬 수 있습니다.](images/principles-auxiliary.png)</span><span class="ot">{fig-alt="변화 없음 지점을 나타내는 선과 같은 요소를 추가하면 가독성을 향상시킬 수 있습니다. 이 3부 그림에서 왼쪽 패널은 시간 경과에 따른 변화를 보여주는 선 도표입니다. 가운데 플롯에서는 y축의 기준선(0)을 표시하기 위해 키라인이 추가되었으며, 오른쪽 패널에서는 축 범위가 이 키라인을 중심으로 대칭으로 설정되었습니다."}</span><span class="co">](images/principles-auxiliary.png)</span></span>
+<span id="cb8-484"><a href="#cb8-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-485"><a href="#cb8-485" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3차원 차트</span></span>
+<span id="cb8-486"><a href="#cb8-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-487"><a href="#cb8-487" aria-hidden="true" tabindex="-1"></a>3차원 데이터 디스플레이는 몇 가지 면에서 눈에 띌 수 있지만, 이러한 프레젠테이션으로 정확한 읽기와 해석은 쉽지 않습니다.</span>
+<span id="cb8-488"><a href="#cb8-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-489"><a href="#cb8-489" aria-hidden="true" tabindex="-1"></a>**예:** 아래 그림의 왼쪽 패널은 단일 숫자 10을 3D 막대 차트로 보여줍니다. 값의 올바른 식별은 빨간색 "X"로 표시됩니다. 막대의 높이는 보는 위치에서 뒤쪽 벽(축)에 투영되어야 합니다. 오른쪽 패널은 기울어진 표면에 막대를 배치하여 높이 차이가 없을 때 높이 차이가 있는 것처럼 인식되도록 합니다. 각 행과 열에 동일한 4개의 숫자 10, 20, 30, 40이 표시됩니다.</span>
+<span id="cb8-490"><a href="#cb8-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-491"><a href="#cb8-491" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![3D 차트에서 데이터 값을 읽는 것은 어렵습니다.](images/principles-3d.png)</span><span class="ot">{fig-alt="3D 차트에서 데이터 값을 읽는 것은 어렵습니다. 이 그림의 왼쪽 패널은 단일 숫자 10을 3D 막대 차트로 보여줍니다. 값의 올바른 식별은 이미지 뒤쪽 벽의 빨간색 X로 표시됩니다. 오른쪽 패널은 기울어진 표면에 막대를 배치하여 높이 차이가 없을 때 높이 차이가 있는 것처럼 인식되도록 합니다. 여러 행과 열에 걸쳐 동일한 4개의 숫자 10, 20, 30, 40이 있습니다."}</span><span class="co">](images/principles-3d.png)</span></span>
+<span id="cb8-492"><a href="#cb8-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-493"><a href="#cb8-493" aria-hidden="true" tabindex="-1"></a><span class="fu">## 표의 요소</span></span>
+<span id="cb8-494"><a href="#cb8-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-495"><a href="#cb8-495" aria-hidden="true" tabindex="-1"></a>표는 그래픽과 마찬가지로 효율적인 시각화 수단이 될 수 있습니다. 또한 제대로 제시되지 않으면 오해를 불러일으키거나 읽기 번거로울 수도 있습니다. 특히 데이터 포인트 수가 적거나 정확한 숫자를 보여줘야 하는 경우 표를 고려해야 합니다. 예를 들어 가독성과 해석을 돕기 위해 그래픽 위에 숫자를 겹쳐서 표시해야 하는 경우(예: 막대 차트의 막대 끝에 숫자 추가), 그래픽을 완전히 생략하고 숫자를 표로 표시하는 것을 고려할 수 있습니다.</span>
+<span id="cb8-496"><a href="#cb8-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-497"><a href="#cb8-497" aria-hidden="true" tabindex="-1"></a>표에는 그래픽과 마찬가지로 디자인 요소가 있습니다. 그중 일부는 다음에서 논의됩니다.</span>
+<span id="cb8-498"><a href="#cb8-498" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-499"><a href="#cb8-499" aria-hidden="true" tabindex="-1"></a><span class="fu">### 레이아웃</span></span>
+<span id="cb8-500"><a href="#cb8-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-501"><a href="#cb8-501" aria-hidden="true" tabindex="-1"></a>표의 한 가지 디자인 요소는 레이아웃, 즉 행과 열입니다. 레이아웃은 독자를 염두에 두고 적극적으로 선택해야 합니다. 일반적으로 수평보다 수직으로 숫자를 비교하는 것이 더 쉽습니다.</span>
+<span id="cb8-502"><a href="#cb8-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-503"><a href="#cb8-503" aria-hidden="true" tabindex="-1"></a><span class="fu">### 자릿수</span></span>
+<span id="cb8-504"><a href="#cb8-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-505"><a href="#cb8-505" aria-hidden="true" tabindex="-1"></a>자릿수는 표의 행이나 열(즉, 동일한 변수) 내에서는 일관되어야 하지만 변수 간에는 다를 수 있습니다(예: 표에 작은 숫자와 큰 숫자가 포함된 경우). 불필요한 정밀도는 피해야 하며 자릿수를 줄이면 읽기와 비교가 용이해질 수 있습니다.</span>
+<span id="cb8-506"><a href="#cb8-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-507"><a href="#cb8-507" aria-hidden="true" tabindex="-1"></a><span class="fu">### 정렬</span></span>
+<span id="cb8-508"><a href="#cb8-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-509"><a href="#cb8-509" aria-hidden="true" tabindex="-1"></a>큰 숫자와 작은 숫자를 쉽게 식별할 수 있도록 숫자는 오른쪽 정렬되어야 합니다. 이렇게 하면 큰 숫자가 말 그대로 튀어나오게 됩니다.</span>
+<span id="cb8-510"><a href="#cb8-510" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-511"><a href="#cb8-511" aria-hidden="true" tabindex="-1"></a><span class="fu">### 표 셀의 여러 숫자</span></span>
+<span id="cb8-512"><a href="#cb8-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-513"><a href="#cb8-513" aria-hidden="true" tabindex="-1"></a>표 셀에 단일 값 이상의 값(예: 평균 및 신뢰 구간)이 포함된 경우 데이터를 쉽게 읽을 수 있도록 표시하는 더 나은 방법이 있는지 고려해야 합니다. 옵션에는 숫자를 여러 표 셀, 행 또는 열로 나누거나 덜 중요한 숫자의 글꼴 크기를 줄이는 것(예: 평균이 신뢰 구간보다 더 중요할 수 있음)이 있습니다.</span>
+<span id="cb8-514"><a href="#cb8-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-515"><a href="#cb8-515" aria-hidden="true" tabindex="-1"></a><span class="fu">### 방향</span></span>
+<span id="cb8-516"><a href="#cb8-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-517"><a href="#cb8-517" aria-hidden="true" tabindex="-1"></a>피할 수 없는 경우가 아니라면 가로 방향은 권장하지 않습니다. 일부를 읽기 위해 문서를 회전하는 것은 인쇄물이든 화면이든 독자에게 번거로운 일입니다. 표를 둘로 나누는 것은 가로 방향을 피하는 해결책이 될 수 있지만, 표를 나누는 것이 중요한 비교를 더 어렵게 만드는지 고려해야 합니다.</span>
+<span id="cb8-518"><a href="#cb8-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-519"><a href="#cb8-519" aria-hidden="true" tabindex="-1"></a><span class="fu">### 글꼴 및 색상</span></span>
+<span id="cb8-520"><a href="#cb8-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-521"><a href="#cb8-521" aria-hidden="true" tabindex="-1"></a>특정 값을 강조하는 것과 같은 목적에 부합한다면 다른 글꼴과 색상을 사용할 수 있습니다. 장식 목적으로 다른 글꼴이나 색상을 사용하는 것은 권장하지 않습니다.</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright © 2024 Andreas Krause, Nicola Rennie and the <a href="https://rss.org.uk/">Royal Statistical Society</a>. <a href="https://doi.org/10.5281/zenodo.10600718"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.10600718.svg" class="img-fluid"></a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/royal-statistical-society/datavisguide/edit/main/docs/principles.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/royal-statistical-society/datavisguide/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

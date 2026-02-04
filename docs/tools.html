@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>RSS 간행물을 위한 차트 스타일링 – Best Practices for Data Visualisation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../docs/references.html" rel="next">
+<link href="../docs/styling.html" rel="prev">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d0872397c0adf65e6feb0eabd53c4188.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5VHDJ5PKRW"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-5VHDJ5PKRW', { 'anonymize_ip': true});
+</script>
+
+
+<meta property="og:title" content="RSS 간행물을 위한 차트 스타일링 – Best Practices for Data Visualisation">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://royal-statistical-society.github.io/datavisguide/docs/images/tools-blue-base.png">
+<meta property="og:site_name" content="Best Practices for Data Visualisation">
+<meta property="og:image:alt" content="사용자가 지정한 빨간색, 파란색, 진한 녹색 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트.">
+<meta property="og:image:height" content="500">
+<meta property="og:image:width" content="750">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/RSS_logo_colour.png" alt="RSS logo" class="navbar-logo light-content">
+    <img src="../images/RSS_logo_colour.png" alt="RSS logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Best Practices for Data Visualisation</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-royal-statistical-society-publications" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Royal Statistical Society publications</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-royal-statistical-society-publications">    
+        <li>
+    <a class="dropdown-item" href="https://academic.oup.com/jrsssa">
+ <span class="dropdown-text">Journal of the Royal Statistical Society</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://realworlddatascience.net/">
+ <span class="dropdown-text">Real World Data Science</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://academic.oup.com/jrssig">
+ <span class="dropdown-text">Significance Magazine</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/royal-statistical-society/datavisguide"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/index.html">The guide</a></li><li class="breadcrumb-item"><a href="../docs/tools.html">Styling for RSS publications</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../howto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How to use this guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../docs/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The guide</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/why-visualise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Why we visualise data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/principles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principles and elements of visualisations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/choosing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Choosing a visualisation type</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/styling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Styling for accessibility</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/tools.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Styling for RSS publications</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References and resources</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the authors</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ts-and-cs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terms and conditions</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#다양한-도구를-사용한-차트-스타일링" id="toc-다양한-도구를-사용한-차트-스타일링" class="nav-link active" data-scroll-target="#다양한-도구를-사용한-차트-스타일링">다양한 도구를 사용한 차트 스타일링</a>
+  <ul class="collapse">
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#julia" id="toc-julia" class="nav-link" data-scroll-target="#julia">Julia</a></li>
+  </ul></li>
+  <li><a href="#publication-specifications" id="toc-publication-specifications" class="nav-link" data-scroll-target="#publication-specifications">출판 사양</a>
+  <ul class="collapse">
+  <li><a href="#significance-magazine" id="toc-significance-magazine" class="nav-link" data-scroll-target="#significance-magazine"><em>Significance</em> Magazine</a></li>
+  <li><a href="#journal-of-the-royal-statistical-society-series-a" id="toc-journal-of-the-royal-statistical-society-series-a" class="nav-link" data-scroll-target="#journal-of-the-royal-statistical-society-series-a">Journal of the Royal Statistical Society Series A</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/royal-statistical-society/datavisguide/edit/main/docs/tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/royal-statistical-society/datavisguide/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tools.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/index.html">The guide</a></li><li class="breadcrumb-item"><a href="../docs/tools.html">Styling for RSS publications</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">RSS 간행물을 위한 차트 스타일링</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="다양한-도구를-사용한-차트-스타일링" class="level2">
+<h2 class="anchored" data-anchor-id="다양한-도구를-사용한-차트-스타일링">다양한 도구를 사용한 차트 스타일링</h2>
+<p>이 섹션에서는 데이터 시각화를 만드는 데 사용되는 가장 일반적인 소프트웨어 유형으로 구축된 차트의 스타일을 변경하는 방법에 대한 기술적 세부 정보를 설명합니다.</p>
+<section id="r" class="level3">
+<h3 class="anchored" data-anchor-id="r">R</h3>
+<p>R<span class="citation" data-cites="RTeam2021">(<a href="#ref-RTeam2021" role="doc-biblioref">R Core Team 2021</a>)</span>은 통계 컴퓨팅 및 그래픽에 널리 사용되는 프로그래밍 언어입니다. R에는 데이터 시각화를 만드는 데 사용할 수 있는 패키지가 많으며 여기서는 모두 다루지 않습니다. 대신 가장 일반적인 방법인 내장 base R 그래픽과 {ggplot2} 패키지<span class="citation" data-cites="Wickham2016a">(<a href="#ref-Wickham2016a" role="doc-biblioref">Wickham 2016</a>)</span>를 다룹니다.</p>
+<p>저자가 이 문서의 지침에 맞게 차트 스타일을 지정하는 데 도움을 주기 위해 R 패키지 <a href="https://github.com/nrennie/RSSthemes">{RSSthemes}</a>를 개발했습니다. 여기에 패키지 사용 예제를 포함하지만 독자들은 업데이트 사항에 대해 GitHub 리포지토리를 확인하는 것이 좋습니다.</p>
+<p>다음 명령어를 사용하여 CRAN에서 {RSSthemes} 패키지를 설치할 수 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"RSSthemes"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>GitHub에서 개발 버전을 설치할 수 있습니다(CRAN 버전만큼 안정적일 것이라고 약속할 수는 없지만):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"nrennie/RSSthemes"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>그런 다음 다음을 사용하여 패키지를 로드할 수 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSSthemes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="base-r" class="level4">
+<h4 class="anchored" data-anchor-id="base-r">Base R</h4>
+<p>R에는 사용자가 추가 패키지를 설치하지 않고도 광범위한 데이터 시각화를 만들 수 있는 내장 그래픽 기능이 있습니다. <a href="https://www.jumpingrivers.com/blog/styling-base-r-graphics/">Jumping Rivers의 이 블로그 게시물</a> <span class="citation" data-cites="JR2018">(<a href="#ref-JR2018" role="doc-biblioref"><span>“Styling Base r Graphics”</span> 2018</a>)</span>은 base R에서 만든 그래픽 스타일을 지정하는 방법에 대한 지침을 제공합니다.</p>
+<p><strong>예</strong>: base R에서 막대 차트 색상 변경.</p>
+<p>모든 막대, 선, 점 등이 같은 색상을 가져야 하는 경우 <code>col</code> 인수를 RSS 색상 중 하나로 설정할 수 있습니다. 옵션은 <code>signif_red</code>, <code>signif_blue</code>, <code>signif_green</code>, <code>signif_orange</code>, 또는 <code>signif_yellow</code>입니다.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(mtcars<span class="sc">$</span>gear), <span class="at">col =</span> signif_blue)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-blue-base.png" class="img-fluid figure-img" alt="사용자가 지정한 빨간색, 파란색, 진한 녹색 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."></p>
+<figcaption><em>Significance</em> 파란색으로 칠해진 막대가 있는 막대 차트.</figcaption>
+</figure>
+</div>
+<p>플롯의 색상이 데이터의 값을 기반으로 하는 경우 <code>palette()</code> 함수를 사용하여 기본 색상을 설정할 수 있습니다. {RSSthemes} 내에서 <code>set_rss_palette()</code> 함수는 사용되는 기본 색상을 변경합니다. 현재 {RSSthemes}에는 세 가지 팔레트를 사용할 수 있지만 앞으로 더 추가할 예정입니다. 옵션은 <code>signif_qual</code>, <code>signif_div</code>, 또는 <code>signif_seq</code>입니다.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_rss_palette</span>(<span class="st">"signif_qual"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">3</span>, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-qual-base.png" class="img-fluid figure-img" alt="signif_qual의 색상을 보여주는 산점도"></p>
+<figcaption><code>signif_qual</code> 팔레트의 색상을 보여주는 산점도.</figcaption>
+</figure>
+</div>
+<p><code>palette("default")</code>를 실행하여 원래 base R 색상으로 재설정합니다.</p>
+<p><strong>예</strong>: base R 플롯의 스타일링 변경.</p>
+<p><code>plot()</code> 함수(및 <code>barplot()</code>, <code>hist()</code>와 같은 관련 base R 플로팅 함수) 내에는 플롯의 비 데이터 요소가 어떻게 보일지 제어하는 인수가 있습니다. 예를 들어 <code>family</code> 인수는 사용되는 글꼴 패밀리를 변경합니다. <code>par()</code> 함수를 호출하여 이러한 인수 중 상당수를 전역적으로 설정할 수도 있습니다. {RSSthemes} 내에는 모든 base R 플롯에 대한 텍스트 정렬 및 글꼴을 포함하여 몇 가지 기본 옵션을 설정하는 <code>set_signif_par()</code> 함수가 있습니다. <code>abline()</code> 함수를 사용하여 참조선을 추가하는 것도 좋습니다.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_signif_par</span>()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">3</span>, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"나의 Significance 플롯"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="st">"출처: 데이터 소스"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">v=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col =</span> <span class="st">"lightgrey"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-theme-base.png" class="img-fluid figure-img" alt="Significance par 함수에 의해 구현된 base R 스타일링을 보여주는 산점도."></p>
+<figcaption><code>set_signif_par()</code>에 의해 구현된 base R 스타일링을 보여주는 산점도.</figcaption>
+</figure>
+</div>
+</section>
+<section id="ggplot2" class="level4">
+<h4 class="anchored" data-anchor-id="ggplot2">{ggplot2}</h4>
+<p>{ggplot2}는 데이터 시각화를 만들기 위해 특별히 고안된 {tidyverse} 프레임워크 내의 R 패키지입니다. <a href="https://ggplot2.tidyverse.org/">패키지 문서</a>는 다양한 유형의 차트를 만드는 방법에 대한 지침을 제공합니다. {ggplot2} 시각화의 <a href="https://ggplot2-book.org/scale-colour.html">색상 변경</a> 및 <a href="https://ggplot2-book.org/polishing.html">스타일 변경</a>에 대한 조언은 Hadley Wickham의 책 <a href="https://ggplot2-book.org/index.html">ggplot2: Elegant Graphics for Data Analysis</a> <span class="citation" data-cites="Wickham2016a">(<a href="#ref-Wickham2016a" role="doc-biblioref">Wickham 2016</a>)</span>에서 찾을 수 있습니다.</p>
+<p>{ggplot2}로 플롯을 만들기 위해 기본 데이터 세트를 설정해 보겠습니다.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>예</strong>: {ggplot2}에서 매핑되지 않은 색상 변경.</p>
+<p>{ggplot2}에서 <code>colour</code>(또는 <code>color</code>) 인수는 요소의 윤곽선을 나타내는 색상을 변경하고, <code>fill</code>은 요소를 채우는 색상을 변경합니다. 모든 막대, 선 또는 점이 동일한 색상을 가져야 하는 경우 <code>fill</code> 또는 <code>colour</code> 인수를 RSS 색상 중 하나로 설정할 수 있습니다. 옵션은 <code>signif_red</code>, <code>signif_blue</code>, <code>signif_green</code>, <code>signif_orange</code>, 또는 <code>signif_yellow</code>입니다.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> signif_yellow)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-yellow-bars.png" class="img-fluid figure-img" alt="노란색으로 칠해진 막대가 있는 막대 차트"></p>
+<figcaption>노란색으로 칠해진 막대가 있는 막대 차트.</figcaption>
+</figure>
+</div>
+<p><strong>예</strong>: {ggplot2}에서 이산 색상 스케일 사용.</p>
+<p>정성적(이산) 데이터로 작업할 때 사용할 수 있는 가장 좋은 팔레트는 <code>"signif_qual"</code>입니다. 이 팔레트에는 현재 4가지 색상만 포함되어 있습니다.</p>
+<ul>
+<li>이산 (채우기) 스케일: <code>scale_fill_rss_d()</code></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> x)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_rss_d</span>(<span class="at">palette =</span> <span class="st">"signif_qual"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-qual-bars.png" class="img-fluid figure-img" alt="signif_qual의 색상이 있는 막대 차트"></p>
+<figcaption><code>signif_qual</code>의 색상이 있는 막대 차트.</figcaption>
+</figure>
+</div>
+<ul>
+<li>이산 (색상) 스케일: <code>scale_colour_rss_d()</code></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">colour =</span> x)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_rss_d</span>(<span class="at">palette =</span> <span class="st">"signif_qual"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-qual-points.png" class="img-fluid figure-img" alt="signif_qual의 색상이 있는 산점도"></p>
+<figcaption><code>signif_qual</code>의 색상이 있는 산점도.</figcaption>
+</figure>
+</div>
+<p><strong>예</strong>: {ggplot2}에서 연속 색상 스케일 사용.</p>
+<p>연속 색상 스케일은 순차적이거나 발산적일 수 있습니다. 순차적(연속) 데이터로 작업할 때 사용할 수 있는 가장 좋은 팔레트는 <code>"signif_seq"</code>입니다.</p>
+<ul>
+<li>연속 (채우기) 스케일: <code>scale_fill_rss_c()</code></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> y)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_rss_c</span>(<span class="at">palette =</span> <span class="st">"signif_seq"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-seq-bars.png" class="img-fluid figure-img" alt="순차적 녹색 색상 팔레트를 보여주는 막대 차트"></p>
+<figcaption>순차적 녹색 색상 팔레트를 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+<ul>
+<li>연속 (색상) 스케일: <code>scale_colour_rss_c()</code></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">colour =</span> y)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_rss_c</span>(<span class="at">palette =</span> <span class="st">"signif_seq"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-seq-points.png" class="img-fluid figure-img" alt="순차적 녹색 색상 팔레트를 보여주는 산점도"></p>
+<figcaption>순차적 녹색 색상 팔레트를 보여주는 산점도.</figcaption>
+</figure>
+</div>
+<p>발산적(연속) 데이터로 작업할 때 사용할 수 있는 가장 좋은 팔레트는 <code>"signif_div"</code>입니다.</p>
+<ul>
+<li>연속 (채우기) 스케일: <code>scale_fill_rss_c()</code></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> y)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_rss_c</span>(<span class="at">palette =</span> <span class="st">"signif_div"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-div-bars.png" class="img-fluid figure-img" alt="발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트"></p>
+<figcaption>발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+<p>발산적 스케일을 다른 값을 중심으로 맞추려면 {RSSthemes}에서 미리 정의된 색상을 {ggplot2}의 <code>scale_fill_gradient2()</code>에 전달할 수도 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> y)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> signif_red, <span class="at">high =</span> signif_blue, <span class="at">midpoint =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-div-bars-grad.png" class="img-fluid figure-img" alt="2를 중심으로 하는 발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트"></p>
+<figcaption>2를 중심으로 하는 발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+<p><strong>예</strong>: {ggplot2}에서 테마 변경.</p>
+<p>{ggplot2} 내에서 테마를 사용하면 플롯의 비 데이터 요소 모양을 제어할 수 있습니다. 기본 테마는 <code>theme_grey()</code>로 배경이 더 어둡습니다. <code>theme_minimal()</code> 또는 <code>theme_bw()</code>로 만든 것과 같은 흰색 또는 투명 배경을 사용하는 것이 좋습니다.</p>
+<p>또한 {RSSthemes}의 <code>theme_significance()</code>를 사용하여 플롯 글꼴을 <em>Significance</em> 매거진에서 사용하는 글꼴 중 하나로 추가 설정할 수 있습니다. 글꼴이 올바르게 로드되도록 <code>library(RSSthemes)</code>를 이미 실행했는지 확인하십시오.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> x)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"나의 Significance 플롯"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"차트에서 일어나는 일을 설명하는 긴 문장."</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"출처: 데이터 소스 이름"</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_rss_d</span>(<span class="at">palette =</span> <span class="st">"signif_qual"</span>) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_significance</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-theme.png" class="img-fluid figure-img" alt="사용자 정의 테마를 보여주는 녹색, 노란색, 파란색, 주황색으로 칠해진 막대가 있는 막대 차트"></p>
+<figcaption><code>theme_significance()</code>로 스타일이 지정된 막대 차트.</figcaption>
+</figure>
+</div>
+<p>{RSSthemes} 패키지에서 버그를 발견하거나 예상대로 작동하지 않는 것이 있으면 <a href="https://github.com/nrennie/RSSthemes/issues">GitHub 이슈</a>를 제출해 주십시오.</p>
+</section>
+<section id="r에서-이미지-내보내기" class="level4">
+<h4 class="anchored" data-anchor-id="r에서-이미지-내보내기">R에서 이미지 내보내기</h4>
+<p>R에서 이미지를 내보내고 저장하는 방법에는 여러 가지가 있습니다. RStudio의 <em>Plots</em> 창에서 <em>Export</em> 버튼을 사용해도 출판 품질 그래픽으로 충분한 고해상도 이미지가 생성되지 않는 경우가 많습니다. 인쇄물로 출판되는 이미지의 최소 이미지 해상도는 300 dpi입니다. {ggplot2}의 <code>ggsave()</code>를 사용하는 경우 300 dpi가 기본 해상도입니다. 크기를 조정하기 쉽도록 PDF 또는 EPS 파일 형식으로 이미지를 저장하는 것이 좋습니다.</p>
+<p>다양한 RSS 간행물에 대한 특정 이미지 크기에 대한 추가 정보는 <a href="#publication-specifications">출판 사양</a> 섹션에 나와 있습니다.</p>
+<p>예를 들어 <em>Significance</em> 매거진의 Features 섹션에 대한 플롯을 만들고 플롯이 3개 열 중 2개 열에 걸치도록 하려는 경우를 가정해 보겠습니다. 아래 <a href="#features-section">표</a>에서 이미지 너비는 124mm여야 합니다. <code>pdf()</code> 함수를 사용하여 이미지를 저장하려면 너비와 높이가 인치 단위여야 합니다(124mm ~ 4.88인치). 2:1 종횡비를 원하는 경우 높이를 너비의 절반으로 만듭니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="at">file =</span> <span class="st">"significance-feature-plot.pdf"</span>, <span class="co"># 파일 이름</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">4.88</span>,                           <span class="co"># 플롯 너비</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fl">4.88</span> <span class="sc">/</span> <span class="dv">2</span>                       <span class="co"># 플롯 높이</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="python" class="level3">
+<h3 class="anchored" data-anchor-id="python">Python</h3>
+<p><a href="https://www.python.org/">Python</a>은 범용 프로그래밍 언어로, 데이터 분석 및 시각화 기능을 제공하는 라이브러리를 사용할 수 있습니다.</p>
+<p>RSS 색상 팔레트 구현을 위한 진행 중인 Python 패키지는 <a href="https://github.com/nrennie/RSSpythemes">github.com/nrennie/RSSpythemes</a>에서 찾을 수 있습니다. 이 Python 패키지 개발에 기여하고 싶다면 GitHub에서 <a href="https://github.com/nrennie/RSSpythemes/issues">이슈를 제기</a>하거나 풀 리퀘스트를 생성해 주십시오.</p>
+<section id="matplotlib" class="level4">
+<h4 class="anchored" data-anchor-id="matplotlib">Matplotlib</h4>
+<p><a href="https://matplotlib.org/">Matplotlib</a>은 정적, 애니메이션 및 대화형 데이터 시각화를 생성하기 위한 Python 라이브러리입니다.</p>
+<p><strong>예</strong>: matplotlib에서 막대 차트 색상 변경.</p>
+<p><code>color</code> 인수를 사용하여 matplotlib에서 차트 요소의 색상을 변경할 수 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.bar(x_vals, y_vals, color <span class="op">=</span> <span class="st">"#009cc4"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-blue-py.png" class="img-fluid figure-img" alt="파란색 사용자 지정 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."></p>
+<figcaption><em>Significance</em> 파란색으로 칠해진 막대가 있는 막대 차트.</figcaption>
+</figure>
+</div>
+<p>플롯의 색상이 데이터의 값을 기반으로 하는 경우 색상 목록을 제공하여 사용되는 색상을 변경할 수도 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define colour palette</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>signif_qual <span class="op">=</span> [<span class="st">'#3fa535'</span>, <span class="st">'#f4c100'</span>, <span class="st">'#009cc4'</span>, <span class="st">'#f07d00'</span>]</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plt.bar(x_vals, y_vals, label <span class="op">=</span> x_vals, color <span class="op">=</span> signif_qual)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-qual-py.png" class="img-fluid figure-img" alt="signif_qual의 색상을 보여주는 막대 차트"></p>
+<figcaption><code>signif_qual</code> 팔레트의 색상을 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+<p><strong>예</strong>: matplotlib에서 글꼴 패밀리 변경.</p>
+<p><code>rcParams</code>를 사용하여 플롯의 모든 요소에 사용되는 글꼴을 변경할 수 있습니다. 사용자 지정 글꼴 패밀리를 설정할 때 좋은 방법은 일반 글꼴 패밀리(예: sans serif)를 백업으로 추가하는 것입니다. 시스템에 미리 설치되지 않은 글꼴을 사용하는 경우 <code>font_manager</code>를 사용하여 글꼴을 로드할 수 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> font_manager</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>font_manager.fontManager.addfont(<span class="st">"SourceSans3-Regular.ttf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>개별 요소에 대해 <code>fontdic</code>을 사용하여 다른 글꼴 패밀리, 두께 또는 크기를 지정할 수 있습니다.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define fonts</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> rcParams</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>rcParams[<span class="st">'font.family'</span>] <span class="op">=</span> [<span class="st">'Source Sans 3'</span>, <span class="st">'sans-serif'</span>]</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>plt.bar(x_vals, y_vals, color <span class="op">=</span> signif_qual, label <span class="op">=</span> x_vals)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'나의 Significance 플롯'</span>, fontdict <span class="op">=</span> {<span class="st">'fontsize'</span>:<span class="dv">14</span>}, loc <span class="op">=</span> <span class="st">'left'</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># add grid lines lines</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>ax.xaxis.grid(color <span class="op">=</span> <span class="st">'lightgrey'</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>ax.yaxis.grid(color <span class="op">=</span> <span class="st">'lightgrey'</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># add legend below plot</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>ax.legend(ncol <span class="op">=</span> <span class="dv">4</span>, loc <span class="op">=</span> <span class="st">'lower center'</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>          bbox_to_anchor <span class="op">=</span> (<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.15</span>), frameon <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-py-font.png" class="img-fluid figure-img" alt="Source Sans 글꼴 사용을 보여주는 막대 차트."></p>
+<figcaption>Source Sans 글꼴 사용을 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="julia" class="level3">
+<h3 class="anchored" data-anchor-id="julia">Julia</h3>
+<p><a href="https://www.julialang.org/">Julia</a>는 고성능에 초점을 맞추면서도 쉬운 구문을 제공하는 범용 프로그래밍 언어입니다. Julia에는 데이터 분석 및 시각화 기능을 제공하는 라이브러리가 있습니다.</p>
+<section id="makie" class="level4">
+<h4 class="anchored" data-anchor-id="makie">Makie</h4>
+<p><a href="https://makie.org">Makie</a>는 <a href="https://www.julialang.org/">Julia</a> 프로그래밍 언어를 위한 고수준 플로팅 라이브러리입니다.</p>
+<p><strong>예</strong>: Makie에서 막대 차트 색상 변경.</p>
+<p>Makie에서는 <code>color</code> 인수를 사용하여 차트 요소의 색상을 변경하고 <code>axis</code> 내부의 <code>xticks</code> 인수를 사용하여 사용자 지정 눈금 레이블을 변경할 수 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">CairoMakie</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>]</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>]</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(x_vals, y_vals, color<span class="op">=</span><span class="st">"#009cc4"</span>, axis<span class="op">=</span>(; xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-blue-jl.png" class="img-fluid figure-img" alt="파란색 사용자 지정 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."></p>
+<figcaption><em>Significance</em> 파란색으로 칠해진 막대가 있는 막대 차트.</figcaption>
+</figure>
+</div>
+<p>플롯의 색상이 데이터의 값을 기반으로 하는 경우 색상 목록을 제공하여 사용되는 색상을 변경할 수도 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define colour palette</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>signif_qual <span class="op">=</span> [<span class="st">"#3fa535"</span>, <span class="st">"#f4c100"</span>, <span class="st">"#009cc4"</span>, <span class="st">"#f07d00"</span>]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(x_vals, y_vals, color<span class="op">=</span>signif_qual, axis<span class="op">=</span>(; xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-qual-jl.png" class="img-fluid figure-img" alt="signif_qual의 색상을 보여주는 막대 차트"></p>
+<figcaption><code>signif_qual</code> 팔레트의 색상을 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+<p><code>axis</code> 인수를 사용하여 사용자 지정 레이블과 제목을 지정할 수 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define labels and title</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> <span class="st">"나의 Significance 플롯"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>subtitle <span class="op">=</span> <span class="st">"차트에서 일어나는 일을 설명하는 긴 문장."</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">"X축 레이블"</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> <span class="st">"Y축 레이블"</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(x_vals,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        y_vals;</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>signif_qual,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        axis<span class="op">=</span>(;</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>            xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>]),</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span>title,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>            subtitle<span class="op">=</span>subtitle,</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>            titlealign<span class="op">=:</span>left,</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>            xlabel<span class="op">=</span>xlabel,</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>            ylabel<span class="op">=</span>ylabel,</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-jl-labels.png" class="img-fluid figure-img" alt="사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트."></p>
+<figcaption>사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+</section>
+<section id="algebraofgraphics" class="level4">
+<h4 class="anchored" data-anchor-id="algebraofgraphics">AlgebraOfGraphics</h4>
+<p><a href="https://aog.makie.org">AlgebraOfGraphics</a>는 플로팅 백엔드로 <a href="https://makie.org">Makie</a>를 사용하는 <a href="https://www.julialang.org/">Julia</a> 프로그래밍 언어를 위한 고수준 플로팅 라이브러리입니다. 그래픽 문법을 따르며 R의 <code>ggplot2</code>와 유사합니다.</p>
+<p><strong>예</strong>: AlgebraOfGraphics에서 막대 차트 색상 변경.</p>
+<p>Makie에서는 <code>color</code> 인수를 사용하여 차트 요소의 색상을 변경하고 <code>axis</code> 내부의 <code>xticks</code> 인수를 사용하여 사용자 지정 눈금 레이블을 변경할 수 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">AlgebraOfGraphics</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">CairoMakie</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>]</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>]</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">data</span>((; x_vals, y_vals)) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>x_vals, <span class="op">:</span>y_vals) <span class="op">*</span> <span class="fu">visual</span>(BarPlot; color<span class="op">=</span><span class="st">"#009cc4"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(plt; axis<span class="op">=</span>(; xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-blue-jl.png" class="img-fluid figure-img" alt="파란색 사용자 지정 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."></p>
+<figcaption><em>Significance</em> 파란색으로 칠해진 막대가 있는 막대 차트.</figcaption>
+</figure>
+</div>
+<p>플롯의 색상이 데이터의 값을 기반으로 하는 경우 색상 목록을 제공하여 사용되는 색상을 변경할 수도 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define colour palette</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>signif_qual <span class="op">=</span> [<span class="st">"#3fa535"</span>, <span class="st">"#f4c100"</span>, <span class="st">"#009cc4"</span>, <span class="st">"#f07d00"</span>]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">data</span>((; x_vals, y_vals)) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>x_vals, <span class="op">:</span>y_vals) <span class="op">*</span> <span class="fu">visual</span>(BarPlot; color<span class="op">=</span>signif_qual)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(plt; axis<span class="op">=</span>(; xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-qual-jl.png" class="img-fluid figure-img" alt="signif_qual의 색상을 보여주는 막대 차트"></p>
+<figcaption><code>signif_qual</code> 팔레트의 색상을 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+<p><code>axis</code> 인수를 사용하여 사용자 지정 레이블과 제목을 지정할 수 있습니다:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define labels and title</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> <span class="st">"나의 Significance 플롯"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>subtitle <span class="op">=</span> <span class="st">"차트에서 일어나는 일을 설명하는 긴 문장."</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">"X축 레이블"</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> <span class="st">"Y축 레이블"</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(plt;</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>     axis<span class="op">=</span>(;</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>         xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>]),</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>         title<span class="op">=</span>title,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>         subtitle<span class="op">=</span>subtitle,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>         titlealign<span class="op">=:</span>left,</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>         xlabel<span class="op">=</span>xlabel,</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>         ylabel<span class="op">=</span>ylabel,</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>     ),</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tools-jl-labels.png" class="img-fluid figure-img" alt="사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트."></p>
+<figcaption>사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="publication-specifications" class="level2">
+<h2 class="anchored" data-anchor-id="publication-specifications">출판 사양</h2>
+<p>다음 정보는 RSS 출판 요구 사항을 충족하는 그래프 및 차트를 디자인하는 데 사용해야 합니다. 세부 정보에는 페이지 크기 및 열 너비, 글꼴 유형 및 크기, 이미지 해상도 및 파일 형식이 포함됩니다.</p>
+<section id="significance-magazine" class="level3">
+<h3 class="anchored" data-anchor-id="significance-magazine"><em>Significance</em> Magazine</h3>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>페이지 크기</td>
+<td>(W) 212.55 mm x (H) 263.65 mm</td>
+</tr>
+<tr class="even">
+<td>텍스트 영역</td>
+<td>(W) 188 mm x (H) 212 mm</td>
+</tr>
+<tr class="odd">
+<td>이미지 해상도</td>
+<td>300 dpi (인쇄 품질)</td>
+</tr>
+<tr class="even">
+<td>권장 이미지 파일 형식</td>
+<td>jpeg, png</td>
+</tr>
+</tbody>
+</table>
+<section id="notebook-섹션" class="level4">
+<h4 class="anchored" data-anchor-id="notebook-섹션">Notebook 섹션</h4>
+<p>4열 레이아웃을 사용합니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 61%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>1x 열 너비</td>
+<td>45 mm</td>
+</tr>
+<tr class="even">
+<td>2x 열 너비</td>
+<td>93 mm</td>
+</tr>
+<tr class="odd">
+<td>3x 열 너비</td>
+<td>140 mm</td>
+</tr>
+<tr class="even">
+<td>4x 열 너비</td>
+<td>188 mm</td>
+</tr>
+<tr class="odd">
+<td>본문 글꼴</td>
+<td>Meta Serif OT, Book</td>
+</tr>
+<tr class="even">
+<td>글꼴 크기</td>
+<td>8.5 pt</td>
+</tr>
+<tr class="odd">
+<td>섹션 색상</td>
+<td><p>빨강:<br>
+(<code>RSSthemes</code> 패키지에서 <code>signif_red</code> 사용)</p>
+<ul>
+<li><p>CMYK = 0, 96, 98, 1</p></li>
+<li><p>RGB = 228, 27, 18</p></li>
+<li><p>Hex code = #e41b12</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="features-section" class="level4">
+<h4 class="anchored" data-anchor-id="features-section">Features 섹션</h4>
+<p>3열 레이아웃을 사용합니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 63%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>1x 열 너비</td>
+<td>60 mm</td>
+</tr>
+<tr class="even">
+<td>2x 열 너비</td>
+<td>124 mm</td>
+</tr>
+<tr class="odd">
+<td>3x 열 너비</td>
+<td>188 mm</td>
+</tr>
+<tr class="even">
+<td>본문 글꼴</td>
+<td>Source Sans Pro, Regular</td>
+</tr>
+<tr class="odd">
+<td>글꼴 크기</td>
+<td>9 pt</td>
+</tr>
+<tr class="even">
+<td>섹션 색상</td>
+<td><p>녹색:<br>
+(<code>RSSthemes</code> 패키지에서 <code>signif_green</code> 사용)</p>
+<ul>
+<li><p>CMYK = 75, 5, 100, 0</p></li>
+<li><p>RGB = 63, 165, 53</p></li>
+<li><p>Hex code = #3fa535</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="profiles-perspectives-statscom-섹션" class="level4">
+<h4 class="anchored" data-anchor-id="profiles-perspectives-statscom-섹션">Profiles / Perspectives / Statscom 섹션</h4>
+<p>3열 레이아웃을 사용합니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 65%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>1x 열 너비</td>
+<td>60 mm</td>
+</tr>
+<tr class="even">
+<td>2x 열 너비</td>
+<td>124 mm</td>
+</tr>
+<tr class="odd">
+<td>3x 열 너비</td>
+<td>188 mm</td>
+</tr>
+<tr class="even">
+<td>본문 글꼴</td>
+<td>Meta Serif OT, Book</td>
+</tr>
+<tr class="odd">
+<td>글꼴 크기</td>
+<td>8.5 pt</td>
+</tr>
+<tr class="even">
+<td>섹션 색상:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Profiles</td>
+<td><p>파랑:<br>
+(<code>RSSthemes</code> 패키지에서 <code>signif_blue</code> 사용)</p>
+<ul>
+<li><p>CMYK = 78, 19, 15, 1</p></li>
+<li><p>RGB = 0, 156, 196</p></li>
+<li><p>Hex code = #009cc4</p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>Perspectives</td>
+<td><p>노랑:<br>
+(<code>RSSthemes</code> 패키지에서 <code>signif_yellow</code> 사용)</p>
+<ul>
+<li><p>CMYK = 5, 24, 95, 1</p></li>
+<li><p>RGB = 244, 193, 0</p></li>
+<li><p>Hex code = #f4c100</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>Statscomm</td>
+<td><p>주황:<br>
+(<code>RSSthemes</code> 패키지에서 <code>signif_orange</code> 사용)</p>
+<ul>
+<li><p>CMYK = 0, 60, 99, 0</p></li>
+<li><p>RGB = 240, 125, 0</p></li>
+<li><p>Hex code = #f07d00</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="journal-of-the-royal-statistical-society-series-a" class="level3">
+<h3 class="anchored" data-anchor-id="journal-of-the-royal-statistical-society-series-a">Journal of the Royal Statistical Society Series A</h3>
+<p>단일 열 레이아웃을 사용합니다.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>페이지 크기</td>
+<td>(W) 189 mm x (H) 246 mm</td>
+</tr>
+<tr class="even">
+<td>텍스트 영역</td>
+<td>(W) 136 mm x (H) 217 mm</td>
+</tr>
+<tr class="odd">
+<td>본문 글꼴</td>
+<td>Sabon LT Std Roman</td>
+</tr>
+<tr class="even">
+<td>글꼴 크기</td>
+<td>9.25 pt</td>
+</tr>
+<tr class="odd">
+<td>이미지 해상도</td>
+<td>300 dpi (인쇄 품질)</td>
+</tr>
+<tr class="even">
+<td>권장 이미지 파일 형식</td>
+<td>jpeg, png</td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- -->
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-RTeam2021" class="csl-entry" role="listitem">
+R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-JR2018" class="csl-entry" role="listitem">
+<span>“Styling Base r Graphics.”</span> 2018. Jumping Rivers. 2018. <a href="https://www.jumpingrivers.com/blog/styling-base-r-graphics/">https://www.jumpingrivers.com/blog/styling-base-r-graphics/</a>.
+</div>
+<div id="ref-Wickham2016a" class="csl-entry" role="listitem">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/royal-statistical-society\.github\.io\/datavisguide\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../docs/styling.html" class="pagination-link" aria-label="Styling for accessibility">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Styling for accessibility</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../docs/references.html" class="pagination-link" aria-label="References and resources">
+        <span class="nav-page-text">References and resources</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> RSS 간행물을 위한 차트 스타일링</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf: default</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span><span class="co"> </span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: false</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## 다양한 도구를 사용한 차트 스타일링</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>이 섹션에서는 데이터 시각화를 만드는 데 사용되는 가장 일반적인 소프트웨어 유형으로 구축된 차트의 스타일을 변경하는 방법에 대한 기술적 세부 정보를 설명합니다.</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="fu">### R</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>R<span class="co">[</span><span class="ot">@RTeam2021</span><span class="co">]</span>은 통계 컴퓨팅 및 그래픽에 널리 사용되는 프로그래밍 언어입니다. R에는 데이터 시각화를 만드는 데 사용할 수 있는 패키지가 많으며 여기서는 모두 다루지 않습니다. 대신 가장 일반적인 방법인 내장 base R 그래픽과 {ggplot2} 패키지<span class="co">[</span><span class="ot">@Wickham2016a</span><span class="co">]</span>를 다룹니다.</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>저자가 이 문서의 지침에 맞게 차트 스타일을 지정하는 데 도움을 주기 위해 R 패키지 <span class="co">[</span><span class="ot">{RSSthemes}</span><span class="co">](https://github.com/nrennie/RSSthemes)</span>를 개발했습니다. 여기에 패키지 사용 예제를 포함하지만 독자들은 업데이트 사항에 대해 GitHub 리포지토리를 확인하는 것이 좋습니다.</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>다음 명령어를 사용하여 CRAN에서 {RSSthemes} 패키지를 설치할 수 있습니다:</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"RSSthemes"</span>)</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>GitHub에서 개발 버전을 설치할 수 있습니다(CRAN 버전만큼 안정적일 것이라고 약속할 수는 없지만):</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"nrennie/RSSthemes"</span>)</span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>그런 다음 다음을 사용하여 패키지를 로드할 수 있습니다:</span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSSthemes)</span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Base R</span></span>
+<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a>R에는 사용자가 추가 패키지를 설치하지 않고도 광범위한 데이터 시각화를 만들 수 있는 내장 그래픽 기능이 있습니다. <span class="co">[</span><span class="ot">Jumping Rivers의 이 블로그 게시물</span><span class="co">](https://www.jumpingrivers.com/blog/styling-base-r-graphics/)</span> <span class="co">[</span><span class="ot">@JR2018</span><span class="co">]</span>은 base R에서 만든 그래픽 스타일을 지정하는 방법에 대한 지침을 제공합니다.</span>
+<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a>**예**: base R에서 막대 차트 색상 변경.</span>
+<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>모든 막대, 선, 점 등이 같은 색상을 가져야 하는 경우 <span class="in">`col`</span> 인수를 RSS 색상 중 하나로 설정할 수 있습니다. 옵션은 <span class="in">`signif_red`</span>, <span class="in">`signif_blue`</span>, <span class="in">`signif_green`</span>, <span class="in">`signif_orange`</span>, 또는 <span class="in">`signif_yellow`</span>입니다.</span>
+<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-58"><a href="#cb27-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-59"><a href="#cb27-59" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(mtcars<span class="sc">$</span>gear), <span class="at">col =</span> signif_blue)</span>
+<span id="cb27-60"><a href="#cb27-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-61"><a href="#cb27-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-62"><a href="#cb27-62" aria-hidden="true" tabindex="-1"></a><span class="al">![*Significance* 파란색으로 칠해진 막대가 있는 막대 차트.](images/tools-blue-base.png)</span>{fig-alt="사용자가 지정한 빨간색, 파란색, 진한 녹색 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."}</span>
+<span id="cb27-63"><a href="#cb27-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-64"><a href="#cb27-64" aria-hidden="true" tabindex="-1"></a>플롯의 색상이 데이터의 값을 기반으로 하는 경우 <span class="in">`palette()`</span> 함수를 사용하여 기본 색상을 설정할 수 있습니다. {RSSthemes} 내에서 <span class="in">`set_rss_palette()`</span> 함수는 사용되는 기본 색상을 변경합니다. 현재 {RSSthemes}에는 세 가지 팔레트를 사용할 수 있지만 앞으로 더 추가할 예정입니다. 옵션은 <span class="in">`signif_qual`</span>, <span class="in">`signif_div`</span>, 또는 <span class="in">`signif_seq`</span>입니다.</span>
+<span id="cb27-65"><a href="#cb27-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-68"><a href="#cb27-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-69"><a href="#cb27-69" aria-hidden="true" tabindex="-1"></a><span class="fu">set_rss_palette</span>(<span class="st">"signif_qual"</span>)</span>
+<span id="cb27-70"><a href="#cb27-70" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">3</span>, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>)</span>
+<span id="cb27-71"><a href="#cb27-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-72"><a href="#cb27-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-73"><a href="#cb27-73" aria-hidden="true" tabindex="-1"></a><span class="al">![`signif_qual` 팔레트의 색상을 보여주는 산점도.](images/tools-qual-base.png)</span>{fig-alt="signif_qual의 색상을 보여주는 산점도"}</span>
+<span id="cb27-74"><a href="#cb27-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-75"><a href="#cb27-75" aria-hidden="true" tabindex="-1"></a><span class="in">`palette("default")`</span>를 실행하여 원래 base R 색상으로 재설정합니다.</span>
+<span id="cb27-76"><a href="#cb27-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-77"><a href="#cb27-77" aria-hidden="true" tabindex="-1"></a>**예**: base R 플롯의 스타일링 변경.</span>
+<span id="cb27-78"><a href="#cb27-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-79"><a href="#cb27-79" aria-hidden="true" tabindex="-1"></a><span class="in">`plot()`</span> 함수(및 <span class="in">`barplot()`</span>, <span class="in">`hist()`</span>와 같은 관련 base R 플로팅 함수) 내에는 플롯의 비 데이터 요소가 어떻게 보일지 제어하는 인수가 있습니다. 예를 들어 <span class="in">`family`</span> 인수는 사용되는 글꼴 패밀리를 변경합니다. <span class="in">`par()`</span> 함수를 호출하여 이러한 인수 중 상당수를 전역적으로 설정할 수도 있습니다. {RSSthemes} 내에는 모든 base R 플롯에 대한 텍스트 정렬 및 글꼴을 포함하여 몇 가지 기본 옵션을 설정하는 <span class="in">`set_signif_par()`</span> 함수가 있습니다. <span class="in">`abline()`</span> 함수를 사용하여 참조선을 추가하는 것도 좋습니다.</span>
+<span id="cb27-80"><a href="#cb27-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-83"><a href="#cb27-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-84"><a href="#cb27-84" aria-hidden="true" tabindex="-1"></a><span class="fu">set_signif_par</span>()</span>
+<span id="cb27-85"><a href="#cb27-85" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">3</span>, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>,</span>
+<span id="cb27-86"><a href="#cb27-86" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"나의 Significance 플롯"</span>,</span>
+<span id="cb27-87"><a href="#cb27-87" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="st">"출처: 데이터 소스"</span>)</span>
+<span id="cb27-88"><a href="#cb27-88" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">v=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col =</span> <span class="st">"lightgrey"</span>)</span>
+<span id="cb27-89"><a href="#cb27-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-90"><a href="#cb27-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-91"><a href="#cb27-91" aria-hidden="true" tabindex="-1"></a><span class="al">![`set_signif_par()`에 의해 구현된 base R 스타일링을 보여주는 산점도.](images/tools-theme-base.png)</span>{fig-alt="Significance par 함수에 의해 구현된 base R 스타일링을 보여주는 산점도."}</span>
+<span id="cb27-92"><a href="#cb27-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-93"><a href="#cb27-93" aria-hidden="true" tabindex="-1"></a><span class="fu">#### {ggplot2}</span></span>
+<span id="cb27-94"><a href="#cb27-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-95"><a href="#cb27-95" aria-hidden="true" tabindex="-1"></a>{ggplot2}는 데이터 시각화를 만들기 위해 특별히 고안된 {tidyverse} 프레임워크 내의 R 패키지입니다. <span class="co">[</span><span class="ot">패키지 문서</span><span class="co">](https://ggplot2.tidyverse.org/)</span>는 다양한 유형의 차트를 만드는 방법에 대한 지침을 제공합니다. {ggplot2} 시각화의 <span class="co">[</span><span class="ot">색상 변경</span><span class="co">](https://ggplot2-book.org/scale-colour.html)</span> 및 <span class="co">[</span><span class="ot">스타일 변경</span><span class="co">](https://ggplot2-book.org/polishing.html)</span>에 대한 조언은 Hadley Wickham의 책 <span class="co">[</span><span class="ot">ggplot2: Elegant Graphics for Data Analysis</span><span class="co">](https://ggplot2-book.org/index.html)</span> <span class="co">[</span><span class="ot">@Wickham2016a</span><span class="co">]</span>에서 찾을 수 있습니다.</span>
+<span id="cb27-96"><a href="#cb27-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-97"><a href="#cb27-97" aria-hidden="true" tabindex="-1"></a>{ggplot2}로 플롯을 만들기 위해 기본 데이터 세트를 설정해 보겠습니다.</span>
+<span id="cb27-98"><a href="#cb27-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-101"><a href="#cb27-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-102"><a href="#cb27-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb27-103"><a href="#cb27-103" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb27-104"><a href="#cb27-104" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
+<span id="cb27-105"><a href="#cb27-105" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb27-106"><a href="#cb27-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-107"><a href="#cb27-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-108"><a href="#cb27-108" aria-hidden="true" tabindex="-1"></a>**예**: {ggplot2}에서 매핑되지 않은 색상 변경.</span>
+<span id="cb27-109"><a href="#cb27-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-110"><a href="#cb27-110" aria-hidden="true" tabindex="-1"></a>{ggplot2}에서 <span class="in">`colour`</span>(또는 <span class="in">`color`</span>) 인수는 요소의 윤곽선을 나타내는 색상을 변경하고, <span class="in">`fill`</span>은 요소를 채우는 색상을 변경합니다. 모든 막대, 선 또는 점이 동일한 색상을 가져야 하는 경우 <span class="in">`fill`</span> 또는 <span class="in">`colour`</span> 인수를 RSS 색상 중 하나로 설정할 수 있습니다. 옵션은 <span class="in">`signif_red`</span>, <span class="in">`signif_blue`</span>, <span class="in">`signif_green`</span>, <span class="in">`signif_orange`</span>, 또는 <span class="in">`signif_yellow`</span>입니다.</span>
+<span id="cb27-111"><a href="#cb27-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-114"><a href="#cb27-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-115"><a href="#cb27-115" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb27-116"><a href="#cb27-116" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb27-117"><a href="#cb27-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> signif_yellow)</span>
+<span id="cb27-118"><a href="#cb27-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-119"><a href="#cb27-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-120"><a href="#cb27-120" aria-hidden="true" tabindex="-1"></a><span class="al">![노란색으로 칠해진 막대가 있는 막대 차트.](images/tools-yellow-bars.png)</span>{fig-alt="노란색으로 칠해진 막대가 있는 막대 차트"}</span>
+<span id="cb27-121"><a href="#cb27-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-122"><a href="#cb27-122" aria-hidden="true" tabindex="-1"></a>**예**: {ggplot2}에서 이산 색상 스케일 사용.</span>
+<span id="cb27-123"><a href="#cb27-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-124"><a href="#cb27-124" aria-hidden="true" tabindex="-1"></a>정성적(이산) 데이터로 작업할 때 사용할 수 있는 가장 좋은 팔레트는 <span class="in">`"signif_qual"`</span>입니다. 이 팔레트에는 현재 4가지 색상만 포함되어 있습니다.</span>
+<span id="cb27-125"><a href="#cb27-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-126"><a href="#cb27-126" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>이산 (채우기) 스케일: <span class="in">`scale_fill_rss_d()`</span></span>
+<span id="cb27-127"><a href="#cb27-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-130"><a href="#cb27-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-131"><a href="#cb27-131" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb27-132"><a href="#cb27-132" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> x)) <span class="sc">+</span></span>
+<span id="cb27-133"><a href="#cb27-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb27-134"><a href="#cb27-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_rss_d</span>(<span class="at">palette =</span> <span class="st">"signif_qual"</span>)</span>
+<span id="cb27-135"><a href="#cb27-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-136"><a href="#cb27-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-137"><a href="#cb27-137" aria-hidden="true" tabindex="-1"></a><span class="al">![`signif_qual`의 색상이 있는 막대 차트.](images/tools-qual-bars.png)</span>{fig-alt="signif_qual의 색상이 있는 막대 차트"}</span>
+<span id="cb27-138"><a href="#cb27-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-139"><a href="#cb27-139" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>이산 (색상) 스케일: <span class="in">`scale_colour_rss_d()`</span></span>
+<span id="cb27-140"><a href="#cb27-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-143"><a href="#cb27-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-144"><a href="#cb27-144" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb27-145"><a href="#cb27-145" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">colour =</span> x)) <span class="sc">+</span></span>
+<span id="cb27-146"><a href="#cb27-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb27-147"><a href="#cb27-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_rss_d</span>(<span class="at">palette =</span> <span class="st">"signif_qual"</span>)</span>
+<span id="cb27-148"><a href="#cb27-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-149"><a href="#cb27-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-150"><a href="#cb27-150" aria-hidden="true" tabindex="-1"></a><span class="al">![`signif_qual`의 색상이 있는 산점도.](images/tools-qual-points.png)</span>{fig-alt="signif_qual의 색상이 있는 산점도"}</span>
+<span id="cb27-151"><a href="#cb27-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-152"><a href="#cb27-152" aria-hidden="true" tabindex="-1"></a>**예**: {ggplot2}에서 연속 색상 스케일 사용.</span>
+<span id="cb27-153"><a href="#cb27-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-154"><a href="#cb27-154" aria-hidden="true" tabindex="-1"></a>연속 색상 스케일은 순차적이거나 발산적일 수 있습니다. 순차적(연속) 데이터로 작업할 때 사용할 수 있는 가장 좋은 팔레트는 <span class="in">`"signif_seq"`</span>입니다.</span>
+<span id="cb27-155"><a href="#cb27-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-156"><a href="#cb27-156" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>연속 (채우기) 스케일: <span class="in">`scale_fill_rss_c()`</span></span>
+<span id="cb27-157"><a href="#cb27-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-160"><a href="#cb27-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-161"><a href="#cb27-161" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb27-162"><a href="#cb27-162" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> y)) <span class="sc">+</span></span>
+<span id="cb27-163"><a href="#cb27-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb27-164"><a href="#cb27-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_rss_c</span>(<span class="at">palette =</span> <span class="st">"signif_seq"</span>)</span>
+<span id="cb27-165"><a href="#cb27-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-166"><a href="#cb27-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-167"><a href="#cb27-167" aria-hidden="true" tabindex="-1"></a><span class="al">![순차적 녹색 색상 팔레트를 보여주는 막대 차트.](images/tools-seq-bars.png)</span>{fig-alt="순차적 녹색 색상 팔레트를 보여주는 막대 차트"}</span>
+<span id="cb27-168"><a href="#cb27-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-169"><a href="#cb27-169" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>연속 (색상) 스케일: <span class="in">`scale_colour_rss_c()`</span></span>
+<span id="cb27-170"><a href="#cb27-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-173"><a href="#cb27-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-174"><a href="#cb27-174" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb27-175"><a href="#cb27-175" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">colour =</span> y)) <span class="sc">+</span></span>
+<span id="cb27-176"><a href="#cb27-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb27-177"><a href="#cb27-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_rss_c</span>(<span class="at">palette =</span> <span class="st">"signif_seq"</span>)</span>
+<span id="cb27-178"><a href="#cb27-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-179"><a href="#cb27-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-180"><a href="#cb27-180" aria-hidden="true" tabindex="-1"></a><span class="al">![순차적 녹색 색상 팔레트를 보여주는 산점도.](images/tools-seq-points.png)</span>{fig-alt="순차적 녹색 색상 팔레트를 보여주는 산점도"}</span>
+<span id="cb27-181"><a href="#cb27-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-182"><a href="#cb27-182" aria-hidden="true" tabindex="-1"></a>발산적(연속) 데이터로 작업할 때 사용할 수 있는 가장 좋은 팔레트는 <span class="in">`"signif_div"`</span>입니다.</span>
+<span id="cb27-183"><a href="#cb27-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-184"><a href="#cb27-184" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>연속 (채우기) 스케일: <span class="in">`scale_fill_rss_c()`</span></span>
+<span id="cb27-185"><a href="#cb27-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-188"><a href="#cb27-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-189"><a href="#cb27-189" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb27-190"><a href="#cb27-190" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> y)) <span class="sc">+</span></span>
+<span id="cb27-191"><a href="#cb27-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb27-192"><a href="#cb27-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_rss_c</span>(<span class="at">palette =</span> <span class="st">"signif_div"</span>)</span>
+<span id="cb27-193"><a href="#cb27-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-194"><a href="#cb27-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-195"><a href="#cb27-195" aria-hidden="true" tabindex="-1"></a><span class="al">![발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트.](images/tools-div-bars.png)</span>{fig-alt="발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트"}</span>
+<span id="cb27-196"><a href="#cb27-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-197"><a href="#cb27-197" aria-hidden="true" tabindex="-1"></a>발산적 스케일을 다른 값을 중심으로 맞추려면 {RSSthemes}에서 미리 정의된 색상을 {ggplot2}의 <span class="in">`scale_fill_gradient2()`</span>에 전달할 수도 있습니다:</span>
+<span id="cb27-198"><a href="#cb27-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-201"><a href="#cb27-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-202"><a href="#cb27-202" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb27-203"><a href="#cb27-203" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> y)) <span class="sc">+</span></span>
+<span id="cb27-204"><a href="#cb27-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb27-205"><a href="#cb27-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> signif_red, <span class="at">high =</span> signif_blue, <span class="at">midpoint =</span> <span class="dv">2</span>)</span>
+<span id="cb27-206"><a href="#cb27-206" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-207"><a href="#cb27-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-208"><a href="#cb27-208" aria-hidden="true" tabindex="-1"></a><span class="al">![2를 중심으로 하는 발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트.](images/tools-div-bars-grad.png)</span>{fig-alt="2를 중심으로 하는 발산적 빨간색에서 파란색 팔레트를 보여주는 막대 차트"}</span>
+<span id="cb27-209"><a href="#cb27-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-210"><a href="#cb27-210" aria-hidden="true" tabindex="-1"></a>**예**: {ggplot2}에서 테마 변경.</span>
+<span id="cb27-211"><a href="#cb27-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-212"><a href="#cb27-212" aria-hidden="true" tabindex="-1"></a>{ggplot2} 내에서 테마를 사용하면 플롯의 비 데이터 요소 모양을 제어할 수 있습니다. 기본 테마는 <span class="in">`theme_grey()`</span>로 배경이 더 어둡습니다. <span class="in">`theme_minimal()`</span> 또는 <span class="in">`theme_bw()`</span>로 만든 것과 같은 흰색 또는 투명 배경을 사용하는 것이 좋습니다.</span>
+<span id="cb27-213"><a href="#cb27-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-214"><a href="#cb27-214" aria-hidden="true" tabindex="-1"></a>또한 {RSSthemes}의 <span class="in">`theme_significance()`</span>를 사용하여 플롯 글꼴을 *Significance* 매거진에서 사용하는 글꼴 중 하나로 추가 설정할 수 있습니다. 글꼴이 올바르게 로드되도록 <span class="in">`library(RSSthemes)`</span>를 이미 실행했는지 확인하십시오.</span>
+<span id="cb27-215"><a href="#cb27-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-218"><a href="#cb27-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-219"><a href="#cb27-219" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> plot_df,</span>
+<span id="cb27-220"><a href="#cb27-220" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> x)) <span class="sc">+</span></span>
+<span id="cb27-221"><a href="#cb27-221" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb27-222"><a href="#cb27-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"나의 Significance 플롯"</span>,</span>
+<span id="cb27-223"><a href="#cb27-223" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"차트에서 일어나는 일을 설명하는 긴 문장."</span>,</span>
+<span id="cb27-224"><a href="#cb27-224" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"출처: 데이터 소스 이름"</span>) <span class="sc">+</span></span>
+<span id="cb27-225"><a href="#cb27-225" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_rss_d</span>(<span class="at">palette =</span> <span class="st">"signif_qual"</span>) <span class="sc">+</span></span>
+<span id="cb27-226"><a href="#cb27-226" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_significance</span>()</span>
+<span id="cb27-227"><a href="#cb27-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-228"><a href="#cb27-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-229"><a href="#cb27-229" aria-hidden="true" tabindex="-1"></a><span class="al">![`theme_significance()`로 스타일이 지정된 막대 차트.](images/tools-theme.png)</span>{fig-alt="사용자 정의 테마를 보여주는 녹색, 노란색, 파란색, 주황색으로 칠해진 막대가 있는 막대 차트"}</span>
+<span id="cb27-230"><a href="#cb27-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-231"><a href="#cb27-231" aria-hidden="true" tabindex="-1"></a>{RSSthemes} 패키지에서 버그를 발견하거나 예상대로 작동하지 않는 것이 있으면 <span class="co">[</span><span class="ot">GitHub 이슈</span><span class="co">](https://github.com/nrennie/RSSthemes/issues)</span>를 제출해 주십시오.</span>
+<span id="cb27-232"><a href="#cb27-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-233"><a href="#cb27-233" aria-hidden="true" tabindex="-1"></a><span class="fu">#### R에서 이미지 내보내기</span></span>
+<span id="cb27-234"><a href="#cb27-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-235"><a href="#cb27-235" aria-hidden="true" tabindex="-1"></a>R에서 이미지를 내보내고 저장하는 방법에는 여러 가지가 있습니다. RStudio의 *Plots* 창에서 *Export* 버튼을 사용해도 출판 품질 그래픽으로 충분한 고해상도 이미지가 생성되지 않는 경우가 많습니다. 인쇄물로 출판되는 이미지의 최소 이미지 해상도는 300 dpi입니다. {ggplot2}의 <span class="in">`ggsave()`</span>를 사용하는 경우 300 dpi가 기본 해상도입니다. 크기를 조정하기 쉽도록 PDF 또는 EPS 파일 형식으로 이미지를 저장하는 것이 좋습니다.</span>
+<span id="cb27-236"><a href="#cb27-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-237"><a href="#cb27-237" aria-hidden="true" tabindex="-1"></a>다양한 RSS 간행물에 대한 특정 이미지 크기에 대한 추가 정보는 <span class="co">[</span><span class="ot">출판 사양</span><span class="co">](#publication-specifications)</span> 섹션에 나와 있습니다.</span>
+<span id="cb27-238"><a href="#cb27-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-239"><a href="#cb27-239" aria-hidden="true" tabindex="-1"></a>예를 들어 *Significance* 매거진의 Features 섹션에 대한 플롯을 만들고 플롯이 3개 열 중 2개 열에 걸치도록 하려는 경우를 가정해 보겠습니다. 아래 <span class="co">[</span><span class="ot">표</span><span class="co">](#features-section)</span>에서 이미지 너비는 124mm여야 합니다. <span class="in">`pdf()`</span> 함수를 사용하여 이미지를 저장하려면 너비와 높이가 인치 단위여야 합니다(124mm \~ 4.88인치). 2:1 종횡비를 원하는 경우 높이를 너비의 절반으로 만듭니다:</span>
+<span id="cb27-240"><a href="#cb27-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-243"><a href="#cb27-243" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-244"><a href="#cb27-244" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="at">file =</span> <span class="st">"significance-feature-plot.pdf"</span>, <span class="co"># 파일 이름</span></span>
+<span id="cb27-245"><a href="#cb27-245" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">4.88</span>,                           <span class="co"># 플롯 너비</span></span>
+<span id="cb27-246"><a href="#cb27-246" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fl">4.88</span> <span class="sc">/</span> <span class="dv">2</span>                       <span class="co"># 플롯 높이</span></span>
+<span id="cb27-247"><a href="#cb27-247" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb27-248"><a href="#cb27-248" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb27-249"><a href="#cb27-249" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb27-250"><a href="#cb27-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-251"><a href="#cb27-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-252"><a href="#cb27-252" aria-hidden="true" tabindex="-1"></a><span class="fu">### Python</span></span>
+<span id="cb27-253"><a href="#cb27-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-254"><a href="#cb27-254" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Python</span><span class="co">](https://www.python.org/)</span>은 범용 프로그래밍 언어로, 데이터 분석 및 시각화 기능을 제공하는 라이브러리를 사용할 수 있습니다.</span>
+<span id="cb27-255"><a href="#cb27-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-256"><a href="#cb27-256" aria-hidden="true" tabindex="-1"></a>RSS 색상 팔레트 구현을 위한 진행 중인 Python 패키지는 <span class="co">[</span><span class="ot">github.com/nrennie/RSSpythemes</span><span class="co">](https://github.com/nrennie/RSSpythemes)</span>에서 찾을 수 있습니다. 이 Python 패키지 개발에 기여하고 싶다면 GitHub에서 <span class="co">[</span><span class="ot">이슈를 제기</span><span class="co">](https://github.com/nrennie/RSSpythemes/issues)</span>하거나 풀 리퀘스트를 생성해 주십시오.</span>
+<span id="cb27-257"><a href="#cb27-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-258"><a href="#cb27-258" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Matplotlib</span></span>
+<span id="cb27-259"><a href="#cb27-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-260"><a href="#cb27-260" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Matplotlib</span><span class="co">](https://matplotlib.org/)</span>은 정적, 애니메이션 및 대화형 데이터 시각화를 생성하기 위한 Python 라이브러리입니다.</span>
+<span id="cb27-261"><a href="#cb27-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-262"><a href="#cb27-262" aria-hidden="true" tabindex="-1"></a>**예**: matplotlib에서 막대 차트 색상 변경.</span>
+<span id="cb27-263"><a href="#cb27-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-264"><a href="#cb27-264" aria-hidden="true" tabindex="-1"></a><span class="in">`color`</span> 인수를 사용하여 matplotlib에서 차트 요소의 색상을 변경할 수 있습니다:</span>
+<span id="cb27-265"><a href="#cb27-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-268"><a href="#cb27-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb27-269"><a href="#cb27-269" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb27-270"><a href="#cb27-270" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb27-271"><a href="#cb27-271" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>]</span>
+<span id="cb27-272"><a href="#cb27-272" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb27-273"><a href="#cb27-273" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb27-274"><a href="#cb27-274" aria-hidden="true" tabindex="-1"></a>plt.bar(x_vals, y_vals, color <span class="op">=</span> <span class="st">"#009cc4"</span>)</span>
+<span id="cb27-275"><a href="#cb27-275" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb27-276"><a href="#cb27-276" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-277"><a href="#cb27-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-278"><a href="#cb27-278" aria-hidden="true" tabindex="-1"></a><span class="al">![*Significance* 파란색으로 칠해진 막대가 있는 막대 차트.](images/tools-blue-py.png)</span>{fig-alt="파란색 사용자 지정 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."}</span>
+<span id="cb27-279"><a href="#cb27-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-280"><a href="#cb27-280" aria-hidden="true" tabindex="-1"></a>플롯의 색상이 데이터의 값을 기반으로 하는 경우 색상 목록을 제공하여 사용되는 색상을 변경할 수도 있습니다:</span>
+<span id="cb27-281"><a href="#cb27-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-284"><a href="#cb27-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb27-285"><a href="#cb27-285" aria-hidden="true" tabindex="-1"></a><span class="co"># define colour palette</span></span>
+<span id="cb27-286"><a href="#cb27-286" aria-hidden="true" tabindex="-1"></a>signif_qual <span class="op">=</span> [<span class="st">'#3fa535'</span>, <span class="st">'#f4c100'</span>, <span class="st">'#009cc4'</span>, <span class="st">'#f07d00'</span>]</span>
+<span id="cb27-287"><a href="#cb27-287" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb27-288"><a href="#cb27-288" aria-hidden="true" tabindex="-1"></a>plt.bar(x_vals, y_vals, label <span class="op">=</span> x_vals, color <span class="op">=</span> signif_qual)</span>
+<span id="cb27-289"><a href="#cb27-289" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb27-290"><a href="#cb27-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-291"><a href="#cb27-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-292"><a href="#cb27-292" aria-hidden="true" tabindex="-1"></a><span class="al">![`signif_qual` 팔레트의 색상을 보여주는 막대 차트.](images/tools-qual-py.png)</span>{fig-alt="signif_qual의 색상을 보여주는 막대 차트"}</span>
+<span id="cb27-293"><a href="#cb27-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-294"><a href="#cb27-294" aria-hidden="true" tabindex="-1"></a>**예**: matplotlib에서 글꼴 패밀리 변경.</span>
+<span id="cb27-295"><a href="#cb27-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-296"><a href="#cb27-296" aria-hidden="true" tabindex="-1"></a><span class="in">`rcParams`</span>를 사용하여 플롯의 모든 요소에 사용되는 글꼴을 변경할 수 있습니다. 사용자 지정 글꼴 패밀리를 설정할 때 좋은 방법은 일반 글꼴 패밀리(예: sans serif)를 백업으로 추가하는 것입니다. 시스템에 미리 설치되지 않은 글꼴을 사용하는 경우 <span class="in">`font_manager`</span>를 사용하여 글꼴을 로드할 수 있습니다:</span>
+<span id="cb27-297"><a href="#cb27-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-300"><a href="#cb27-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb27-301"><a href="#cb27-301" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> font_manager</span>
+<span id="cb27-302"><a href="#cb27-302" aria-hidden="true" tabindex="-1"></a>font_manager.fontManager.addfont(<span class="st">"SourceSans3-Regular.ttf"</span>)</span>
+<span id="cb27-303"><a href="#cb27-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-304"><a href="#cb27-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-305"><a href="#cb27-305" aria-hidden="true" tabindex="-1"></a>개별 요소에 대해 <span class="in">`fontdic`</span>을 사용하여 다른 글꼴 패밀리, 두께 또는 크기를 지정할 수 있습니다.</span>
+<span id="cb27-306"><a href="#cb27-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-309"><a href="#cb27-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb27-310"><a href="#cb27-310" aria-hidden="true" tabindex="-1"></a><span class="co"># define fonts</span></span>
+<span id="cb27-311"><a href="#cb27-311" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> rcParams</span>
+<span id="cb27-312"><a href="#cb27-312" aria-hidden="true" tabindex="-1"></a>rcParams[<span class="st">'font.family'</span>] <span class="op">=</span> [<span class="st">'Source Sans 3'</span>, <span class="st">'sans-serif'</span>]</span>
+<span id="cb27-313"><a href="#cb27-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-314"><a href="#cb27-314" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb27-315"><a href="#cb27-315" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb27-316"><a href="#cb27-316" aria-hidden="true" tabindex="-1"></a>plt.bar(x_vals, y_vals, color <span class="op">=</span> signif_qual, label <span class="op">=</span> x_vals)</span>
+<span id="cb27-317"><a href="#cb27-317" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'나의 Significance 플롯'</span>, fontdict <span class="op">=</span> {<span class="st">'fontsize'</span>:<span class="dv">14</span>}, loc <span class="op">=</span> <span class="st">'left'</span>)</span>
+<span id="cb27-318"><a href="#cb27-318" aria-hidden="true" tabindex="-1"></a><span class="co"># add grid lines lines</span></span>
+<span id="cb27-319"><a href="#cb27-319" aria-hidden="true" tabindex="-1"></a>ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb27-320"><a href="#cb27-320" aria-hidden="true" tabindex="-1"></a>ax.xaxis.grid(color <span class="op">=</span> <span class="st">'lightgrey'</span>)</span>
+<span id="cb27-321"><a href="#cb27-321" aria-hidden="true" tabindex="-1"></a>ax.yaxis.grid(color <span class="op">=</span> <span class="st">'lightgrey'</span>)</span>
+<span id="cb27-322"><a href="#cb27-322" aria-hidden="true" tabindex="-1"></a><span class="co"># add legend below plot</span></span>
+<span id="cb27-323"><a href="#cb27-323" aria-hidden="true" tabindex="-1"></a>ax.legend(ncol <span class="op">=</span> <span class="dv">4</span>, loc <span class="op">=</span> <span class="st">'lower center'</span>,</span>
+<span id="cb27-324"><a href="#cb27-324" aria-hidden="true" tabindex="-1"></a>          bbox_to_anchor <span class="op">=</span> (<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.15</span>), frameon <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb27-325"><a href="#cb27-325" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb27-326"><a href="#cb27-326" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-327"><a href="#cb27-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-328"><a href="#cb27-328" aria-hidden="true" tabindex="-1"></a><span class="al">![Source Sans 글꼴 사용을 보여주는 막대 차트.](images/tools-py-font.png)</span>{fig-alt="Source Sans 글꼴 사용을 보여주는 막대 차트."}</span>
+<span id="cb27-329"><a href="#cb27-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-330"><a href="#cb27-330" aria-hidden="true" tabindex="-1"></a><span class="fu">### Julia</span></span>
+<span id="cb27-331"><a href="#cb27-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-332"><a href="#cb27-332" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Julia</span><span class="co">](https://www.julialang.org/)</span>는 고성능에 초점을 맞추면서도 쉬운 구문을 제공하는 범용 프로그래밍 언어입니다.</span>
+<span id="cb27-333"><a href="#cb27-333" aria-hidden="true" tabindex="-1"></a>Julia에는 데이터 분석 및 시각화 기능을 제공하는 라이브러리가 있습니다.</span>
+<span id="cb27-334"><a href="#cb27-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-335"><a href="#cb27-335" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Makie</span></span>
+<span id="cb27-336"><a href="#cb27-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-337"><a href="#cb27-337" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Makie</span><span class="co">](https://makie.org)</span>는 <span class="co">[</span><span class="ot">Julia</span><span class="co">](https://www.julialang.org/)</span> 프로그래밍 언어를 위한 고수준 플로팅 라이브러리입니다.</span>
+<span id="cb27-338"><a href="#cb27-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-339"><a href="#cb27-339" aria-hidden="true" tabindex="-1"></a>**예**: Makie에서 막대 차트 색상 변경.</span>
+<span id="cb27-340"><a href="#cb27-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-341"><a href="#cb27-341" aria-hidden="true" tabindex="-1"></a>Makie에서는 <span class="in">`color`</span> 인수를 사용하여 차트 요소의 색상을 변경하고 <span class="in">`axis`</span> 내부의 <span class="in">`xticks`</span> 인수를 사용하여 사용자 지정 눈금 레이블을 변경할 수 있습니다:</span>
+<span id="cb27-342"><a href="#cb27-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-345"><a href="#cb27-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb27-346"><a href="#cb27-346" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">CairoMakie</span></span>
+<span id="cb27-347"><a href="#cb27-347" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb27-348"><a href="#cb27-348" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>]</span>
+<span id="cb27-349"><a href="#cb27-349" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>]</span>
+<span id="cb27-350"><a href="#cb27-350" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb27-351"><a href="#cb27-351" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(x_vals, y_vals, color<span class="op">=</span><span class="st">"#009cc4"</span>, axis<span class="op">=</span>(; xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])))</span>
+<span id="cb27-352"><a href="#cb27-352" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-353"><a href="#cb27-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-354"><a href="#cb27-354" aria-hidden="true" tabindex="-1"></a><span class="al">![*Significance* 파란색으로 칠해진 막대가 있는 막대 차트.](images/tools-blue-jl.png)</span>{fig-alt="파란색 사용자 지정 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."}</span>
+<span id="cb27-355"><a href="#cb27-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-356"><a href="#cb27-356" aria-hidden="true" tabindex="-1"></a>플롯의 색상이 데이터의 값을 기반으로 하는 경우 색상 목록을 제공하여 사용되는 색상을 변경할 수도 있습니다:</span>
+<span id="cb27-357"><a href="#cb27-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-360"><a href="#cb27-360" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb27-361"><a href="#cb27-361" aria-hidden="true" tabindex="-1"></a><span class="co"># define colour palette</span></span>
+<span id="cb27-362"><a href="#cb27-362" aria-hidden="true" tabindex="-1"></a>signif_qual <span class="op">=</span> [<span class="st">"#3fa535"</span>, <span class="st">"#f4c100"</span>, <span class="st">"#009cc4"</span>, <span class="st">"#f07d00"</span>]</span>
+<span id="cb27-363"><a href="#cb27-363" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb27-364"><a href="#cb27-364" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(x_vals, y_vals, color<span class="op">=</span>signif_qual, axis<span class="op">=</span>(; xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])))</span>
+<span id="cb27-365"><a href="#cb27-365" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-366"><a href="#cb27-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-367"><a href="#cb27-367" aria-hidden="true" tabindex="-1"></a><span class="al">![`signif_qual` 팔레트의 색상을 보여주는 막대 차트.](images/tools-qual-jl.png)</span>{fig-alt="signif_qual의 색상을 보여주는 막대 차트"}</span>
+<span id="cb27-368"><a href="#cb27-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-369"><a href="#cb27-369" aria-hidden="true" tabindex="-1"></a><span class="in">`axis`</span> 인수를 사용하여 사용자 지정 레이블과 제목을 지정할 수 있습니다:</span>
+<span id="cb27-370"><a href="#cb27-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-373"><a href="#cb27-373" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb27-374"><a href="#cb27-374" aria-hidden="true" tabindex="-1"></a><span class="co"># define labels and title</span></span>
+<span id="cb27-375"><a href="#cb27-375" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> <span class="st">"나의 Significance 플롯"</span></span>
+<span id="cb27-376"><a href="#cb27-376" aria-hidden="true" tabindex="-1"></a>subtitle <span class="op">=</span> <span class="st">"차트에서 일어나는 일을 설명하는 긴 문장."</span></span>
+<span id="cb27-377"><a href="#cb27-377" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">"X축 레이블"</span></span>
+<span id="cb27-378"><a href="#cb27-378" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> <span class="st">"Y축 레이블"</span></span>
+<span id="cb27-379"><a href="#cb27-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-380"><a href="#cb27-380" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb27-381"><a href="#cb27-381" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(x_vals,</span>
+<span id="cb27-382"><a href="#cb27-382" aria-hidden="true" tabindex="-1"></a>        y_vals;</span>
+<span id="cb27-383"><a href="#cb27-383" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>signif_qual,</span>
+<span id="cb27-384"><a href="#cb27-384" aria-hidden="true" tabindex="-1"></a>        axis<span class="op">=</span>(;</span>
+<span id="cb27-385"><a href="#cb27-385" aria-hidden="true" tabindex="-1"></a>            xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>]),</span>
+<span id="cb27-386"><a href="#cb27-386" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span>title,</span>
+<span id="cb27-387"><a href="#cb27-387" aria-hidden="true" tabindex="-1"></a>            subtitle<span class="op">=</span>subtitle,</span>
+<span id="cb27-388"><a href="#cb27-388" aria-hidden="true" tabindex="-1"></a>            titlealign<span class="op">=:</span>left,</span>
+<span id="cb27-389"><a href="#cb27-389" aria-hidden="true" tabindex="-1"></a>            xlabel<span class="op">=</span>xlabel,</span>
+<span id="cb27-390"><a href="#cb27-390" aria-hidden="true" tabindex="-1"></a>            ylabel<span class="op">=</span>ylabel,</span>
+<span id="cb27-391"><a href="#cb27-391" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb27-392"><a href="#cb27-392" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-393"><a href="#cb27-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-394"><a href="#cb27-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-395"><a href="#cb27-395" aria-hidden="true" tabindex="-1"></a><span class="al">![사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트.](images/tools-jl-labels.png)</span>{fig-alt="사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트."}</span>
+<span id="cb27-396"><a href="#cb27-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-397"><a href="#cb27-397" aria-hidden="true" tabindex="-1"></a><span class="fu">#### AlgebraOfGraphics</span></span>
+<span id="cb27-398"><a href="#cb27-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-399"><a href="#cb27-399" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">AlgebraOfGraphics</span><span class="co">](https://aog.makie.org)</span>는 플로팅 백엔드로 <span class="co">[</span><span class="ot">Makie</span><span class="co">](https://makie.org)</span>를 사용하는 <span class="co">[</span><span class="ot">Julia</span><span class="co">](https://www.julialang.org/)</span> 프로그래밍 언어를 위한 고수준 플로팅 라이브러리입니다.</span>
+<span id="cb27-400"><a href="#cb27-400" aria-hidden="true" tabindex="-1"></a>그래픽 문법을 따르며 R의 <span class="in">`ggplot2`</span>와 유사합니다.</span>
+<span id="cb27-401"><a href="#cb27-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-402"><a href="#cb27-402" aria-hidden="true" tabindex="-1"></a>**예**: AlgebraOfGraphics에서 막대 차트 색상 변경.</span>
+<span id="cb27-403"><a href="#cb27-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-404"><a href="#cb27-404" aria-hidden="true" tabindex="-1"></a>Makie에서는 <span class="in">`color`</span> 인수를 사용하여 차트 요소의 색상을 변경하고 <span class="in">`axis`</span> 내부의 <span class="in">`xticks`</span> 인수를 사용하여 사용자 지정 눈금 레이블을 변경할 수 있습니다:</span>
+<span id="cb27-405"><a href="#cb27-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-408"><a href="#cb27-408" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb27-409"><a href="#cb27-409" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">AlgebraOfGraphics</span></span>
+<span id="cb27-410"><a href="#cb27-410" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">CairoMakie</span></span>
+<span id="cb27-411"><a href="#cb27-411" aria-hidden="true" tabindex="-1"></a><span class="co"># generate data</span></span>
+<span id="cb27-412"><a href="#cb27-412" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>]</span>
+<span id="cb27-413"><a href="#cb27-413" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>]</span>
+<span id="cb27-414"><a href="#cb27-414" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb27-415"><a href="#cb27-415" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">data</span>((; x_vals, y_vals)) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>x_vals, <span class="op">:</span>y_vals) <span class="op">*</span> <span class="fu">visual</span>(BarPlot; color<span class="op">=</span><span class="st">"#009cc4"</span>)</span>
+<span id="cb27-416"><a href="#cb27-416" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(plt; axis<span class="op">=</span>(; xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])))</span>
+<span id="cb27-417"><a href="#cb27-417" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-418"><a href="#cb27-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-419"><a href="#cb27-419" aria-hidden="true" tabindex="-1"></a><span class="al">![*Significance* 파란색으로 칠해진 막대가 있는 막대 차트.](images/tools-blue-jl.png)</span>{fig-alt="파란색 사용자 지정 색상으로 다양한 치료에 대한 평균 키의 식물 성장을 시각화한 막대 차트."}</span>
+<span id="cb27-420"><a href="#cb27-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-421"><a href="#cb27-421" aria-hidden="true" tabindex="-1"></a>플롯의 색상이 데이터의 값을 기반으로 하는 경우 색상 목록을 제공하여 사용되는 색상을 변경할 수도 있습니다:</span>
+<span id="cb27-422"><a href="#cb27-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-425"><a href="#cb27-425" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb27-426"><a href="#cb27-426" aria-hidden="true" tabindex="-1"></a><span class="co"># define colour palette</span></span>
+<span id="cb27-427"><a href="#cb27-427" aria-hidden="true" tabindex="-1"></a>signif_qual <span class="op">=</span> [<span class="st">"#3fa535"</span>, <span class="st">"#f4c100"</span>, <span class="st">"#009cc4"</span>, <span class="st">"#f07d00"</span>]</span>
+<span id="cb27-428"><a href="#cb27-428" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb27-429"><a href="#cb27-429" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">data</span>((; x_vals, y_vals)) <span class="op">*</span> <span class="fu">mapping</span>(<span class="op">:</span>x_vals, <span class="op">:</span>y_vals) <span class="op">*</span> <span class="fu">visual</span>(BarPlot; color<span class="op">=</span>signif_qual)</span>
+<span id="cb27-430"><a href="#cb27-430" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(plt; axis<span class="op">=</span>(; xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])))</span>
+<span id="cb27-431"><a href="#cb27-431" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-432"><a href="#cb27-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-433"><a href="#cb27-433" aria-hidden="true" tabindex="-1"></a><span class="al">![`signif_qual` 팔레트의 색상을 보여주는 막대 차트.](images/tools-qual-jl.png)</span>{fig-alt="signif_qual의 색상을 보여주는 막대 차트"}</span>
+<span id="cb27-434"><a href="#cb27-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-435"><a href="#cb27-435" aria-hidden="true" tabindex="-1"></a><span class="in">`axis`</span> 인수를 사용하여 사용자 지정 레이블과 제목을 지정할 수 있습니다:</span>
+<span id="cb27-436"><a href="#cb27-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-439"><a href="#cb27-439" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
+<span id="cb27-440"><a href="#cb27-440" aria-hidden="true" tabindex="-1"></a><span class="co"># define labels and title</span></span>
+<span id="cb27-441"><a href="#cb27-441" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> <span class="st">"나의 Significance 플롯"</span></span>
+<span id="cb27-442"><a href="#cb27-442" aria-hidden="true" tabindex="-1"></a>subtitle <span class="op">=</span> <span class="st">"차트에서 일어나는 일을 설명하는 긴 문장."</span></span>
+<span id="cb27-443"><a href="#cb27-443" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">"X축 레이블"</span></span>
+<span id="cb27-444"><a href="#cb27-444" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> <span class="st">"Y축 레이블"</span></span>
+<span id="cb27-445"><a href="#cb27-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-446"><a href="#cb27-446" aria-hidden="true" tabindex="-1"></a><span class="co"># create barchart</span></span>
+<span id="cb27-447"><a href="#cb27-447" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(plt;</span>
+<span id="cb27-448"><a href="#cb27-448" aria-hidden="true" tabindex="-1"></a>     axis<span class="op">=</span>(;</span>
+<span id="cb27-449"><a href="#cb27-449" aria-hidden="true" tabindex="-1"></a>         xticks<span class="op">=</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>]),</span>
+<span id="cb27-450"><a href="#cb27-450" aria-hidden="true" tabindex="-1"></a>         title<span class="op">=</span>title,</span>
+<span id="cb27-451"><a href="#cb27-451" aria-hidden="true" tabindex="-1"></a>         subtitle<span class="op">=</span>subtitle,</span>
+<span id="cb27-452"><a href="#cb27-452" aria-hidden="true" tabindex="-1"></a>         titlealign<span class="op">=:</span>left,</span>
+<span id="cb27-453"><a href="#cb27-453" aria-hidden="true" tabindex="-1"></a>         xlabel<span class="op">=</span>xlabel,</span>
+<span id="cb27-454"><a href="#cb27-454" aria-hidden="true" tabindex="-1"></a>         ylabel<span class="op">=</span>ylabel,</span>
+<span id="cb27-455"><a href="#cb27-455" aria-hidden="true" tabindex="-1"></a>     ),</span>
+<span id="cb27-456"><a href="#cb27-456" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-457"><a href="#cb27-457" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-458"><a href="#cb27-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-459"><a href="#cb27-459" aria-hidden="true" tabindex="-1"></a><span class="al">![사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트.](images/tools-jl-labels.png)</span>{fig-alt="사용자 지정 레이블 및 제목 사용을 보여주는 막대 차트."}</span>
+<span id="cb27-460"><a href="#cb27-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-461"><a href="#cb27-461" aria-hidden="true" tabindex="-1"></a><span class="fu">## 출판 사양 {#publication-specifications}</span></span>
+<span id="cb27-462"><a href="#cb27-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-463"><a href="#cb27-463" aria-hidden="true" tabindex="-1"></a>다음 정보는 RSS 출판 요구 사항을 충족하는 그래프 및 차트를 디자인하는 데 사용해야 합니다. 세부 정보에는 페이지 크기 및 열 너비, 글꼴 유형 및 크기, 이미지 해상도 및 파일 형식이 포함됩니다.</span>
+<span id="cb27-464"><a href="#cb27-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-465"><a href="#cb27-465" aria-hidden="true" tabindex="-1"></a><span class="fu">### *Significance* Magazine</span></span>
+<span id="cb27-466"><a href="#cb27-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-467"><a href="#cb27-467" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                                <span class="pp">|</span>                                 <span class="pp">|</span></span>
+<span id="cb27-468"><a href="#cb27-468" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------------------------------|---------------------------------|</span></span>
+<span id="cb27-469"><a href="#cb27-469" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 페이지 크기                    <span class="pp">|</span> <span class="sc">\(</span>W<span class="sc">\)</span> 212.55 mm x (H) 263.65 mm <span class="pp">|</span></span>
+<span id="cb27-470"><a href="#cb27-470" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 텍스트 영역                    <span class="pp">|</span> <span class="sc">\(</span>W<span class="sc">\)</span> 188 mm x (H) 212 mm       <span class="pp">|</span></span>
+<span id="cb27-471"><a href="#cb27-471" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 이미지 해상도                  <span class="pp">|</span> 300 dpi (인쇄 품질)             <span class="pp">|</span></span>
+<span id="cb27-472"><a href="#cb27-472" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 권장 이미지 파일 형식          <span class="pp">|</span> jpeg, png                       <span class="pp">|</span></span>
+<span id="cb27-473"><a href="#cb27-473" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-474"><a href="#cb27-474" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Notebook 섹션</span></span>
+<span id="cb27-475"><a href="#cb27-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-476"><a href="#cb27-476" aria-hidden="true" tabindex="-1"></a>4열 레이아웃을 사용합니다.</span>
+<span id="cb27-477"><a href="#cb27-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-478"><a href="#cb27-478" aria-hidden="true" tabindex="-1"></a>+-----------------+-------------------------------------------+</span>
+<span id="cb27-479"><a href="#cb27-479" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 1x 열 너비      <span class="pp">|</span> 45 mm                                     <span class="pp">|</span></span>
+<span id="cb27-480"><a href="#cb27-480" aria-hidden="true" tabindex="-1"></a>+-----------------+-------------------------------------------+</span>
+<span id="cb27-481"><a href="#cb27-481" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2x 열 너비      <span class="pp">|</span> 93 mm                                     <span class="pp">|</span></span>
+<span id="cb27-482"><a href="#cb27-482" aria-hidden="true" tabindex="-1"></a>+-----------------+-------------------------------------------+</span>
+<span id="cb27-483"><a href="#cb27-483" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 3x 열 너비      <span class="pp">|</span> 140 mm                                    <span class="pp">|</span></span>
+<span id="cb27-484"><a href="#cb27-484" aria-hidden="true" tabindex="-1"></a>+-----------------+-------------------------------------------+</span>
+<span id="cb27-485"><a href="#cb27-485" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 4x 열 너비      <span class="pp">|</span> 188 mm                                    <span class="pp">|</span></span>
+<span id="cb27-486"><a href="#cb27-486" aria-hidden="true" tabindex="-1"></a>+-----------------+-------------------------------------------+</span>
+<span id="cb27-487"><a href="#cb27-487" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 본문 글꼴       <span class="pp">|</span> Meta Serif OT, Book                       <span class="pp">|</span></span>
+<span id="cb27-488"><a href="#cb27-488" aria-hidden="true" tabindex="-1"></a>+-----------------+-------------------------------------------+</span>
+<span id="cb27-489"><a href="#cb27-489" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 글꼴 크기       <span class="pp">|</span> 8.5 pt                                    <span class="pp">|</span></span>
+<span id="cb27-490"><a href="#cb27-490" aria-hidden="true" tabindex="-1"></a>+-----------------+-------------------------------------------+</span>
+<span id="cb27-491"><a href="#cb27-491" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 섹션 색상       <span class="pp">|</span> 빨강:\                                    <span class="pp">|</span></span>
+<span id="cb27-492"><a href="#cb27-492" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span> (<span class="in">`RSSthemes`</span> 패키지에서 <span class="in">`signif_red`</span> 사용)<span class="pp">|</span></span>
+<span id="cb27-493"><a href="#cb27-493" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span>                                           <span class="pp">|</span></span>
+<span id="cb27-494"><a href="#cb27-494" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span> -   CMYK = 0, 96, 98, 1                   <span class="pp">|</span></span>
+<span id="cb27-495"><a href="#cb27-495" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span>                                           <span class="pp">|</span></span>
+<span id="cb27-496"><a href="#cb27-496" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span> -   RGB = 228, 27, 18                     <span class="pp">|</span></span>
+<span id="cb27-497"><a href="#cb27-497" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span>                                           <span class="pp">|</span></span>
+<span id="cb27-498"><a href="#cb27-498" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span> -   Hex code = #e41b12                    <span class="pp">|</span></span>
+<span id="cb27-499"><a href="#cb27-499" aria-hidden="true" tabindex="-1"></a>+-----------------+-------------------------------------------+</span>
+<span id="cb27-500"><a href="#cb27-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-501"><a href="#cb27-501" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Features 섹션 {#features-section}</span></span>
+<span id="cb27-502"><a href="#cb27-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-503"><a href="#cb27-503" aria-hidden="true" tabindex="-1"></a>3열 레이아웃을 사용합니다.</span>
+<span id="cb27-504"><a href="#cb27-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-505"><a href="#cb27-505" aria-hidden="true" tabindex="-1"></a>+-----------------+---------------------------------------------+</span>
+<span id="cb27-506"><a href="#cb27-506" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 1x 열 너비      <span class="pp">|</span> 60 mm                                       <span class="pp">|</span></span>
+<span id="cb27-507"><a href="#cb27-507" aria-hidden="true" tabindex="-1"></a>+-----------------+---------------------------------------------+</span>
+<span id="cb27-508"><a href="#cb27-508" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2x 열 너비      <span class="pp">|</span> 124 mm                                      <span class="pp">|</span></span>
+<span id="cb27-509"><a href="#cb27-509" aria-hidden="true" tabindex="-1"></a>+-----------------+---------------------------------------------+</span>
+<span id="cb27-510"><a href="#cb27-510" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 3x 열 너비      <span class="pp">|</span> 188 mm                                      <span class="pp">|</span></span>
+<span id="cb27-511"><a href="#cb27-511" aria-hidden="true" tabindex="-1"></a>+-----------------+---------------------------------------------+</span>
+<span id="cb27-512"><a href="#cb27-512" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 본문 글꼴       <span class="pp">|</span> Source Sans Pro, Regular                    <span class="pp">|</span></span>
+<span id="cb27-513"><a href="#cb27-513" aria-hidden="true" tabindex="-1"></a>+-----------------+---------------------------------------------+</span>
+<span id="cb27-514"><a href="#cb27-514" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 글꼴 크기       <span class="pp">|</span> 9 pt                                        <span class="pp">|</span></span>
+<span id="cb27-515"><a href="#cb27-515" aria-hidden="true" tabindex="-1"></a>+-----------------+---------------------------------------------+</span>
+<span id="cb27-516"><a href="#cb27-516" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 섹션 색상       <span class="pp">|</span> 녹색:\                                      <span class="pp">|</span></span>
+<span id="cb27-517"><a href="#cb27-517" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span> (<span class="in">`RSSthemes`</span> 패키지에서 <span class="in">`signif_green`</span> 사용)<span class="pp">|</span></span>
+<span id="cb27-518"><a href="#cb27-518" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span>                                             <span class="pp">|</span></span>
+<span id="cb27-519"><a href="#cb27-519" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span> -   CMYK = 75, 5, 100, 0                    <span class="pp">|</span></span>
+<span id="cb27-520"><a href="#cb27-520" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span>                                             <span class="pp">|</span></span>
+<span id="cb27-521"><a href="#cb27-521" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span> -   RGB = 63, 165, 53                       <span class="pp">|</span></span>
+<span id="cb27-522"><a href="#cb27-522" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span>                                             <span class="pp">|</span></span>
+<span id="cb27-523"><a href="#cb27-523" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                 <span class="pp">|</span> -   Hex code = #3fa535                      <span class="pp">|</span></span>
+<span id="cb27-524"><a href="#cb27-524" aria-hidden="true" tabindex="-1"></a>+-----------------+---------------------------------------------+</span>
+<span id="cb27-525"><a href="#cb27-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-526"><a href="#cb27-526" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Profiles / Perspectives / Statscom 섹션</span></span>
+<span id="cb27-527"><a href="#cb27-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-528"><a href="#cb27-528" aria-hidden="true" tabindex="-1"></a>3열 레이아웃을 사용합니다.</span>
+<span id="cb27-529"><a href="#cb27-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-530"><a href="#cb27-530" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-531"><a href="#cb27-531" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 1x 열 너비       <span class="pp">|</span> 60 mm                                        <span class="pp">|</span></span>
+<span id="cb27-532"><a href="#cb27-532" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-533"><a href="#cb27-533" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2x 열 너비       <span class="pp">|</span> 124 mm                                       <span class="pp">|</span></span>
+<span id="cb27-534"><a href="#cb27-534" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-535"><a href="#cb27-535" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 3x 열 너비       <span class="pp">|</span> 188 mm                                       <span class="pp">|</span></span>
+<span id="cb27-536"><a href="#cb27-536" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-537"><a href="#cb27-537" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 본문 글꼴        <span class="pp">|</span> Meta Serif OT, Book                          <span class="pp">|</span></span>
+<span id="cb27-538"><a href="#cb27-538" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-539"><a href="#cb27-539" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 글꼴 크기        <span class="pp">|</span> 8.5 pt                                       <span class="pp">|</span></span>
+<span id="cb27-540"><a href="#cb27-540" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-541"><a href="#cb27-541" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 섹션 색상:       <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-542"><a href="#cb27-542" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-543"><a href="#cb27-543" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Profiles         <span class="pp">|</span> 파랑:\                                       <span class="pp">|</span></span>
+<span id="cb27-544"><a href="#cb27-544" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> (<span class="in">`RSSthemes`</span> 패키지에서 <span class="in">`signif_blue`</span> 사용)  <span class="pp">|</span></span>
+<span id="cb27-545"><a href="#cb27-545" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-546"><a href="#cb27-546" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> -   CMYK = 78, 19, 15, 1                     <span class="pp">|</span></span>
+<span id="cb27-547"><a href="#cb27-547" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-548"><a href="#cb27-548" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> -   RGB = 0, 156, 196                        <span class="pp">|</span></span>
+<span id="cb27-549"><a href="#cb27-549" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-550"><a href="#cb27-550" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> -   Hex code = #009cc4                       <span class="pp">|</span></span>
+<span id="cb27-551"><a href="#cb27-551" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-552"><a href="#cb27-552" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Perspectives     <span class="pp">|</span> 노랑:\                                       <span class="pp">|</span></span>
+<span id="cb27-553"><a href="#cb27-553" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> (<span class="in">`RSSthemes`</span> 패키지에서 <span class="in">`signif_yellow`</span> 사용)<span class="pp">|</span></span>
+<span id="cb27-554"><a href="#cb27-554" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-555"><a href="#cb27-555" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> -   CMYK = 5, 24, 95, 1                      <span class="pp">|</span></span>
+<span id="cb27-556"><a href="#cb27-556" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-557"><a href="#cb27-557" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> -   RGB = 244, 193, 0                        <span class="pp">|</span></span>
+<span id="cb27-558"><a href="#cb27-558" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-559"><a href="#cb27-559" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> -   Hex code = #f4c100                       <span class="pp">|</span></span>
+<span id="cb27-560"><a href="#cb27-560" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-561"><a href="#cb27-561" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Statscomm        <span class="pp">|</span> 주황:\                                       <span class="pp">|</span></span>
+<span id="cb27-562"><a href="#cb27-562" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> (<span class="in">`RSSthemes`</span> 패키지에서 <span class="in">`signif_orange`</span> 사용)<span class="pp">|</span></span>
+<span id="cb27-563"><a href="#cb27-563" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-564"><a href="#cb27-564" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> -   CMYK = 0, 60, 99, 0                      <span class="pp">|</span></span>
+<span id="cb27-565"><a href="#cb27-565" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-566"><a href="#cb27-566" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> -   RGB = 240, 125, 0                        <span class="pp">|</span></span>
+<span id="cb27-567"><a href="#cb27-567" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span>                                              <span class="pp">|</span></span>
+<span id="cb27-568"><a href="#cb27-568" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                  <span class="pp">|</span> -   Hex code = #f07d00                       <span class="pp">|</span></span>
+<span id="cb27-569"><a href="#cb27-569" aria-hidden="true" tabindex="-1"></a>+------------------+----------------------------------------------+</span>
+<span id="cb27-570"><a href="#cb27-570" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-571"><a href="#cb27-571" aria-hidden="true" tabindex="-1"></a><span class="fu">### Journal of the Royal Statistical Society Series A</span></span>
+<span id="cb27-572"><a href="#cb27-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-573"><a href="#cb27-573" aria-hidden="true" tabindex="-1"></a>단일 열 레이아웃을 사용합니다.</span>
+<span id="cb27-574"><a href="#cb27-574" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-575"><a href="#cb27-575" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                                <span class="pp">|</span>                           <span class="pp">|</span></span>
+<span id="cb27-576"><a href="#cb27-576" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------------------------------|---------------------------|</span></span>
+<span id="cb27-577"><a href="#cb27-577" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 페이지 크기                    <span class="pp">|</span> <span class="sc">\(</span>W<span class="sc">\)</span> 189 mm x (H) 246 mm <span class="pp">|</span></span>
+<span id="cb27-578"><a href="#cb27-578" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 텍스트 영역                    <span class="pp">|</span> <span class="sc">\(</span>W<span class="sc">\)</span> 136 mm x (H) 217 mm <span class="pp">|</span></span>
+<span id="cb27-579"><a href="#cb27-579" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 본문 글꼴                      <span class="pp">|</span> Sabon LT Std Roman        <span class="pp">|</span></span>
+<span id="cb27-580"><a href="#cb27-580" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 글꼴 크기                      <span class="pp">|</span> 9.25 pt                   <span class="pp">|</span></span>
+<span id="cb27-581"><a href="#cb27-581" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 이미지 해상도                  <span class="pp">|</span> 300 dpi (인쇄 품질)       <span class="pp">|</span></span>
+<span id="cb27-582"><a href="#cb27-582" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 권장 이미지 파일 형식          <span class="pp">|</span> jpeg, png                 <span class="pp">|</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright © 2024 Andreas Krause, Nicola Rennie and the <a href="https://rss.org.uk/">Royal Statistical Society</a>. <a href="https://doi.org/10.5281/zenodo.10600718"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.10600718.svg" class="img-fluid"></a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/royal-statistical-society/datavisguide/edit/main/docs/tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/royal-statistical-society/datavisguide/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
