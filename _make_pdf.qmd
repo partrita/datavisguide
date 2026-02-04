@@ -13,7 +13,8 @@ format:
     number-depth: 2
     output-file: "RSS-data-vis-guide"
     output-ext:  "pdf"
-    mainfont: "Noto Sans CJK KR"
+    mainfont: "Noto Serif CJK KR"
+    sansfont: "Noto Sans CJK KR"
     linkcolor: RSSblue
     urlcolor: RSSblue
     include-in-header: 

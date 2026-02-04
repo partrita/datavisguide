@@ -13,8 +13,8 @@
 # pixi 설치 (이미 설치된 경우 생략)
 curl -fsSL https://pixi.sh/install.sh | bash
 
-# 의존성 설치 및 쉘 실행
-pixi shell
+# 의존성 설치
+pixi install
 
 # 웹사이트 미리보기
 pixi run quarto preview
@@ -28,23 +28,21 @@ pixi run quarto preview
 
 다음 중 하나를 수행해 주세요:
 
-1.  리포지토리의 [문제(Issues)](https://github.com/royal-statistical-society/datavisguide/issues) 섹션에 이슈를 제기합니다.
-2.  이 리포지토리를 포크(Fork)하고, 관련 파일을 수정한 후, 이 리포지토리의 `main` 브랜치에 풀 리퀘스트(Pull Request)를 보냅니다.
+1. 리포지토리의 [문제(Issues)](https://github.com/royal-statistical-society/datavisguide/issues) 섹션에 이슈를 제기합니다.
+2. 이 리포지토리를 포크(Fork)하고, 관련 파일을 수정한 후, 이 리포지토리의 `main` 브랜치에 풀 리퀘스트(Pull Request)를 보냅니다.
 
 ## 가이드에 새로운 기능이나 섹션을 추가하고 싶다면
 
-1.  리포지토리의 [문제(Issues)](https://github.com/royal-statistical-society/datavisguide/issues) 섹션에 이슈를 제기하고, 'enhancement' 태그를 단 후 제안하는 기여 내용을 설명합니다.
-2.  이 리포지토리를 포크하고, 예를 들어 `my-new-feature-or-section`과 같은 이름으로 새 브랜치를 만듭니다.
-3.  브랜치에 콘텐츠, 코드 및 파일을 추가합니다.
-4.  이 리포지토리의 `main` 브랜치에 풀 리퀘스트를 보냅니다.
+1. 리포지토리의 [문제(Issues)](https://github.com/royal-statistical-society/datavisguide/issues) 섹션에 이슈를 제기하고, 'enhancement' 태그를 단 후 제안하는 기여 내용을 설명합니다.
+2. 이 리포지토리를 포크하고, 예를 들어 `my-new-feature-or-section`과 같은 이름으로 새 브랜치를 만듭니다.
+3. 브랜치에 콘텐츠, 코드 및 파일을 추가합니다.
+4. 이 리포지토리의 `main` 브랜치에 풀 리퀘스트를 보냅니다.
 
 새로운 기능이나 섹션에 대한 제안은 다음 편집팀이 검토합니다:
 
--   Andreas Krause
-
--   Nicola Rennie
-
--   Anna Britten
+* Andreas Krause
+* Nicola Rennie
+* Anna Britten
 
 검토자는 풀 리퀘스트 병합에 동의하기 전에 기여자에게 피드백이나 제안을 제공할 수 있습니다. 편집팀은 풀 리퀘스트 병합을 거부할 권리가 있으며, 편집팀의 결정이 최종적입니다.
 

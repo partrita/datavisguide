@@ -6,9 +6,12 @@ platforms = ["linux-64"]
 version = "0.1.0"
 
 [tasks]
-
+pdf = "quarto render _make_pdf.qmd --to pdf"
 [dependencies]
 quarto = ">=1.8.27,<2"
 r-base = ">=4.5.2,<4.6"
 r-essentials = ">=4.5,<5"
 r-reticulate = ">=1.44.1,<2"
+r-juliacall = ">=0.17.6,<0.18"
+python = ">=3.9"
+julia = ">=1.6"
