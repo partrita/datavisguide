@@ -36,7 +36,7 @@ process_qmd <- function(file, fpath_in = "images/", fpath_out = "images/") {
 }
 ```
 
-# Introduction
+# 소개
 
 ```{r}
 #| output: asis
@@ -47,7 +47,7 @@ idx <- process_qmd("index.qmd")
 cat(unlist(idx), sep = '\n')
 ```
 
-# How to use this guide
+# 이 가이드 사용법
 
 ```{r}
 #| output: asis
@@ -58,7 +58,7 @@ howto <- process_qmd("howto.qmd")
 cat(unlist(howto), sep = '\n')
 ```
 
-# Why we visualise data
+# 데이터 시각화를 하는 이유
 
 ```{r}
 #| output: asis
@@ -69,7 +69,7 @@ why <- process_qmd("docs/why-visualise.qmd", fpath_in = "images/", fpath_out = "
 cat(unlist(why), sep = '\n')
 ```
 
-# Principles and elements of visualisations
+# 시각화의 원칙과 요소
 
 ```{r}
 #| output: asis
@@ -80,7 +80,7 @@ principles <- process_qmd("docs/principles.qmd", fpath_in = "images/", fpath_out
 cat(unlist(principles), sep = '\n')
 ```
 
-# Choosing a visualisation type
+# 시각화 유형 선택하기
 
 ```{r}
 #| output: asis
@@ -91,7 +91,7 @@ choosing <- process_qmd("docs/choosing.qmd", fpath_in = "images/", fpath_out = "
 cat(unlist(choosing), sep = '\n')
 ```
 
-# Styling for accessibility
+# 접근성을 위한 차트 스타일링
 
 ```{r}
 #| output: asis
@@ -103,7 +103,7 @@ cat(unlist(styling), sep = '\n')
 ```
 
 
-# Styling for RSS Publications
+# RSS 간행물을 위한 차트 스타일링
 
 ```{r}
 #| output: asis
@@ -114,7 +114,7 @@ tools <- process_qmd("docs/tools.qmd", fpath_in = "images/", fpath_out = "docs/i
 cat(unlist(tools), sep = '\n')
 ```
 
-# References
+# 참고 문헌
 
 ```{r}
 #| output: asis
@@ -125,7 +125,7 @@ refs <- process_qmd("docs/references.qmd")
 cat(unlist(refs), sep = '\n')
 ```
 
-# About the authors
+# 저자 소개
 
 ```{r}
 #| output: asis
@@ -136,7 +136,7 @@ about <- process_qmd("about.qmd")
 cat(unlist(about), sep = '\n')
 ```
 
-# Terms and Conditions
+# 이용 약관
 
 ```{r}
 #| output: asis
